@@ -1,0 +1,161 @@
+/* ============================================
+   ESTILOS GLOBAIS - Responsavel: Eduardo Vieira Silva
+   Projeto de Extensao - Turma Noturno 2026
+   ============================================ */
+
+/* Reset basico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  color: #333;
+  background-color: #f5f5f5;
+}
+
+/* ---- HEADER E NAVEGACAO ---- */
+header {
+  background-color: #2c3e50;
+  padding: 15px 30px;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+
+nav ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 8px 12px;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+nav ul li a:hover {
+  background-color: #3498db;
+}
+
+/* ---- MAIN / CONTEUDO ---- */
+main {
+  max-width: 1100px;
+  margin: 30px auto;
+  padding: 0 20px;
+}
+
+section {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 30px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+h1 {
+  font-size: 2rem;
+  color: #2c3e50;
+  margin-bottom: 15px;
+}
+
+h2 {
+  font-size: 1.4rem;
+  color: #3498db;
+  margin: 20px 0 10px;
+}
+
+p {
+  line-height: 1.7;
+  margin-bottom: 10px;
+}
+
+/* ---- BANNER (index.html) ---- */
+.banner {
+  text-align: center;
+  background: linear-gradient(135deg, #2c3e50, #3498db);
+  color: #fff;
+  padding: 60px 30px;
+  border-radius: 8px;
+}
+
+.banner h1 {
+  color: #fff;
+  font-size: 2.5rem;
+}
+
+/* ---- CARDS DE PRODUTO ---- */
+.produto-card, .projeto-card {
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 20px;
+  margin-bottom: 15px;
+  background-color: #fafafa;
+}
+
+.produto-card h2, .projeto-card h2 {
+  color: #2c3e50;
+}
+
+/* ---- FORMULARIO (contato.html) ---- */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 600px;
+}
+
+label {
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+input, textarea {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+  width: 100%;
+}
+
+input:focus, textarea:focus {
+  outline: none;
+  border-color: #3498db;
+}
+
+button[type="submit"] {
+  background-color: #3498db;
+  color: #fff;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  width: fit-content;
+}
+
+button[type="submit"]:hover {
+  background-color: #2980b9;
+}
+
+.info-contato {
+  margin-top: 25px;
+  padding: 15px;
+  background-color: #ecf0f1;
+  border-radius: 6px;
+}
+
+/* ---- FOOTER ---- */
+footer {
+  background-color: #2c3e50;
+  color: #fff;
+  text-align: center;
+  padding: 15px;
+  margin-top: 40px;
+}
