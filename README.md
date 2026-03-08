@@ -20,13 +20,13 @@
 | 1 | Lucas Byoung Ki Han | 3025103388 | Lider / Doc | Coordenacao geral + video |
 | 2 | Gabriel Cole Ambrosio | 3126100300 | Site | HTML: index, sobre, contato |
 | 3 | Luiz Augusto Tiburcio | 3026102233 | Site | HTML: produtos, portfolio |
-| 4 | Eduardo Vieira Silva | [RA] | Site | CSS completo (style.css) |
-| 5 | Willian Soares Santana | [RA] | Programa C | Estrutura principal e menu |
-| 6 | Guilherme Huilame | [RA] | Programa C | Logica de negocio e cadastros |
-| 7 | Kaue Machado Vasconcellos | [RA] | Programa C | Validacoes e refinamento |
-| 8 | Riquelly Barboza Bagatin | [RA] | Banco de Dados | Modelagem DER |
-| 9 | Henrique Capetto | [RA] | Banco de Dados | Scripts SQL Oracle |
-| 10 | Matheus Nilcen Alves | [RA] | Documentacao | Documento final escrito |
+| 4 | Eduardo Vieira Silva | 3126100300 | Site | CSS completo (style.css) |
+| 5 | Willian Soares Santana | 3025204433 | Programa C | Estrutura principal e menu |
+| 6 | Guilherme Huilame | 3025101487 | Programa C | Logica de negocio e cadastros |
+| 7 | Kaue Machado Vasconcellos | 3023202590 | Programa C | Validacoes e refinamento |
+| 8 | Riquelly Barboza Bagatin | 3025103463 | Banco de Dados | Modelagem DER |
+| 9 | Henrique Capetto | 3126103000 | Banco de Dados | Scripts SQL Oracle |
+| 10 | Matheus Nilcen Alves | 3026104544 | Documentacao | Documento final escrito |
 
 ---
 
