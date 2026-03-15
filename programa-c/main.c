@@ -1,13 +1,12 @@
 /*
- * ============================================================
+ * --------------------------------------------------------
  * PROJETO DE EXTENSAO - Desenvolvimento de Software
  * Turma Noturno 2026
- * ============================================================
- * Responsaveis:
- *   - Willian Soares Santana   (Estrutura principal e menu)
- *   - Guilherme Huilame        (Logica de negocio e cadastros)
- *   - Kaue Machado Vasconcellos (Validacoes e refinamento)
- * ============================================================
+ * --------------------------------------------------------
+ * Responsaveis (Squad C):
+ *   - Willian Soares Santana   (Estrutura principal, menu e validacoes)
+ *   - Guilherme Huilame        (Logica de negocio, cadastros e refinamento)
+ * --------------------------------------------------------
  */
 
 #include <stdio.h>
@@ -31,118 +30,94 @@ typedef struct {
 Registro registros[MAX_REGISTROS];
 int totalRegistros = 0;
 
-/* ---- PROTOTIPOS DAS FUNCOES ---- */
+/* ---- PROTOTIPOS ---- */
 void exibirMenu();
 void cadastrar();
 void listar();
 void buscar();
-void limparBuffer();
+void remover();
+void calcularTotal();
 
-/* ============================================================
- * FUNCAO PRINCIPAL
- * ============================================================ */
+/* ====================================================
+   FUNCAO PRINCIPAL
+   ==================================================== */
 int main() {
     int opcao;
 
-    printf("\n=== Sistema [Nome da Empresa] ===\n");
-
     do {
         exibirMenu();
-        printf("\nDigite a opcao: ");
+        printf("Escolha uma opcao: ");
         scanf("%d", &opcao);
-        limparBuffer();
+        getchar(); /* limpa buffer */
 
         switch (opcao) {
-            case 1:
-                cadastrar();
-                break;
-            case 2:
-                listar();
-                break;
-            case 3:
-                buscar();
-                break;
-            case 0:
-                printf("\nSaindo do sistema... Ate logo!\n");
-                break;
-            default:
-                printf("\nOpcao invalida! Tente novamente.\n");
+            case 1: cadastrar();     break;
+            case 2: listar();        break;
+            case 3: buscar();        break;
+            case 4: remover();       break;
+            case 5: calcularTotal(); break;
+            case 0: printf("Encerrando...\n"); break;
+            default: printf("Opcao invalida!\n");
         }
     } while (opcao != 0);
 
     return 0;
 }
 
-/* ============================================================
- * EXIBE O MENU PRINCIPAL
- * Responsavel: Willian Soares Santana
- * ============================================================ */
+/* ====================================================
+   MENU PRINCIPAL  (Willian)
+   ==================================================== */
 void exibirMenu() {
-    printf("\n----------------------------------------\n");
-    printf("  MENU PRINCIPAL\n");
-    printf("----------------------------------------\n");
-    printf("  1 - Cadastrar registro\n");
-    printf("  2 - Listar todos os registros\n");
-    printf("  3 - Buscar por nome\n");
-    printf("  0 - Sair\n");
-    printf("----------------------------------------\n");
+    printf("\n===== SISTEMA DE GESTAO =====");
+    printf("\n 1. Cadastrar");
+    printf("\n 2. Listar todos");
+    printf("\n 3. Buscar por nome");
+    printf("\n 4. Remover registro");
+    printf("\n 5. Calcular total");
+    printf("\n 0. Sair");
+    printf("\n============================\n");
 }
 
-/* ============================================================
- * CADASTRA UM NOVO REGISTRO
- * Responsavel: Guilherme Huilame
- * ============================================================ */
+/* ====================================================
+   CADASTRO  (Guilherme)
+   ==================================================== */
 void cadastrar() {
     if (totalRegistros >= MAX_REGISTROS) {
-        printf("\nLimite de registros atingido!\n");
+        printf("Limite de registros atingido!\n");
         return;
     }
 
-    Registro novo;
-    novo.id = totalRegistros + 1;
+    Registro r;
+    r.id = totalRegistros + 1;
 
-    printf("\n--- Novo Cadastro ---\n");
     printf("Nome: ");
-    fgets(novo.nome, TAM_NOME, stdin);
-    novo.nome[strcspn(novo.nome, "\n")] = '\0'; /* Remove quebra de linha */
+    fgets(r.nome, TAM_NOME, stdin);
+    r.nome[strcspn(r.nome, "\n")] = '\0';
 
     printf("Email: ");
-    fgets(novo.email, TAM_EMAIL, stdin);
-    novo.email[strcspn(novo.email, "\n")] = '\0';
+    fgets(r.email, TAM_EMAIL, stdin);
+    r.email[strcspn(r.email, "\n")] = '\0';
 
-    printf("Valor (R$): ");
-    scanf("%f", &novo.valor);
-    limparBuffer();
+    printf("Valor: ");
+    scanf("%f", &r.valor);
+    getchar();
 
-    /* Validacao basica - Kaue Machado Vasconcellos */
-    if (strlen(novo.nome) == 0) {
-        printf("\nErro: Nome nao pode ser vazio!\n");
-        return;
-    }
-
-    registros[totalRegistros] = novo;
-    totalRegistros++;
-
-    printf("\nRegistro cadastrado com sucesso! ID: %d\n", novo.id);
+    registros[totalRegistros++] = r;
+    printf("Cadastrado com sucesso! ID: %d\n", r.id);
 }
 
-/* ============================================================
- * LISTA TODOS OS REGISTROS
- * Responsavel: Guilherme Huilame
- * ============================================================ */
+/* ====================================================
+   LISTAGEM  (Willian)
+   ==================================================== */
 void listar() {
     if (totalRegistros == 0) {
-        printf("\nNenhum registro cadastrado.\n");
+        printf("Nenhum registro encontrado.\n");
         return;
     }
-
-    printf("\n--- Lista de Registros (%d total) ---\n", totalRegistros);
-    printf("%-5s %-30s %-30s %10s\n", "ID", "Nome", "Email", "Valor");
-    printf("----------------------------------------------------------------------\n");
-
-    int i;
-    for (i = 0; i < totalRegistros; i++) {
-        printf("%-5d %-30s %-30s R$%8.2f\n",
+    printf("\n%-5s %-30s %-35s %10s\n", "ID", "Nome", "Email", "Valor");
+    printf("%-5s %-30s %-35s %10s\n", "----", "------------------------------", "-----------------------------------", "----------");
+    for (int i = 0; i < totalRegistros; i++) {
+        printf("%-5d %-30s %-35s %10.2f\n",
             registros[i].id,
             registros[i].nome,
             registros[i].email,
@@ -150,43 +125,61 @@ void listar() {
     }
 }
 
-/* ============================================================
- * BUSCA REGISTRO POR NOME
- * Responsavel: Kaue Machado Vasconcellos
- * ============================================================ */
+/* ====================================================
+   BUSCA POR NOME  (Guilherme)
+   ==================================================== */
 void buscar() {
-    char termoBusca[TAM_NOME];
+    char termo[TAM_NOME];
+    printf("Digite o nome para buscar: ");
+    fgets(termo, TAM_NOME, stdin);
+    termo[strcspn(termo, "\n")] = '\0';
+
     int encontrado = 0;
-
-    printf("\nDigite o nome para buscar: ");
-    fgets(termoBusca, TAM_NOME, stdin);
-    termoBusca[strcspn(termoBusca, "\n")] = '\0';
-
-    printf("\n--- Resultado da Busca ---\n");
-
-    int i;
-    for (i = 0; i < totalRegistros; i++) {
-        /* Busca parcial por nome */
-        if (strstr(registros[i].nome, termoBusca) != NULL) {
-            printf("ID: %d | Nome: %s | Email: %s | Valor: R$%.2f\n",
+    for (int i = 0; i < totalRegistros; i++) {
+        if (strstr(registros[i].nome, termo) != NULL) {
+            printf("[%d] %s | %s | R$ %.2f\n",
                 registros[i].id,
                 registros[i].nome,
                 registros[i].email,
                 registros[i].valor);
-            encontrado = 1;
+            encontrado++;
         }
     }
-
-    if (!encontrado) {
-        printf("Nenhum registro encontrado para: %s\n", termoBusca);
-    }
+    if (!encontrado) printf("Nenhum resultado para '%s'.\n", termo);
 }
 
-/* ============================================================
- * LIMPA O BUFFER DO TECLADO
- * Responsavel: Kaue Machado Vasconcellos
- * ============================================================ */
-void limparBuffer() {
-    int c;
-    while ((c = getchar()) != '\n' && c != EOF);
+/* ====================================================
+   REMOCAO  (Willian)
+   ==================================================== */
+void remover() {
+    int id;
+    printf("ID do registro a remover: ");
+    scanf("%d", &id);
+    getchar();
+
+    for (int i = 0; i < totalRegistros; i++) {
+        if (registros[i].id == id) {
+            for (int j = i; j < totalRegistros - 1; j++) {
+                registros[j] = registros[j + 1];
+            }
+            totalRegistros--;
+            printf("Registro removido.\n");
+            return;
+        }
+    }
+    printf("ID nao encontrado.\n");
+}
+
+/* ====================================================
+   CALCULO DE TOTAL  (Guilherme)
+   ==================================================== */
+void calcularTotal() {
+    float total = 0;
+    for (int i = 0; i < totalRegistros; i++) {
+        total += registros[i].valor;
+    }
+    printf("Total de registros: %d\n", totalRegistros);
+    printf("Soma dos valores:   R$ %.2f\n", total);
+    if (totalRegistros > 0)
+        printf("Media dos valores:  R$ %.2f\n", total / totalRegistros);
 }
