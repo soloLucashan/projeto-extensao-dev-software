@@ -6,12 +6,12 @@
 
 ## Empresa
 
-> **Nome:** [PixelShop]
-> **Missao:** [Oferecer produtos de eletrônicos e informática com qualidade e acessibilidade]
-> **Visao:** [Ser referência em tecnologia acessível para estudantes e profissionais]
-> **Valores:** [Inovação, Acessibilidade, Atendimento, Qualidade
+> **Nome:** PixelShop
+> **Missao:** Oferecer produtos de eletrônicos e informática com qualidade e acessibilidade
+> **Visao:** Ser referência em tecnologia acessível para estudantes e profissionais
+> **Valores:** Inovação, Acessibilidade, Atendimento, Qualidade
 
-]
+
 
 ---
 
