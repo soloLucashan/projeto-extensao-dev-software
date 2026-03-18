@@ -6,10 +6,12 @@
 
 ## Empresa
 
-> **Nome:** [A definir na reuniao]
-> **Missao:** [A definir]
-> **Visao:** [A definir]
-> **Valores:** [A definir]
+> **Nome:** [PixelShop]
+> **Missao:** [Oferecer produtos de eletrônicos e informática com qualidade e acessibilidade]
+> **Visao:** [Ser referência em tecnologia acessível para estudantes e profissionais]
+> **Valores:** [Inovação, Acessibilidade, Atendimento, Qualidade
+
+]
 
 ---
 
