@@ -1,75 +1,79 @@
--- ============================================================
--- CONSULTAS SQL (SELECT) - Oracle SQL
--- Responsavel: Henrique Capetto
--- Projeto de Extensao - Turma Noturno 2026
--- ============================================================
-
--- 1. SELECT SIMPLES: Listar todos os clientes
-SELECT * FROM CLIENTE;
-
--- 2. SELECT COM WHERE: Pedidos aprovados
-SELECT * FROM PEDIDO WHERE status = 'APROVADO';
-
--- 3. SELECT COM WHERE: Produtos com preco acima de R$500
-SELECT nome, preco, estoque
-FROM PRODUTO
-WHERE preco > 500
-ORDER BY preco DESC;
-
--- 4. SELECT COM JOIN: Pedidos com nome do cliente e funcionario
-SELECT
-    p.id_pedido,
-    c.nome        AS cliente,
-    f.nome        AS funcionario,
-    p.data_pedido,
-    p.valor_total,
-    p.status
-FROM PEDIDO p
-JOIN CLIENTE    c ON p.id_cliente     = c.id_cliente
-JOIN FUNCIONARIO f ON p.id_funcionario = f.id_funcionario
-ORDER BY p.data_pedido;
-
--- 5. SELECT COM JOIN: Produtos com nome da categoria
-SELECT
-    pr.nome     AS produto,
-    pr.preco,
-    pr.estoque,
-    ca.nome     AS categoria
-FROM PRODUTO pr
-JOIN CATEGORIA ca ON pr.id_categoria = ca.id_categoria;
-
--- 6. SELECT COM COUNT: Total de pedidos por status
-SELECT
-    status,
-    COUNT(*) AS total_pedidos
-FROM PEDIDO
-GROUP BY status
-ORDER BY total_pedidos DESC;
-
--- 7. SELECT COM SUM: Faturamento total por funcionario
-SELECT
-    f.nome          AS funcionario,
-    COUNT(p.id_pedido)  AS qtd_pedidos,
-    SUM(p.valor_total)  AS faturamento_total
-FROM PEDIDO p
-JOIN FUNCIONARIO f ON p.id_funcionario = f.id_funcionario
-GROUP BY f.nome
-ORDER BY faturamento_total DESC;
-
--- 8. SELECT COM AVG: Ticket medio dos pedidos
-SELECT
-    ROUND(AVG(valor_total), 2) AS ticket_medio
-FROM PEDIDO;
-
--- 9. SELECT COM MAX/MIN: Produto mais caro e mais barato
-SELECT
-    MAX(preco) AS produto_mais_caro,
-    MIN(preco) AS produto_mais_barato
-FROM PRODUTO;
-
--- 10. SELECT com subquery: Clientes que fizeram pedidos aprovados
-SELECT nome, email
+-- ============================================
+-- PIXELSHOP - Consultas SQL
+-- ============================================
+-- 1. Listagem completa de clientes
+SELECT id_cliente,
+    nome,
+    email,
+    telefone
 FROM CLIENTE
-WHERE id_cliente IN (
-    SELECT id_cliente FROM PEDIDO WHERE status = 'APROVADO'
-);
+ORDER BY nome;
+-- 2. Catalogo de produtos com categoria e estoque
+SELECT p.id_produto,
+    p.nome,
+    c.nome_categoria,
+    p.preco,
+    p.estoque
+FROM PRODUTO p
+    JOIN CATEGORIA c ON p.id_categoria = c.id_categoria
+ORDER BY c.nome_categoria,
+    p.nome;
+-- 3. Pedidos com nome do cliente e status
+SELECT pd.id_pedido,
+    cl.nome AS cliente,
+    pd.data_pedido,
+    pd.status,
+    pd.total
+FROM PEDIDO pd
+    JOIN CLIENTE cl ON pd.id_cliente = cl.id_cliente
+ORDER BY pd.data_pedido DESC;
+-- 4. Itens de cada pedido com detalhes do produto
+SELECT pd.id_pedido,
+    cl.nome AS cliente,
+    pr.nome AS produto,
+    ip.quantidade,
+    ip.preco_unit,
+    (ip.quantidade * ip.preco_unit) AS subtotal
+FROM ITEM_PEDIDO ip
+    JOIN PEDIDO pd ON ip.id_pedido = pd.id_pedido
+    JOIN CLIENTE cl ON pd.id_cliente = cl.id_cliente
+    JOIN PRODUTO pr ON ip.id_produto = pr.id_produto
+ORDER BY pd.id_pedido;
+-- 5. Produtos com estoque baixo (menos de 5 unidades)
+SELECT nome,
+    estoque,
+    preco
+FROM PRODUTO
+WHERE estoque < 5
+ORDER BY estoque;
+-- 6. Total gasto por cliente
+SELECT cl.nome AS cliente,
+    COUNT(pd.id_pedido) AS quantidade_pedidos,
+    SUM(pd.total) AS valor_total
+FROM CLIENTE cl
+    JOIN PEDIDO pd ON cl.id_cliente = pd.id_cliente
+WHERE pd.status = 'CONCLUIDO'
+GROUP BY cl.nome
+ORDER BY valor_total DESC;
+-- 7. Produtos mais vendidos
+SELECT pr.nome AS produto,
+    SUM(ip.quantidade) AS total_unidades_vendidas
+FROM PRODUTO pr
+    JOIN ITEM_PEDIDO ip ON pr.id_produto = ip.id_produto
+GROUP BY pr.nome
+ORDER BY total_unidades_vendidas DESC;
+-- 8. Receita total por categoria
+SELECT ca.nome_categoria AS categoria,
+    SUM(ip.quantidade * ip.preco_unit) AS total_arrecadado
+FROM CATEGORIA ca
+    JOIN PRODUTO pr ON ca.id_categoria = pr.id_categoria
+    JOIN ITEM_PEDIDO ip ON pr.id_produto = ip.id_produto
+    JOIN PEDIDO pd ON ip.id_pedido = pd.id_pedido
+GROUP BY ca.nome_categoria
+ORDER BY total_arrecadado DESC;
+-- 9. Clientes que nunca fizeram pedido
+SELECT cl.nome,
+    cl.email
+FROM CLIENTE cl
+    LEFT JOIN PEDIDO pd ON cl.id_cliente = pd.id_cliente
+WHERE pd.id_pedido IS NULL;
