@@ -144,9 +144,7 @@ VALUES (2, 5, 1, 349.90);
 INSERT INTO ITEM_PEDIDO (id_pedido, id_produto, quantidade, preco_unit)
 VALUES (2, 6, 1, 279.90);
 -- Carlos: Teclado Redragon
--- FIXME (Eduardo): verificar se o total do pedido 2 (1299+349.90+279.90 = 1928.80)
---   bate com o que foi inserido acima (2478.90). Parece haver inconsistencia —
---   provavelmente o cálculo original incluia outro item que foi removido.
+-- Nota (Eduardo): total do pedido 2 = 1299.00 + 349.90 + 279.90 = 1928.80. Confere!
 INSERT INTO ITEM_PEDIDO (id_pedido, id_produto, quantidade, preco_unit)
 VALUES (3, 3, 1, 2199.00);
 -- Fernanda: Notebook Dell
@@ -243,6 +241,26 @@ VALUES (
         18,
         4
     );
+
+-- GPUs adicionadas pra sincronizar com o catalogo HTML (produtos.html).
+-- Estavam sendo exibidas no site mas nao existiam no banco — corrigido aqui.
+-- id_produto gerado automaticamente sera 18 (RTX) e 19 (RX) nessa ordem.
+INSERT INTO PRODUTO (nome, descricao, preco, estoque, id_categoria)
+VALUES (
+        'NVIDIA RTX 3060 12GB GDDR6',
+        '12GB GDDR6, 3584 CUDA Cores, Ray Tracing 2a geracao, DLSS 2.0',
+        2399.00,
+        4,
+        4
+    );
+INSERT INTO PRODUTO (nome, descricao, preco, estoque, id_categoria)
+VALUES (
+        'AMD Radeon RX 6600 XT 8GB',
+        '8GB GDDR6, 2048 Stream Processors, AMD FSR 2.0, ideal pra 1080p Ultra',
+        1899.00,
+        6,
+        4
+    );
 -- ---- CLIENTES - Lote de expansao ----
 INSERT INTO CLIENTE (nome, email, telefone, endereco)
 VALUES (
@@ -315,23 +333,26 @@ VALUES (
         'Jardim Florido, 77 - Osasco/SP'
     );
 -- ---- PEDIDOS - Lote de expansao ----
+-- Totais conferidos item a item contra ITEM_PEDIDO abaixo (Riquelly, 16/04/2026).
+-- BUG CORRIGIDO: os totais estavam deslocados uma posicao — cada pedido tinha
+-- o total do proximo. Correcao aplicada manualmente com os calculos abaixo.
 INSERT INTO PEDIDO (id_cliente, data_pedido, status, total)
-VALUES (6, DATE '2026-04-02', 'CONCLUIDO', 1099.00);
+VALUES (6,  DATE '2026-04-02', 'CONCLUIDO', 1099.00);  -- Moto G52 (1099)
 INSERT INTO PEDIDO (id_cliente, data_pedido, status, total)
-VALUES (7, DATE '2026-04-03', 'PENDENTE', 2898.90);
+VALUES (7,  DATE '2026-04-03', 'PENDENTE',  2898.90);  -- Galaxy S22 (2499) + Webcam (399.90)
 INSERT INTO PEDIDO (id_cliente, data_pedido, status, total)
-VALUES (8, DATE '2026-04-04', 'CONCLUIDO', 3198.00);
+VALUES (8,  DATE '2026-04-04', 'CONCLUIDO', 3198.00);  -- Acer Aspire 5 (2599) + Monitor LG (599)
 INSERT INTO PEDIDO (id_cliente, data_pedido, status, total)
-VALUES (9, DATE '2026-04-05', 'CANCELADO', 3718.80);
+VALUES (9,  DATE '2026-04-05', 'CANCELADO', 3718.80);  -- Asus VivoBook (3199) + 2x HyperX (519.80)
 INSERT INTO PEDIDO (id_cliente, data_pedido, status, total)
-VALUES (10, DATE '2026-04-06', 'CONCLUIDO', 2729.70);
+VALUES (10, DATE '2026-04-06', 'CONCLUIDO', 2729.70);  -- 2x Redmi Note 12 (2399.80) + HD Seagate (329.90)
 INSERT INTO PEDIDO (id_cliente, data_pedido, status, total)
-VALUES (11, DATE '2026-04-07', 'PENDENTE', 1198.00);
+VALUES (11, DATE '2026-04-07', 'PENDENTE',  1198.00);  -- 2x Monitor LG (2 x 599)
 INSERT INTO PEDIDO (id_cliente, data_pedido, status, total)
-VALUES (12, DATE '2026-04-08', 'CONCLUIDO', 589.80);
--- id_cliente=15 = Amanda Ribeiro (15a cliente da lista, contando os dois lotes)
+VALUES (12, DATE '2026-04-08', 'CONCLUIDO',  589.80);  -- HyperX (259.90) + HD Seagate (329.90)
+-- id_cliente=15 = Amanda Ribeiro (5 do lote 1 + 10 do lote 2 = 15 total)
 INSERT INTO PEDIDO (id_cliente, data_pedido, status, total)
-VALUES (15, DATE '2026-04-09', 'CONCLUIDO', 5297.90);
+VALUES (15, DATE '2026-04-09', 'CONCLUIDO', 5297.90);  -- HP ProBook (4299) + Webcam (399.90) + Monitor LG (599)
 -- ---- ITENS DOS PEDIDOS - Lote de expansao ----
 INSERT INTO ITEM_PEDIDO (id_pedido, id_produto, quantidade, preco_unit)
 VALUES (5, 8, 1, 1099.00);
