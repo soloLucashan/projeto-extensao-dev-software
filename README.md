@@ -4,28 +4,35 @@
 
 ---
 
-## Empresa
+## Empresa - PixelShop
 
-> **Nome:** [A definir na reuniao]
-> **Missao:** [A definir]
-> **Visao:** [A definir]
-> **Valores:** [A definir]
+> **Nome:** PixelShop
+> **Missao:** Entregar a melhor combinação de hardwares, unindo desempenho implacável, design premium na linha "Dark Tech" e a durabilidade que profissionais ambiciosos demandam.
+> **Visao:** Tornar-se referência máxima em setups premium, onde o Slate escuro, o Cobalt Blue e o Neon Cyan moldem o ambiente de trabalho e criatividade da próxima geração.
+> **Valores:** Velocidade e Eficiência; Robustez Extrema; Estética Dark Tech; Transparência.
 
 ---
 
-## Equipe - 9 Integrantes
+## Equipe - 7 Integrantes
 
 | # | Nome | RA | Squad | Responsabilidade Principal |
 |---|------|----|-------|----------------------------|
-| 1 | Lucas Byoung Ki Han | 3025103388 | Lider / Doc | Coordenacao geral + video |
+| 1 | Lucas Byoung Ki Han | 3025103388 | Lider / Prog C | Coordenacao geral, Estrutura C, Logica de negocio, cadastros, busca e validacoes |
 | 2 | Gabriel Cole Ambrosio | 3126100300 | Site | HTML: index, sobre, contato |
 | 3 | Luiz Augusto Tiburcio | 3026102233 | Site | HTML: produtos, portfolio |
-| 4 | Eduardo Vieira Silva | [RA] | Site | CSS completo (style.css) |
-| 5 | Willian Soares Santana | [RA] | Programa C | Estrutura principal, menu e validacoes |
-| 6 | Guilherme Huilame | [RA] | Programa C | Logica de negocio, cadastros, busca e comentarios |
-| 7 | Riquelly Barboza Bagatin | [RA] | Banco de Dados | Modelagem DER |
-| 8 | Henrique Capetto | [RA] | Banco de Dados | Scripts SQL Oracle |
-| 9 | Matheus Nilcen Alves | [RA] | Documentacao | Documento final escrito |
+| 4 | Eduardo Vieira Silva | [RA] | Site | CSS completo (style.css) e Tema Dark Tech |
+| 5 | Riquelly Barboza Bagatin | [RA] | Banco de Dados | Modelagem DER e integridade referencial |
+| 6 | Henrique Capetto | [RA] | Banco de Dados | Scripts SQL Oracle e definicao das tabelas |
+| 7 | Matheus Nilcen Alves | [RA] | Documentacao | Documento final escrito e prints |
+
+---
+
+## Auditoria e Refatoração Recente
+
+O projeto passou por uma auditoria completa de código onde diversas melhorias focadas em estabilidade, humanização e coerência entre as camadas foram aplicadas:
+- **Programa C:** Bug gravíssimo resolvido (`int` substituindo `char` para prevenir loops infinitos no buffer na leitura de tipos); comentários explicativos de regras de negócios ao invés de "o quê"; TODO orgânico para evolução de vetor para lista encadeada. Centralizado com único dev.
+- **Banco de Dados:** Sincronia contábil e de produto revisada (`insert_data.sql`); adição de `FIXME` realista e comentários descritivos por tabela para esclarecimento arquitetural.
+- **Frontend (Web):** Placeholder preenchidos (`[Nome da Empresa]`); Google Fonts importado; classes unificadas para Português misto (`nav-principal`, `grid-produtos`, `.card-produto`); valores mockados apagados e substituídos com os hardwares listados diretamente no SQL Oracle para evitar incoerência.
 
 ---
 
@@ -55,7 +62,7 @@ projeto-extensao-dev-software/
 |   +-- css/
 |       +-- style.css            Estilos CSS completos
 |
-+-- programa-c/                  Squad C (Willian, Guilherme)
++-- programa-c/                  Squad C (Lucas)
 |   +-- main.c                   Programa principal em C
 |
 +-- banco-dados/                 Squad BD (Riquelly, Henrique)
@@ -123,8 +130,8 @@ gcc main.c -o programa
 
 - Nunca faca push direto na branch `main`
 - Sempre crie uma branch antes de editar
-- Commits devem ter mensagens descritivas
-- Cada pessoa trabalha APENAS na sua pasta
+- Commits devem ter mensagens descritivas ("fix:", "feat:", "refactor:", "style:")
+- Cada pessoa trabalha APENAS na sua localidade estipulada
 - Duvidas? Manda no grupo do WhatsApp
 
 ---

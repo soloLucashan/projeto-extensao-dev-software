@@ -1,5 +1,6 @@
 <!-- Pagina Home - Responsavel: Gabriel Cole Ambrosio -->
-<!-- Secao de destaques montada pelo Luiz, baseada no layout do Figma do grupo -->
+<!-- Secao de destaques revisada pelo grupo. Secao "Como funciona o estoque"
+     adicionada nesta iteracao pra reforcar o argumento academico da infra em C+Oracle. -->
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -8,67 +9,137 @@
   <meta name="description" content="PixelShop: hardware de alto desempenho para gamers, desenvolvedores e profissionais. Setups Dark Tech com backend em C e Oracle.">
   <title>Home - PixelShop</title>
   <link rel="stylesheet" href="css/style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
   <header>
-    <!-- .nav-principal: nome da classe em PT-BR pra manter coerencia com o style.css -->
-    <nav class="nav-principal">
-      <ul>
-        <li><a href="index.html" class="ativo">Home</a></li>
-        <li><a href="sobre.html">Sobre</a></li>
-        <li><a href="produtos.html">Produtos/Servicos</a></li>
-        <li><a href="portfolio.html">Portfolio</a></li>
-        <li><a href="contato.html">Contato</a></li>
-      </ul>
-    </nav>
+    <div class="cabecalho-interno">
+      <a href="index.html" class="logo-site">Pixel<span>Shop</span></a>
+      <!-- .nav-principal: nome da classe em PT-BR pra manter coerencia com o style.css -->
+      <nav class="nav-principal">
+        <ul>
+          <li><a href="index.html" class="ativo">Home</a></li>
+          <li><a href="sobre.html">Sobre</a></li>
+          <li><a href="produtos.html">Catálogo</a></li>
+          <li><a href="portfolio.html">Portfólio</a></li>
+          <li><a href="contato.html">Contato</a></li>
+        </ul>
+      </nav>
+    </div>
   </header>
 
   <main>
-    <section class="banner">
-      <h1>Bem-vindo à PixelShop</h1>
-      <p>Hardwares de alta performance, infraestrutura robusta, e as melhores escolhas para o seu setup Dark Tech.</p>
+
+    <!-- BANNER HERO — primeira impressao do site -->
+    <section class="secao-banner">
+      <h1>Hardware de elite.<br>Setup Dark Tech.</h1>
+      <p>
+        Periféricos, GPUs, notebooks e smartphones de alta performance —
+        gerenciados por nossa infra exclusiva em <strong>C + Oracle</strong>.
+      </p>
+      <a href="produtos.html" class="btn-cta">Ver Catálogo Completo</a>
     </section>
 
-    <!-- Secao de destaques: exibe 2 produtos que tambem constam no banco Oracle.
-         Os nomes e precos abaixo devem sempre refletir insert_data.sql. -->
+    <!-- DESTAQUES DO CATALOGO -->
+    <!-- Produtos 5 e 6 do banco Oracle (insert_data.sql).
+         Nomes e precos devem sempre refletir o arquivo SQL. -->
     <section>
-      <h2>Destaques do Catalogo</h2>
+      <h2>Destaques do Catálogo</h2>
+      <p>Seleção das peças mais vendidas da semana, com estoque confirmado em tempo real.</p>
 
-      <div class="grid-produtos">
+      <div class="grid-destaques">
 
-        <!-- Produto 5 do banco: Mouse Logitech MX Master (Perifericos, R$349,90) -->
-        <div class="card-produto">
+        <!-- Produto ID 5: Mouse Logitech MX Master -->
+        <article class="card-destaque">
           <img
             src="img/mouse-gamer.jpg"
-            alt="Mouse Logitech MX Master — sem fio, ergonomico"
+            alt="Mouse sem fio Logitech MX Master 3S"
             class="card-img"
             onerror="this.src='https://images.unsplash.com/photo-1527814050087-1793082bb764?w=500&q=80'">
           <div class="card-conteudo">
-            <h2>Mouse Logitech MX Master</h2>
-            <p>Mouse sem fio, ergonomico com sensor de alta precisao. Ideal pra longas sessoes de trabalho e gaming.</p>
+            <h3>Mouse Logitech MX Master 3S</h3>
+            <p>Sem fio, 8.000 DPI, ergonômico. Favorito da galera que passa horas no computador sem querer sentir o pulso.</p>
             <p class="preco">R$ 349,90</p>
-            <a href="produtos.html" class="btn-comprar">Ver Detalhes</a>
+            <a href="produtos.html#produto-5" class="btn-secundario">Ver Especificações</a>
           </div>
-        </div>
+        </article>
 
-        <!-- Produto 6 do banco: Teclado Mecanico Redragon (Perifericos, R$279,90) -->
-        <div class="card-produto">
+        <!-- Produto ID 6: Teclado Mecanico Redragon -->
+        <article class="card-destaque">
           <img
             src="img/teclado-mecanico.jpg"
-            alt="Teclado Mecanico Redragon Switch Red RGB"
+            alt="Teclado Mecanico Redragon K552 Switch Red RGB ABNT2"
             class="card-img"
             onerror="this.src='https://images.unsplash.com/photo-1595225476474-87563907a212?w=500&q=80'">
           <div class="card-conteudo">
-            <h2>Teclado Mecânico Redragon</h2>
-            <p>Switch Red, RGB full e layout ABNT2. O mais pedido pelos gamers e devs que passam horas no teclado.</p>
+            <h3>Teclado Redragon K552 RGB</h3>
+            <p>Switch Red linear, RGB full, ABNT2. Alta durabilidade e resposta tática — o mais pedido pelos devs do grupo.</p>
             <p class="preco">R$ 279,90</p>
-            <a href="produtos.html" class="btn-comprar">Ver Detalhes</a>
+            <a href="produtos.html#produto-6" class="btn-secundario">Ver Especificações</a>
           </div>
-        </div>
+        </article>
+
+        <!-- Produto ID 10: GPU RTX 3060 — destaque da semana -->
+        <article class="card-destaque">
+          <img
+            src="img/placa-video.jpg"
+            alt="Placa de Video NVIDIA RTX 3060 12GB"
+            class="card-img"
+            onerror="this.src='https://images.unsplash.com/photo-1591488320449-011701bb6704?w=500&q=80'">
+          <div class="card-conteudo">
+            <h3>NVIDIA RTX 3060 12GB GDDR6</h3>
+            <p>GPU com 12 GB de VRAM e suporte a Ray Tracing + DLSS. Boa pra render, IA local e gaming em 1080p/1440p.</p>
+            <p class="preco">R$ 2.399,00</p>
+            <a href="produtos.html#produto-10" class="btn-secundario">Ver Especificações</a>
+          </div>
+        </article>
 
       </div>
     </section>
+
+    <!-- SECAO TEXTO: COMO FUNCIONA O ESTOQUE INTEGRADO -->
+    <!-- Gabriel: incluiu essa secao pra dar substancia academica ao site,
+         explicando a integracao entre o frontend HTML/CSS e o backend C+Oracle -->
+    <section class="secao-como-funciona">
+      <h2>Como Funciona Nosso Estoque Integrado e Seguro</h2>
+
+      <p>
+        A maioria das lojas puxa produto de um banco de dados compartilhado com dezenas de fornecedores,
+        sem controle real de consistência. Na <strong>PixelShop</strong>, a gestão do estoque é um sistema
+        próprio desenvolvido em <strong>Linguagem C</strong> — linguagem de baixo nível que nos dá controle
+        total sobre memória, fluxo de execução e tratamento de erros sem overhead desnecessário.
+      </p>
+
+      <p>
+        O sistema roda em terminal, com menus interativos via <code>scanf()</code> e <code>printf()</code>.
+        Cada operação — cadastro de produto, venda, atualização de preço — é registrada no
+        <strong>Oracle Database</strong> via JDBC no backend, garantindo integridade relacional
+        com <em>constraints</em>, <em>triggers PL/SQL</em> e controle de transações
+        (<code>COMMIT</code> e <code>ROLLBACK</code>) em cada operação crítica.
+      </p>
+
+      <p>
+        O que você vê no catálogo acima é sempre o reflexo fiel do que está no banco. Não existe
+        "produto fantasia" — se está aqui, tem no estoque e o preço é o mesmo cadastrado
+        no <code>insert_data.sql</code>.
+      </p>
+
+      <!-- Badges das tecnologias usadas na infra -->
+      <div class="badges-tech">
+        <span class="badge">⚙ Linguagem C (ANSI C99)</span>
+        <span class="badge">🗄 Oracle Database 21c</span>
+        <span class="badge">📋 PL/SQL — Triggers e Constraints</span>
+        <span class="badge">🔒 Controle de Transacoes ACID</span>
+        <span class="badge">💾 Alocacao Dinamica de Memoria</span>
+      </div>
+
+      <p>
+        Essa integração entre front-end estático (HTML + CSS puro) e uma camada de dados robusta
+        demonstra que é possível construir uma solução séria sem frameworks pesados ou JavaScript
+        desnecessário — alinhado tanto com os requisitos do edital do projeto quanto com boas práticas
+        de desenvolvimento de software sustentável.
+      </p>
+    </section>
+
   </main>
 
   <footer>
