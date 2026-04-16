@@ -7,9 +7,11 @@
 ## Empresa - PixelShop
 
 > **Nome:** PixelShop
-> **Missao:** Entregar a melhor combinação de hardwares, unindo desempenho implacável, design premium na linha "Dark Tech" e a durabilidade que profissionais ambiciosos demandam.
-> **Visao:** Tornar-se referência máxima em setups premium, onde o Slate escuro, o Cobalt Blue e o Neon Cyan moldem o ambiente de trabalho e criatividade da próxima geração.
-> **Valores:** Velocidade e Eficiência; Robustez Extrema; Estética Dark Tech; Transparência.
+> **Missao:** Oferecer produtos de eletrônicos e informática com qualidade e acessibilidade
+> **Visao:** Ser referência em tecnologia acessível para estudantes e profissionais
+> **Valores:** Inovação, Acessibilidade, Atendimento, Qualidade
+
+
 
 ---
 
@@ -20,10 +22,10 @@
 | 1 | Lucas Byoung Ki Han | 3025103388 | Lider / Prog C | Coordenacao geral, Estrutura C, Logica de negocio, cadastros, busca e validacoes |
 | 2 | Gabriel Cole Ambrosio | 3126100300 | Site | HTML: index, sobre, contato |
 | 3 | Luiz Augusto Tiburcio | 3026102233 | Site | HTML: produtos, portfolio |
-| 4 | Eduardo Vieira Silva | [RA] | Site | CSS completo (style.css) e Tema Dark Tech |
-| 5 | Riquelly Barboza Bagatin | [RA] | Banco de Dados | Modelagem DER e integridade referencial |
-| 6 | Henrique Capetto | [RA] | Banco de Dados | Scripts SQL Oracle e definicao das tabelas |
-| 7 | Matheus Nilcen Alves | [RA] | Documentacao | Documento final escrito e prints |
+| 4 | Eduardo Vieira Silva | 3126100300 | Site | CSS completo (style.css) e Tema Dark Tech |
+| 5 | Riquelly Barboza Bagatin | 3025103463 | Banco de Dados | Modelagem DER e integridade referencial |
+| 6 | Henrique Capetto | 3126103000 | Banco de Dados | Scripts SQL Oracle e definicao das tabelas |
+| 7 | Matheus Nilcen Alves | 3026104544 | Documentacao | Documento final escrito e prints |
 
 ---
 
