@@ -1,46 +1,163 @@
 <!-- Pagina Produtos/Servicos - Responsavel: Luiz Augusto Tiburcio -->
+<!-- Cards de produto montados pelo Luiz. Os nomes, precos e categorias
+     abaixo devem sempre espelhar o que esta em insert_data.sql pra
+     nao ter incoerencia entre o site e o banco Oracle da PixelShop. -->
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Produtos e Servicos - [Nome da Empresa]</title>
+  <meta name="description" content="Catalogo completo da PixelShop: Smartphones, Notebooks, Perifericos e Pecas. Veja precos e disponibilidade em estoque.">
+  <title>Produtos e Servicos - PixelShop</title>
   <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
   <header>
-    <nav>
+    <nav class="nav-principal">
       <ul>
         <li><a href="index.html">Home</a></li>
         <li><a href="sobre.html">Sobre</a></li>
-        <li><a href="produtos.html">Produtos/Servicos</a></li>
+        <li><a href="produtos.html" class="ativo">Produtos/Servicos</a></li>
         <li><a href="portfolio.html">Portfolio</a></li>
         <li><a href="contato.html">Contato</a></li>
       </ul>
     </nav>
   </header>
+
   <main>
     <section>
-      <h1>Nossos Produtos e Servicos</h1>
-      <div class="produto-card">
-        <h2>[Produto 1]</h2>
-        <p>Descricao do produto/servico 1.</p>
-        <p>Preco: R$ 0,00</p>
+      <h1>Nosso Catálogo</h1>
+      <p>Hardwares de alta performance para gamers, desenvolvedores e profissionais que exigem o maximo de seus equipamentos. Estoque gerenciado via sistema proprio em C com banco Oracle.</p>
+
+      <!-- Categoria: Perifericos -->
+      <!-- Os 3 produtos abaixo correspondem aos IDs 5, 6 e 16 do banco Oracle -->
+      <h2>Periféricos</h2>
+      <div class="grid-produtos">
+
+        <!-- Produto ID 5: Mouse Logitech MX Master -->
+        <div class="card-produto">
+          <img
+            src="img/mouse-gamer.jpg"
+            alt="Mouse Logitech MX Master — sem fio, ergonomico"
+            class="card-img"
+            onerror="this.src='https://images.unsplash.com/photo-1527814050087-1793082bb764?w=500&q=80'">
+          <div class="card-conteudo">
+            <h2>Mouse Logitech MX Master</h2>
+            <p>Mouse sem fio, ergonomico com sensor de alta precisao. Ideal pra longas sessoes de trabalho e gaming sem fadiga no pulso.</p>
+            <p class="preco">R$ 349,90</p>
+            <button class="btn-comprar">Adicionar ao Carrinho</button>
+          </div>
+        </div>
+
+        <!-- Produto ID 6: Teclado Mecanico Redragon -->
+        <div class="card-produto">
+          <img
+            src="img/teclado-mecanico.jpg"
+            alt="Teclado Mecanico Redragon Switch Red RGB ABNT2"
+            class="card-img"
+            onerror="this.src='https://images.unsplash.com/photo-1595225476474-87563907a212?w=500&q=80'">
+          <div class="card-conteudo">
+            <h2>Teclado Mecânico Redragon</h2>
+            <p>Switch Red, RGB full e layout ABNT2. Alta durabilidade e resposta tatica — o favorito do pessoal da loja.</p>
+            <p class="preco">R$ 279,90</p>
+            <button class="btn-comprar">Adicionar ao Carrinho</button>
+          </div>
+        </div>
+
+        <!-- Produto ID 16: Monitor LED LG -->
+        <div class="card-produto">
+          <img
+            src="img/monitor-144hz.jpg"
+            alt="Monitor LED 21.5 polegadas LG Full HD"
+            class="card-img"
+            onerror="this.src='https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=500&q=80'">
+          <div class="card-conteudo">
+            <h2>Monitor LED 21,5" LG</h2>
+            <p>Full HD, painel IPS, HDMI, 75Hz. Boa opcao de custo-beneficio pra quem monta o primeiro home office ou setup de estudos.</p>
+            <p class="preco">R$ 599,00</p>
+            <button class="btn-comprar">Adicionar ao Carrinho</button>
+          </div>
+        </div>
+
       </div>
-      <div class="produto-card">
-        <h2>[Produto 2]</h2>
-        <p>Descricao do produto/servico 2.</p>
-        <p>Preco: R$ 0,00</p>
+
+      <!-- Categoria: Smartphones -->
+      <h2>Smartphones</h2>
+      <div class="grid-produtos">
+
+        <!-- Produto ID 2: Samsung Galaxy A54 -->
+        <div class="card-produto">
+          <img
+            src="img/smartphone.jpg"
+            alt="Samsung Galaxy A54 128GB"
+            class="card-img"
+            onerror="this.src='https://images.unsplash.com/photo-1610945415295-d9bbf067e59c?w=500&q=80'">
+          <div class="card-conteudo">
+            <h2>Samsung Galaxy A54</h2>
+            <p>128GB, camera de 50MP, bateria capaz de 33W de carregamento rapido. Garantia de 1 ano direto com a Samsung.</p>
+            <p class="preco">R$ 1.299,00</p>
+            <button class="btn-comprar">Adicionar ao Carrinho</button>
+          </div>
+        </div>
+
+        <!-- Produto ID 8: Motorola Moto G52 -->
+        <div class="card-produto">
+          <img
+            src="img/smartphone.jpg"
+            alt="Motorola Moto G52 128GB NFC"
+            class="card-img"
+            onerror="this.src='https://images.unsplash.com/photo-1610945415295-d9bbf067e59c?w=500&q=80'">
+          <div class="card-conteudo">
+            <h2>Motorola Moto G52</h2>
+            <p>128GB, NFC, carregamento turbo — uma das opcoes mais equilibradas pra quem nao quer gastar muito mas precisa de um aparelho confiavel.</p>
+            <p class="preco">R$ 1.099,00</p>
+            <button class="btn-comprar">Adicionar ao Carrinho</button>
+          </div>
+        </div>
+
       </div>
-      <div class="produto-card">
-        <h2>[Produto 3]</h2>
-        <p>Descricao do produto/servico 3.</p>
-        <p>Preco: R$ 0,00</p>
+
+      <!-- Categoria: Notebooks -->
+      <h2>Notebooks</h2>
+      <div class="grid-produtos">
+
+        <!-- Produto ID 3: Notebook Dell Inspiron -->
+        <div class="card-produto">
+          <img
+            src="img/notebook.jpg"
+            alt="Notebook Dell Inspiron Core i5 SSD"
+            class="card-img"
+            onerror="this.src='https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=500&q=80'">
+          <div class="card-conteudo">
+            <h2>Notebook Dell Inspiron</h2>
+            <p>Core i5, 8GB RAM, 256GB SSD. Seminovo em otimo estado — bom pra quem precisa de mobilidade sem comprometer desempenho.</p>
+            <p class="preco">R$ 2.199,00</p>
+            <button class="btn-comprar">Adicionar ao Carrinho</button>
+          </div>
+        </div>
+
+        <!-- Produto ID 4: Notebook Lenovo IdeaPad -->
+        <div class="card-produto">
+          <img
+            src="img/notebook.jpg"
+            alt="Notebook Lenovo IdeaPad Ryzen 5"
+            class="card-img"
+            onerror="this.src='https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=500&q=80'">
+          <div class="card-conteudo">
+            <h2>Notebook Lenovo IdeaPad</h2>
+            <p>Ryzen 5, 16GB RAM, 512GB SSD. Configuracao solida pra quem programa ou edita — da conta de rodar IDE, Docker e navegador ao mesmo tempo.</p>
+            <p class="preco">R$ 2.799,00</p>
+            <button class="btn-comprar">Adicionar ao Carrinho</button>
+          </div>
+        </div>
+
       </div>
     </section>
   </main>
+
   <footer>
-    <p>&copy; 2026 [Nome da Empresa]. Todos os direitos reservados.</p>
+    <p>&copy; 2026 PixelShop. Todos os direitos reservados. Feito com C e Oracle na veia.</p>
   </footer>
 </body>
 </html>

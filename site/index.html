@@ -1,17 +1,21 @@
 <!-- Pagina Home - Responsavel: Gabriel Cole Ambrosio -->
+<!-- Secao de destaques montada pelo Luiz, baseada no layout do Figma do grupo -->
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Home - [Nome da Empresa]</title>
+  <meta name="description" content="PixelShop: hardware de alto desempenho para gamers, desenvolvedores e profissionais. Setups Dark Tech com backend em C e Oracle.">
+  <title>Home - PixelShop</title>
   <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
   <header>
-    <nav>
+    <!-- .nav-principal: nome da classe em PT-BR pra manter coerencia com o style.css -->
+    <nav class="nav-principal">
       <ul>
-        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html" class="ativo">Home</a></li>
         <li><a href="sobre.html">Sobre</a></li>
         <li><a href="produtos.html">Produtos/Servicos</a></li>
         <li><a href="portfolio.html">Portfolio</a></li>
@@ -19,14 +23,56 @@
       </ul>
     </nav>
   </header>
+
   <main>
     <section class="banner">
-      <h1>Bem-vindo a [Nome da Empresa]</h1>
-      <p>Descricao breve da empresa aqui.</p>
+      <h1>Bem-vindo à PixelShop</h1>
+      <p>Hardwares de alta performance, infraestrutura robusta, e as melhores escolhas para o seu setup Dark Tech.</p>
+    </section>
+
+    <!-- Secao de destaques: exibe 2 produtos que tambem constam no banco Oracle.
+         Os nomes e precos abaixo devem sempre refletir insert_data.sql. -->
+    <section>
+      <h2>Destaques do Catalogo</h2>
+
+      <div class="grid-produtos">
+
+        <!-- Produto 5 do banco: Mouse Logitech MX Master (Perifericos, R$349,90) -->
+        <div class="card-produto">
+          <img
+            src="img/mouse-gamer.jpg"
+            alt="Mouse Logitech MX Master — sem fio, ergonomico"
+            class="card-img"
+            onerror="this.src='https://images.unsplash.com/photo-1527814050087-1793082bb764?w=500&q=80'">
+          <div class="card-conteudo">
+            <h2>Mouse Logitech MX Master</h2>
+            <p>Mouse sem fio, ergonomico com sensor de alta precisao. Ideal pra longas sessoes de trabalho e gaming.</p>
+            <p class="preco">R$ 349,90</p>
+            <a href="produtos.html" class="btn-comprar">Ver Detalhes</a>
+          </div>
+        </div>
+
+        <!-- Produto 6 do banco: Teclado Mecanico Redragon (Perifericos, R$279,90) -->
+        <div class="card-produto">
+          <img
+            src="img/teclado-mecanico.jpg"
+            alt="Teclado Mecanico Redragon Switch Red RGB"
+            class="card-img"
+            onerror="this.src='https://images.unsplash.com/photo-1595225476474-87563907a212?w=500&q=80'">
+          <div class="card-conteudo">
+            <h2>Teclado Mecânico Redragon</h2>
+            <p>Switch Red, RGB full e layout ABNT2. O mais pedido pelos gamers e devs que passam horas no teclado.</p>
+            <p class="preco">R$ 279,90</p>
+            <a href="produtos.html" class="btn-comprar">Ver Detalhes</a>
+          </div>
+        </div>
+
+      </div>
     </section>
   </main>
+
   <footer>
-    <p>&copy; 2026 [Nome da Empresa]. Todos os direitos reservados.</p>
+    <p>&copy; 2026 PixelShop. Todos os direitos reservados. Feito com C e Oracle na veia.</p>
   </footer>
 </body>
 </html>

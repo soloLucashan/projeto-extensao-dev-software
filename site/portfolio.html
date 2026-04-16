@@ -1,41 +1,76 @@
 <!-- Pagina Portfolio - Responsavel: Luiz Augusto Tiburcio -->
+<!-- Cards de projeto montados pelo Luiz. Os estilos inline que estavam aqui
+     foram movidos pro style.css pra manter centralizacao do CSS no projeto. -->
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portfolio - [Nome da Empresa]</title>
+  <meta name="description" content="Portfolio da PixelShop: projetos de infraestrutura de hardware e integracao com sistemas C e Oracle entregues para empresas reais.">
+  <title>Portfolio - PixelShop</title>
   <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
   <header>
-    <nav>
+    <nav class="nav-principal">
       <ul>
         <li><a href="index.html">Home</a></li>
         <li><a href="sobre.html">Sobre</a></li>
         <li><a href="produtos.html">Produtos/Servicos</a></li>
-        <li><a href="portfolio.html">Portfolio</a></li>
+        <li><a href="portfolio.html" class="ativo">Portfolio</a></li>
         <li><a href="contato.html">Contato</a></li>
       </ul>
     </nav>
   </header>
+
   <main>
     <section>
-      <h1>Nosso Portfolio</h1>
-      <div class="projeto-card">
-        <h2>[Projeto 1]</h2>
-        <p>Descricao do projeto 1.</p>
+      <h1>Nosso Portfólio de Infra e Hardware</h1>
+      <p>Na PixelShop, nosso portfólio não inclui apenas hardwares topo de linha — inclui as implantações que construímos e as empresas que aceleramos usando nossos equipamentos e o stack nativo C + Oracle para operações vitais de gestão e inteligência corporativa.</p>
+
+      <!-- .grid-portfolio: renomeado de .portfolio-grid pra manter coerencia
+           com a nomenclatura mista PT-BR adotada no style.css -->
+      <div class="grid-portfolio">
+
+        <div class="card-projeto">
+          <img
+            src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=500"
+            alt="Hardware Setup — servidores e workstations de alto desempenho"
+            class="card-img">
+          <div class="card-conteudo">
+            <h2>DataCenter e Setups C-Level</h2>
+            <p>Em 2025, modernizamos maquinarios executivos e a estrutura de gestao de 5 empresas de tecnologia com nossos hardwares high-end e configuracao de rede otimizada.</p>
+          </div>
+        </div>
+
+        <div class="card-projeto">
+          <img
+            src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=500"
+            alt="Seguranca de dados — integracao hardware e software bancario"
+            class="card-img">
+          <div class="card-conteudo">
+            <h2>Sistema CoreBank em C/Oracle</h2>
+            <p>Integracao de hardware de seguranca PixelShop com software bancario rodando primariamente em C. Triggers PL/SQL no Oracle garantem consistencia dos dados com 0% de perda de pacotes.</p>
+          </div>
+        </div>
+
       </div>
-      <div class="projeto-card">
-        <h2>[Projeto 2]</h2>
-        <p>Descricao do projeto 2.</p>
-      </div>
-      <h2>Depoimentos de Clientes</h2>
-      <blockquote>[Depoimento de um cliente satisfeito]</blockquote>
+
+      <!-- Depoimento em bloco separado — estilos inline removidos e
+           substituidos por variaveis CSS do style.css (--cor-cyan, etc.)
+           pra nao misturar CSS inbutido com o arquivo de estilos centralizado -->
+      <h2>Depoimentos</h2>
+      <blockquote class="depoimento-cliente">
+        "O equipamento da PixelShop revolucionou minha workstation. O mouse ergonomico tem resposta incrivel, e saber que meu fornecedor usa linguagem C e Oracle pra gerir a logistica me da total confianca. Velozes e eficientes no backend, precisos e esteticamente impecaveis no hardware!"
+        <br><br>
+        <strong>— Sênior Systems Engineer, empresa multinacional de tecnologia.</strong>
+      </blockquote>
     </section>
   </main>
+
   <footer>
-    <p>&copy; 2026 [Nome da Empresa]. Todos os direitos reservados.</p>
+    <p>&copy; 2026 PixelShop. Todos os direitos reservados. Feito com C e Oracle na veia.</p>
   </footer>
 </body>
 </html>
