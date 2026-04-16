@@ -1,9 +1,35 @@
 /* ============================================
    ESTILOS GLOBAIS - Responsavel: Eduardo Vieira Silva
    Projeto de Extensao - Turma Noturno 2026
+   Tema: Dark Tech — inspirado em setups de alto desempenho
+
+   O tema "Dark Tech" foi escolhido porque a PixelShop atende
+   gamers e desenvolvedores que gravitam naturalmente pra esse
+   visual. As cores refletem o branding da empresa:
+     - Slate escuro (#0b0f19) = identidade sombria e profissional
+     - Cobalt Blue (#0047AB)  = confiança e tecnologia
+     - Neon Cyan (#00f0ff)    = destaque e energia digital
    ============================================ */
 
-/* Reset basico */
+/* TODO (Eduardo): criar versão dark mode com alternância via
+   botão no header — a paleta ja é dark, mas daria pra fazer
+   uma versao "light" pra clientes que acessam em ambientes
+   bem iluminados. Deixar pra o próximo sprint. */
+
+:root {
+  --cor-fundo:        #0b0f19; /* Slate escuro — fundo principal */
+  --cor-superficie:   #151b2b; /* Slate medio — fundo de cards e header */
+  --cor-texto:        #e2e8f0; /* Cinza claro — texto principal */
+  --cor-texto-suave:  #94a3b8; /* Cinza medio — textos secundarios */
+  --cor-cobalt:       #0047AB; /* Cobalt Blue — cor de marca principal */
+  --cor-cobalt-hover: #0056cc; /* Cobalt um pouco mais claro pro hover */
+  --cor-cyan:         #00f0ff; /* Neon Cyan — acento e destaques */
+  --fonte-principal:  'Inter', system-ui, -apple-system, sans-serif;
+  --velocidade-transicao: 0.3s;
+}
+
+/* Reset basico — zeramos margin e padding porque cada navegador
+   tem um padrao diferente e queremos controle total do layout */
 * {
   margin: 0;
   padding: 0;
@@ -11,151 +37,369 @@
 }
 
 body {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--fonte-principal);
   font-size: 16px;
-  color: #333;
-  background-color: #f5f5f5;
+  color: var(--cor-texto);
+  background-color: var(--cor-fundo);
+  line-height: 1.6;
 }
 
 /* ---- HEADER E NAVEGACAO ---- */
+/* sticky no topo pra o menu de navegacao acompanhar
+   o scroll sem rolar pra fora da tela */
 header {
-  background-color: #2c3e50;
-  padding: 15px 30px;
+  background-color: var(--cor-superficie);
+  padding: 20px 30px;
+  border-bottom: 1px solid var(--cor-cobalt);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
-nav ul {
+/* .nav-principal: lista de links horizontais centralizada.
+   flex-wrap ativado pra nao quebrar em telas intermediarias */
+.nav-principal ul {
   list-style: none;
   display: flex;
-  gap: 20px;
+  gap: 25px;
   justify-content: center;
+  flex-wrap: wrap;
 }
 
-nav ul li a {
-  color: #fff;
+.nav-principal ul li a {
+  color: var(--cor-texto);
   text-decoration: none;
-  font-weight: bold;
-  padding: 8px 12px;
-  border-radius: 4px;
-  transition: background-color 0.3s;
+  font-weight: 600;
+  padding: 10px 15px;
+  border-radius: 6px;
+  transition: all var(--velocidade-transicao) ease;
+  border: 1px solid transparent;
 }
 
-nav ul li a:hover {
-  background-color: #3498db;
+/* O estado .ativo usa a mesma aparecia do hover pra que o usuario
+   saiba visualmente em qual pagina ele esta sem precisar olhar
+   pro endereco do navegador */
+.nav-principal ul li a:hover,
+.nav-principal ul li a.ativo {
+  background-color: rgba(0, 71, 171, 0.2);
+  color: var(--cor-cyan);
+  border-color: rgba(0, 240, 255, 0.3);
+  box-shadow: 0 0 10px rgba(0, 240, 255, 0.1);
 }
 
 /* ---- MAIN / CONTEUDO ---- */
 main {
-  max-width: 1100px;
-  margin: 30px auto;
+  max-width: 1200px;
+  margin: 40px auto;
   padding: 0 20px;
+  /* min-height garante que o footer fica sempre no fundo
+     mesmo em paginas com pouco conteudo */
+  min-height: calc(100vh - 200px);
 }
 
 section {
-  background-color: #fff;
-  border-radius: 8px;
-  padding: 30px;
-  margin-bottom: 20px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  background-color: var(--cor-superficie);
+  border-radius: 12px;
+  padding: 40px;
+  margin-bottom: 30px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 h1 {
-  font-size: 2rem;
-  color: #2c3e50;
-  margin-bottom: 15px;
+  font-size: 2.5rem;
+  color: var(--cor-cyan);
+  margin-bottom: 20px;
+  /* text-shadow sutil pra reforcar o efeito "neon" do Cyan
+     sem ficar exagerado */
+  text-shadow: 0 0 8px rgba(0, 240, 255, 0.2);
 }
 
 h2 {
-  font-size: 1.4rem;
-  color: #3498db;
-  margin: 20px 0 10px;
+  font-size: 1.8rem;
+  color: var(--cor-cobalt);
+  margin: 25px 0 15px;
 }
 
 p {
-  line-height: 1.7;
-  margin-bottom: 10px;
+  color: var(--cor-texto-suave);
+  margin-bottom: 15px;
 }
 
-/* ---- BANNER (index.html) ---- */
+ul {
+  margin-left: 20px;
+  color: var(--cor-texto-suave);
+  margin-bottom: 15px;
+}
+
+/* ---- BANNER (secao destaque da index.html) ---- */
+/* O gradiente sobre a foto garante que o texto seja legivel
+   independente do brilho da imagem de fundo */
 .banner {
   text-align: center;
-  background: linear-gradient(135deg, #2c3e50, #3498db);
-  color: #fff;
-  padding: 60px 30px;
-  border-radius: 8px;
+  background:
+    linear-gradient(135deg, rgba(0, 71, 171, 0.8), rgba(11, 15, 25, 0.9)),
+    url('https://images.unsplash.com/photo-1610945415295-d9bbf067e59c?q=80&w=1000')
+    no-repeat center center / cover;
+  padding: 80px 30px;
+  border-radius: 12px;
+  border: 1px solid var(--cor-cobalt);
+  position: relative;
+  overflow: hidden;
+}
+
+.banner::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: radial-gradient(circle at center, transparent 0%, var(--cor-fundo) 100%);
+  opacity: 0.6;
+}
+
+.banner h1,
+.banner p {
+  position: relative;
+  z-index: 1;
 }
 
 .banner h1 {
   color: #fff;
-  font-size: 2.5rem;
+  font-size: 3rem;
+  margin-bottom: 10px;
+  text-shadow: 0 0 15px var(--cor-cyan);
 }
 
-/* ---- CARDS DE PRODUTO ---- */
-.produto-card, .projeto-card {
-  border: 1px solid #ddd;
-  border-radius: 6px;
+.banner p {
+  color: #e2e8f0;
+  font-size: 1.2rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* ---- GRIDS DE PRODUTOS E PORTFOLIO ---- */
+/* auto-fit + minmax faz com que o numero de colunas se ajuste
+   automaticamente ao tamanho da tela sem media query extra */
+.grid-produtos,
+.grid-portfolio {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+  margin-top: 30px;
+}
+
+/* ---- CARDS DE PRODUTO E PROJETO ---- */
+/* .card-produto e .card-projeto compartilham o mesmo visual base
+   pra manter consistencia visual entre as paginas de produtos e portfolio */
+.card-produto,
+.card-projeto {
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 0;
+  background-color: var(--cor-fundo);
+  transition:
+    transform var(--velocidade-transicao),
+    box-shadow var(--velocidade-transicao),
+    border-color var(--velocidade-transicao);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* O translateY(-8px) no hover cria a ilusao de que o card
+   esta "flutuando" — feedback visual sutil que convida ao clique */
+.card-produto:hover,
+.card-projeto:hover {
+  transform: translateY(-8px);
+  box-shadow:
+    0 12px 24px rgba(0, 71, 171, 0.3),
+    0 0 15px rgba(0, 240, 255, 0.1);
+  border-color: var(--cor-cyan);
+}
+
+.card-img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-bottom: 2px solid rgba(0, 71, 171, 0.5);
+  transition: border-color var(--velocidade-transicao);
+}
+
+.card-produto:hover .card-img,
+.card-projeto:hover .card-img {
+  border-bottom-color: var(--cor-cyan);
+}
+
+.card-conteudo {
   padding: 20px;
-  margin-bottom: 15px;
-  background-color: #fafafa;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
 }
 
-.produto-card h2, .projeto-card h2 {
-  color: #2c3e50;
+.card-conteudo h2 {
+  font-size: 1.4rem;
+  margin-top: 0;
+  margin-bottom: 10px;
+  /* Aqui sobrescrevemos o h2 global (que usa cor-cobalt) porque
+     dentro do card o titulo precisa ser legivel sobre fundo dark,
+     entao usamos o texto claro padrao */
+  color: var(--cor-texto);
 }
 
-/* ---- FORMULARIO (contato.html) ---- */
+/* .preco: usa margin-top: auto pra sempre ficar colado no fundo
+   do card-conteudo, independente do tamanho da descricao */
+.preco {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: var(--cor-cyan);
+  margin-top: auto;
+  padding-top: 15px;
+}
+
+/* .btn-comprar: botao de acao principal, usado em produtos.html
+   e como link "Ver Detalhes" na index.html */
+.btn-comprar {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  margin-top: 15px;
+  background-color: var(--cor-cobalt);
+  color: #fff;
+  text-align: center;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  transition: all var(--velocidade-transicao);
+}
+
+/* No hover o botao inverte: fica cyan com texto escuro.
+   O box-shadow reforça o efeito neon da marca PixelShop */
+.btn-comprar:hover {
+  background-color: var(--cor-cyan);
+  color: var(--cor-fundo);
+  box-shadow: 0 0 15px var(--cor-cyan);
+}
+
+/* ---- FORMULARIO DE CONTATO ---- */
+/* O formulario usa id="form-contato" no HTML pra facilitar
+   testes automatizados e acessibilidade */
 form {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 15px;
   max-width: 600px;
 }
 
 label {
   font-weight: bold;
-  color: #2c3e50;
+  color: var(--cor-texto);
 }
 
-input, textarea {
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+input,
+textarea {
+  padding: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
   font-size: 1rem;
   width: 100%;
+  background-color: var(--cor-fundo);
+  color: var(--cor-texto);
+  transition: border-color var(--velocidade-transicao);
 }
 
-input:focus, textarea:focus {
+/* O glow cyan no focus cria uma referencia visual clara de qual
+   campo esta ativo — importante pra acessibilidade de teclado */
+input:focus,
+textarea:focus {
   outline: none;
-  border-color: #3498db;
+  border-color: var(--cor-cyan);
+  box-shadow: 0 0 8px rgba(0, 240, 255, 0.2);
 }
 
 button[type="submit"] {
-  background-color: #3498db;
+  background-color: var(--cor-cobalt);
   color: #fff;
-  padding: 12px 25px;
+  padding: 14px 25px;
   border: none;
-  border-radius: 4px;
-  font-size: 1rem;
+  border-radius: 6px;
+  font-size: 1.1rem;
+  font-weight: bold;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: all var(--velocidade-transicao);
   width: fit-content;
 }
 
 button[type="submit"]:hover {
-  background-color: #2980b9;
+  background-color: var(--cor-cyan);
+  color: var(--cor-fundo);
+  box-shadow: 0 0 15px var(--cor-cyan);
 }
 
-.info-contato {
-  margin-top: 25px;
-  padding: 15px;
-  background-color: #ecf0f1;
-  border-radius: 6px;
+/* .caixa-contato: bloco de info extra abaixo do formulario
+   com borda esquerda cyan pra manter o padrao visual da pagina */
+.caixa-contato {
+  margin-top: 30px;
+  padding: 20px;
+  background-color: var(--cor-fundo);
+  border-radius: 8px;
+  border-left: 4px solid var(--cor-cyan);
+}
+
+/* .depoimento-cliente: blockquote de portfolio com borda Cyan pra manter
+   a identidade visual Dark Tech sem precisar de style inline no HTML */
+.depoimento-cliente {
+  border-left: 4px solid var(--cor-cyan);
+  padding: 20px 20px 20px 24px;
+  margin-top: 20px;
+  background: rgba(0, 240, 255, 0.04);
+  border-radius: 8px;
+  font-style: italic;
+  color: var(--cor-texto-suave);
+  line-height: 1.8;
+}
+
+.depoimento-cliente strong {
+  color: var(--cor-cobalt);
+  font-style: normal;
 }
 
 /* ---- FOOTER ---- */
 footer {
-  background-color: #2c3e50;
-  color: #fff;
+  background-color: var(--cor-superficie);
+  color: var(--cor-texto-suave);
   text-align: center;
-  padding: 15px;
+  padding: 25px 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
   margin-top: 40px;
+}
+
+footer p {
+  margin-bottom: 0;
+}
+
+/* ---- RESPONSIVIDADE ---- */
+/* Media query so pra mobile (<768px), que e o caso mais critico.
+   O grid ja e auto-fit entao se adapta automaticamente entre
+   768px e 1200px sem precisar de breakpoints intermediarios. */
+@media (max-width: 768px) {
+  .nav-principal ul {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .banner {
+    padding: 50px 20px;
+  }
+
+  .banner h1 {
+    font-size: 2rem;
+  }
+
+  section {
+    padding: 20px;
+  }
 }
