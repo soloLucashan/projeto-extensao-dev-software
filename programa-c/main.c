@@ -103,6 +103,17 @@ typedef struct {
                           * mais conciso e padrao que o pessoal usa no projeto */
 } Produto;
 
+/* Categorias validas da PixelShop — devem ser identicas aos valores
+ * inseridos na tabela CATEGORIA do Oracle (insert_data.sql, linhas 14-21).
+ * Se o banco ganhar uma categoria nova, atualiza NUM_CATEGORIAS e o array. */
+#define NUM_CATEGORIAS 4
+static const char *CATEGORIAS_VALIDAS[NUM_CATEGORIAS] = {
+    "Smartphones",
+    "Notebooks",
+    "Perifericos",
+    "Pecas e Componentes"
+};
+
 Produto produtos[MAX_PRODUTOS];
 int totalProdutos = 0;
 
@@ -129,6 +140,32 @@ void paraMinusculas(char *str) {
     for (int i = 0; str[i]; i++) {
         str[i] = tolower((unsigned char)str[i]);
     }
+}
+
+/*
+ * categoriaValida: checa se a string digitada corresponde a uma das
+ * 4 categorias cadastradas no Oracle. Comparacao case-insensitive pra
+ * aceitar "perifericos" e "Perifericos" como equivalentes.
+ *
+ * Retorna 1 se valida, 0 se desconhecida.
+ * Funcao adicionada pelo Guilherme (correcao do FIXME em cadastrarProduto).
+ */
+int categoriaValida(const char *categoria_digitada) {
+    char digitada_min[TAM_CATEGORIA];
+    char valida_min[TAM_CATEGORIA];
+
+    strncpy(digitada_min, categoria_digitada, TAM_CATEGORIA - 1);
+    digitada_min[TAM_CATEGORIA - 1] = '\0';
+    paraMinusculas(digitada_min);
+
+    for (int i = 0; i < NUM_CATEGORIAS; i++) {
+        strncpy(valida_min, CATEGORIAS_VALIDAS[i], TAM_CATEGORIA - 1);
+        valida_min[TAM_CATEGORIA - 1] = '\0';
+        paraMinusculas(valida_min);
+        if (strcmp(digitada_min, valida_min) == 0)
+            return 1;
+    }
+    return 0;
 }
 
 int main() {
@@ -198,14 +235,22 @@ void cadastrarProduto() {
     }
 
     /* Listamos as categorias validas na dica pra o operador nao digitar errado
-     * e criar inconsistencia com o banco de dados Oracle da PixelShop */
-    printf("Categoria (Smartphones | Notebooks | Perifericos | Pecas e Componentes): ");
-    fgets(p.categoria, TAM_CATEGORIA, stdin);
-    p.categoria[strcspn(p.categoria, "\n")] = '\0';
-    if (strlen(p.categoria) == 0) {
-        printf("Categoria nao pode ser vazia. Cadastro cancelado.\n");
-        return;
-    }
+     * e criar inconsistencia com o banco de dados Oracle da PixelShop.
+     * O loop abaixo garante que so uma categoria canonica seja aceita. */
+    int cat_ok = 0;
+    do {
+        printf("Categoria (Smartphones | Notebooks | Perifericos | Pecas e Componentes): ");
+        fgets(p.categoria, TAM_CATEGORIA, stdin);
+        p.categoria[strcspn(p.categoria, "\n")] = '\0';
+        if (strlen(p.categoria) == 0) {
+            printf("Categoria nao pode ser vazia.\n");
+            continue;
+        }
+        cat_ok = categoriaValida(p.categoria);
+        if (!cat_ok)
+            printf("Categoria '%s' invalida. Use exatamente uma das opcoes acima.\n",
+                   p.categoria);
+    } while (!cat_ok);
 
     p.preco        = lerFloat("Preco (R$): ");
     p.qtd_estoque  = lerInteiro("Quantidade em estoque: ");
