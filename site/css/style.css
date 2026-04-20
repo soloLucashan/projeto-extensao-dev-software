@@ -252,11 +252,13 @@ strong {
   border: 2px solid transparent;
 }
 
+/* Hover do CTA: mantém o estilo invertido (fundo transparente + borda cyan)
+   e adiciona o pulso de brilho para chamar mais atenção. */
 .btn-cta:hover {
   background-color: transparent;
   color: var(--cor-cyan);
   border-color: var(--cor-cyan);
-  box-shadow: 0 0 20px rgba(6, 182, 212, 0.3);
+  animation: pulseGlow 1.2s infinite alternate;
 }
 
 /* ---- SECAO DE INTRO / TEXTO RICO (index.html) ---- */
@@ -313,20 +315,25 @@ strong {
     box-shadow var(--vel-transicao);
 }
 
+/* Hover do card de destaque — elevação e brilho combinados.
+   O translateY(-8px) + scale(1.01) dá um efeito mais "vivo" que o
+   translateY simples de antes, mas sem exagerar no movimento. */
 .card-destaque:hover {
-  transform: translateY(-6px);
+  transform: translateY(-8px) scale(1.01);
   border-color: var(--cor-cyan);
   box-shadow:
     0 10px 30px rgba(0, 0, 0, 0.4),
     0 0 20px rgba(6, 182, 212, 0.1);
 }
 
+/* Transition composta: mantém o efeito de borda existente E adiciona
+   o zoom suave da imagem quando o card é hovereado. */
 .card-destaque .card-img {
   width: 100%;
   height: 190px;
   object-fit: cover;
   border-bottom: 2px solid rgba(29, 78, 216, 0.4);
-  transition: border-color var(--vel-transicao);
+  transition: border-color var(--vel-transicao), transform 0.4s ease;
 }
 
 .card-destaque:hover .card-img {
@@ -699,19 +706,24 @@ button[type="submit"]:hover {
     box-shadow var(--vel-transicao);
 }
 
+/* Mesmo comportamento do card-destaque — consistência visual entre
+   a home e o portfólio. */
 .card-projeto:hover {
-  transform: translateY(-6px);
+  transform: translateY(-8px) scale(1.01);
   border-color: var(--cor-cyan);
   box-shadow:
     0 10px 30px rgba(0, 0, 0, 0.4),
     0 0 20px rgba(6, 182, 212, 0.1);
 }
 
+/* Transition no .card-img genérico cobre o card-detalhe (produtos.html)
+   que não tinha esse efeito de zoom ainda. */
 .card-img {
   width: 100%;
   height: 185px;
   object-fit: cover;
   display: block;
+  transition: transform 0.4s ease;
 }
 
 .card-conteudo {
@@ -771,6 +783,96 @@ footer {
 
 footer p {
   margin-bottom: 0;
+}
+
+/* ============================================
+   INTERACOES COM CURSOR
+   Adicionado por: Eduardo Vieira Silva
+   Bloco unificado de micro-animacoes e feedback visual ao usuario.
+   Cada regra foi verificada contra o HTML existente antes de entrar aqui.
+   ============================================ */
+
+/* Elevacao suave em qualquer link ou botao da pagina — comportamento base.
+   As transicoes especificas de cada componente sobrescrevem isso quando necessario. */
+a, button {
+  transition: transform var(--vel-transicao), box-shadow var(--vel-transicao);
+}
+
+a:hover, button:hover {
+  transform: translateY(-2px);
+}
+
+/* Leve brilho nos links do menu ao passar o mouse — util em telas escuras */
+.nav-principal ul li a:hover {
+  box-shadow: 0 0 10px rgba(6, 182, 212, 0.25);
+}
+
+/* A logo vira um elemento interativo de verdade: escala e glow ao hover */
+.logo-site {
+  transition: all var(--vel-transicao);
+  cursor: pointer;
+}
+
+.logo-site:hover {
+  color: var(--cor-cyan);
+  text-shadow: 0 0 12px rgba(6, 182, 212, 0.6);
+  transform: scale(1.05);
+}
+
+/* Zoom da imagem dos cards ao hoverar — o .card-destaque:hover e
+   .card-projeto:hover ja foram atualizados acima pra usar o transform
+   composto (translateY + scale), entao aqui so gerenciamos a imagem */
+.card-destaque:hover .card-img,
+.card-projeto:hover .card-img {
+  transform: scale(1.06);
+}
+
+/* Efeito de "clicado" em botoes de compra — feedback tatil visual */
+.btn-comprar:active,
+button:active {
+  transform: scale(0.96);
+}
+
+/* Destaque de borda nos inputs ao passar o mouse, antes mesmo do foco */
+input:hover,
+textarea:hover {
+  border-color: var(--cor-cyan);
+}
+
+/* Keyframe do pulso de brilho — usado pelo .btn-cta:hover acima */
+@keyframes pulseGlow {
+  from {
+    box-shadow: 0 0 10px rgba(6, 182, 212, 0.3);
+  }
+  to {
+    box-shadow: 0 0 25px rgba(6, 182, 212, 0.6);
+  }
+}
+
+/* Cursor padrao no body, ponteiro nos elementos clicaveis — redundante
+   mas garante consistencia mesmo se algum reset global mudar isso */
+body {
+  cursor: default;
+}
+
+button,
+a {
+  cursor: pointer;
+}
+
+/* Scrollbar personalizada — so funciona em Chromium/Edge/Opera.
+   Firefox usa scrollbar-color e scrollbar-width (nao implementado aqui por ora) */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--cor-cyan);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--cor-superficie);
 }
 
 /* ---- RESPONSIVIDADE MOBILE ---- */
