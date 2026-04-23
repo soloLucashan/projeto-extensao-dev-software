@@ -1,22 +1,13 @@
 /*
- * ============================================================
- * PROJETO DE EXTENSAO - Desenvolvimento de Software
- * Empresa Parceira: PixelShop
- * Instituicao: UNINOVE - Turma Noturno 2026
- * Professora: Priscila Viana Cunha
- * ============================================================
- * Responsaveis (Squad C):
- *   - Lucas Byoung Ki Han   (Menu, estrutura geral, validacoes de entrada)
- *   - Guilherme Huilame     (Logica de negocio, busca, relatorio de estoque)
- * ============================================================
- * OBSERVACAO: o programa usa um vetor estatico de MAX_PRODUTOS
- * entradas. Funciona bem pra um estoque pequeno de loja fisica,
- * mas tem limitacao de tamanho em tempo de compilacao.
- * ============================================================
+ * Projeto de Extensao - Desenvolvimento de Software
+ * PixelShop - Sistema de Estoque (terminal)
+ * UNINOVE - Noturno 2026
+ * Prof.a Priscila Viana Cunha
  *
- * TODO (Lucas): no proximo semestre, trocar esse vetor por uma lista
- *       encadeada pra nao ter o limite fixo de 100 produtos e conseguir
- *       escalar junto com o crescimento da PixelShop.
+ * Squad C: Lucas Byoung Ki Han, Guilherme Huilame
+ *
+ * OBS: vetor estatico de 100 produtos, suficiente pra entrega.
+ * TODO: lista encadeada no semestre que vem talvez
  */
 
 #include <stdio.h>
@@ -24,27 +15,23 @@
 #include <string.h>
 #include <ctype.h>
 
-#define MAX_PRODUTOS 100
-#define TAM_NOME     50
+#define MAX_PRODUTOS  100
+#define TAM_NOME      50
 #define TAM_CATEGORIA 30
 
-/* Usamos int em vez de char porque getchar() retorna int.
- * Se usassemos char, em sistemas onde char e unsigned,
- * a comparacao com EOF (-1) nunca seria verdadeira
- * e o loop de limpeza do buffer nunca terminaria.
- * Bug sutil, mas real — o Lucas queimou a cabeca nisso. */
+/* int porque getchar() retorna int — char dava loop infinito no buffer */
 typedef int CharBuf;
 
-/*
- * lerInteiro: le um inteiro do teclado com validacao robusta.
- *
- * O problema classico do scanf e que, quando o usuario digita
- * letras, o cursor do buffer nao avanca — ai o programa fica
- * em loop eterno. A funcao drena tudo que sobrou no buffer
- * antes de tentar de novo, evitando esse travamento.
- *
- * Implementado pelo Lucas com base em discussao da aula de LP.
- */
+/* categorias do banco Oracle — precisa bater com insert_data.sql */
+#define NUM_CATEGORIAS 4
+static const char *CATEGORIAS_VALIDAS[NUM_CATEGORIAS] = {
+    "Smartphones",
+    "Notebooks",
+    "Perifericos",
+    "Pecas e Componentes"
+};
+
+/* le inteiro com validacao — evita loop infinito quando usuario digita letra no scanf */
 int lerInteiro(const char *mensagem) {
     int valor;
     int resultado;
@@ -54,25 +41,14 @@ int lerInteiro(const char *mensagem) {
         resultado = scanf("%d", &valor);
         if (resultado != 1) {
             printf("Entrada invalida! Digite apenas numeros inteiros.\n");
-            /* Drena tudo que ficou no buffer ate o newline
-             * pra nao reutilizar o lixo na proxima iteracao */
             while ((c = getchar()) != '\n' && c != EOF);
         }
     } while (resultado != 1);
-    /* Consome o '\n' residual que o scanf deixa depois de ler o numero */
     while ((c = getchar()) != '\n' && c != EOF);
     return valor;
 }
 
-/*
- * lerFloat: le um decimal do teclado com validacao de tipo e sinal.
- *
- * Alem de evitar o loop infinito do scanf (mesma logica do lerInteiro),
- * essa funcao tambem rejeita precos negativos — regra de negocio basica
- * pra nao baguncar o relatorio financeiro da PixelShop.
- *
- * Implementado pelo Lucas; revisao de edge cases pelo Guilherme.
- */
+/* le float com validacao — rejeita texto e preco negativo */
 float lerFloat(const char *mensagem) {
     float valor;
     int resultado;
@@ -84,8 +60,6 @@ float lerFloat(const char *mensagem) {
             printf("Entrada invalida! Use ponto para separar decimais (ex: 29.90).\n");
             while ((c = getchar()) != '\n' && c != EOF);
         } else if (valor < 0) {
-            /* Preco negativo nao faz sentido no contexto de venda.
-             * Forcamos nova tentativa em vez de aceitar silenciosamente. */
             printf("Preco nao pode ser negativo. Tente novamente.\n");
             resultado = 0;
         }
@@ -99,26 +73,13 @@ typedef struct {
     char  nome[TAM_NOME];
     char  categoria[TAM_CATEGORIA];
     float preco;
-    int   qtd_estoque;   /* renomeado de quantidade_estoque para qtd_estoque:
-                          * mais conciso e padrao que o pessoal usa no projeto */
+    int   qtd_estoque;
 } Produto;
-
-/* Categorias validas da PixelShop — devem ser identicas aos valores
- * inseridos na tabela CATEGORIA do Oracle (insert_data.sql, linhas 14-21).
- * Se o banco ganhar uma categoria nova, atualiza NUM_CATEGORIAS e o array. */
-#define NUM_CATEGORIAS 4
-static const char *CATEGORIAS_VALIDAS[NUM_CATEGORIAS] = {
-    "Smartphones",
-    "Notebooks",
-    "Perifericos",
-    "Pecas e Componentes"
-};
 
 Produto produtos[MAX_PRODUTOS];
 int totalProdutos = 0;
 
-/* Prototipos — declarados aqui pra o compilador conhecer as assinaturas
- * antes do main, mesmo que as definicoes venham depois */
+/* prototipos */
 int   lerInteiro(const char *mensagem);
 float lerFloat(const char *mensagem);
 void  exibirMenu();
@@ -129,27 +90,14 @@ void  removerProduto();
 void  relatorioEstoque();
 void  listarPorCategoria();
 
-/*
- * paraMinusculas: converte string in-place para caixa baixa.
- * Precisamos disso pra busca case-insensitive funcionar direito —
- * usuario pode digitar "MOUSE" ou "mouse" e o resultado e o mesmo.
- * O cast para unsigned char e obrigatorio pra evitar UB com tolower
- * em caracteres com acento (ex: 'é', 'ã').
- */
+/* converte string pra minusculo — busca case-insensitive */
 void paraMinusculas(char *str) {
     for (int i = 0; str[i]; i++) {
         str[i] = tolower((unsigned char)str[i]);
     }
 }
 
-/*
- * categoriaValida: checa se a string digitada corresponde a uma das
- * 4 categorias cadastradas no Oracle. Comparacao case-insensitive pra
- * aceitar "perifericos" e "Perifericos" como equivalentes.
- *
- * Retorna 1 se valida, 0 se desconhecida.
- * Funcao adicionada pelo Guilherme (correcao do FIXME em cadastrarProduto).
- */
+/* verifica se a categoria digitada bate com as do banco Oracle (case-insensitive) */
 int categoriaValida(const char *categoria_digitada) {
     char digitada_min[TAM_CATEGORIA];
     char valida_min[TAM_CATEGORIA];
@@ -172,8 +120,6 @@ int main() {
     int opcao;
     do {
         exibirMenu();
-        /* lerInteiro ja resolve o problema de entrada invalida —
-         * sem ele, digitar uma letra aqui travaria o programa inteiro */
         opcao = lerInteiro("Escolha uma opcao: ");
 
         switch (opcao) {
@@ -191,32 +137,19 @@ int main() {
     return 0;
 }
 
-/* Menu principal — mantido simples e direto pra funcionar mesmo em
- * terminais basicos sem suporte a cor ou ANSI escape codes */
 void exibirMenu() {
     printf("\n===== PIXELSHOP - Sistema de Estoque =====");
     printf("\n 1. Cadastrar produto");
     printf("\n 2. Listar todos os produtos");
     printf("\n 3. Buscar produto por nome");
     printf("\n 4. Remover produto");
-    printf("\n 5. Relatorio de estoque (total, valor medio, alertas)");
+    printf("\n 5. Relatorio de estoque");
     printf("\n 6. Listar por categoria");
     printf("\n 0. Sair");
     printf("\n==========================================\n");
 }
 
-/*
- * cadastrarProduto: coleta dados do novo produto via terminal.
- *
- * As categorias validas precisam bater com as do banco Oracle:
- *   Smartphones | Notebooks | Perifericos | Pecas e Componentes
- * O sistema nao valida o nome da categoria automaticamente por enquanto
- * (seria bom adicionar isso futuramente — ver TODO abaixo).
- *
- * FIXME (Guilherme): adicionar validacao das categorias contra uma lista
- *       fixa pra evitar que alguem cadastre "Periferico" (sem 's') e
- *       quebre a coerencia com o banco Oracle.
- */
+/* cadastra novo produto validando categoria contra o banco Oracle */
 void cadastrarProduto() {
     if (totalProdutos >= MAX_PRODUTOS) {
         printf("Limite de %d produtos atingido! Contate o suporte.\n", MAX_PRODUTOS);
@@ -234,9 +167,6 @@ void cadastrarProduto() {
         return;
     }
 
-    /* Listamos as categorias validas na dica pra o operador nao digitar errado
-     * e criar inconsistencia com o banco de dados Oracle da PixelShop.
-     * O loop abaixo garante que so uma categoria canonica seja aceita. */
     int cat_ok = 0;
     do {
         printf("Categoria (Smartphones | Notebooks | Perifericos | Pecas e Componentes): ");
@@ -248,19 +178,18 @@ void cadastrarProduto() {
         }
         cat_ok = categoriaValida(p.categoria);
         if (!cat_ok)
-            printf("Categoria '%s' invalida. Use exatamente uma das opcoes acima.\n",
+            printf("Categoria '%s' nao reconhecida. Use exatamente uma das opcoes acima.\n",
                    p.categoria);
     } while (!cat_ok);
 
-    p.preco        = lerFloat("Preco (R$): ");
-    p.qtd_estoque  = lerInteiro("Quantidade em estoque: ");
+    p.preco       = lerFloat("Preco (R$): ");
+    p.qtd_estoque = lerInteiro("Quantidade em estoque: ");
 
     produtos[totalProdutos++] = p;
     printf("Produto '%s' cadastrado com sucesso! ID: %d\n", p.nome, p.id);
 }
 
-/* Lista todos os produtos em formato de tabela alinhada.
- * O %-30s garante que nomes longos nao deformam a tabela. */
+/* lista todos os produtos em tabela alinhada */
 void listarProdutos() {
     if (totalProdutos == 0) {
         printf("Nenhum produto cadastrado ainda.\n");
@@ -283,15 +212,7 @@ void listarProdutos() {
     }
 }
 
-/*
- * buscarProduto: localiza produtos pelo nome usando substring case-insensitive.
- *
- * Usamos strstr depois de converter tudo pra minusculo, assim
- * "mouse" acha "Mouse Logitech MX Master" sem o usuario precisar
- * saber a capitalizacao exata — bem mais util no dia a dia da loja.
- *
- * Logica de busca case-insensitive implementada pelo Guilherme.
- */
+/* busca por substring no nome, case-insensitive */
 void buscarProduto() {
     char termo[TAM_NOME];
     char termo_minusculo[TAM_NOME];
@@ -323,21 +244,13 @@ void buscarProduto() {
         printf("Nenhum resultado encontrado para '%s'.\n", termo);
 }
 
-/*
- * removerProduto: exclui um produto pelo ID e compacta o vetor.
- *
- * Apos remover, deslocamos todos os itens seguintes uma posicao
- * pra baixo pra nao deixar buraco no meio do vetor — se deixasse,
- * o listarProdutos mostraria uma posicao vazia no meio da lista.
- */
+/* remove produto pelo ID e compacta o vetor pra nao deixar buraco */
 void removerProduto() {
-    /* lerInteiro ja protege contra o usuario digitar texto aqui */
     int id = lerInteiro("ID do produto a remover: ");
 
     for (int i = 0; i < totalProdutos; i++) {
         if (produtos[i].id == id) {
             printf("Removendo '%s'...\n", produtos[i].nome);
-            /* Desloca os produtos seguintes pra preencher o espaco */
             for (int j = i; j < totalProdutos - 1; j++) {
                 produtos[j] = produtos[j + 1];
             }
@@ -349,25 +262,15 @@ void removerProduto() {
     printf("Nenhum produto encontrado com ID %d.\n", id);
 }
 
-/*
- * relatorioEstoque: gera um resumo gerencial do estoque atual.
- *
- * O alerta de estoque baixo usa o limite de 3 unidades porque,
- * na pratica da PixelShop, o prazo de reposicao dos fornecedores
- * e de 2 a 5 dias uteis. Com 3 unidades em mao, da pra vender
- * durante esse periodo sem zerar antes da entrega chegar.
- *
- * Logica do relatorio consolidada pelo Guilherme. Revisao de
- * edge cases (totalProdutos == 0, todos com preco igual) pelo Lucas.
- */
+/* gera resumo do estoque: total, preco medio, mais caro, mais barato e alertas de reposicao */
 void relatorioEstoque() {
     if (totalProdutos == 0) {
         printf("Estoque vazio — nada a relatar.\n");
         return;
     }
 
-    float soma_precos  = 0;
-    Produto mais_caro  = produtos[0];
+    float soma_precos   = 0;
+    Produto mais_caro   = produtos[0];
     Produto mais_barato = produtos[0];
 
     for (int i = 0; i < totalProdutos; i++) {
@@ -386,32 +289,23 @@ void relatorioEstoque() {
     printf("Produto mais caro:             %s (R$ %.2f)\n", mais_caro.nome,   mais_caro.preco);
     printf("Produto mais barato:           %s (R$ %.2f)\n", mais_barato.nome, mais_barato.preco);
 
-    /* Regra de negocio da PixelShop: produtos com menos de 3 unidades
-     * entram em alerta critico — a equipe de compras precisa ser
-     * avisada com antecedencia pra dar tempo de repor antes de zerar */
-    printf("\n--- Alertas Criticos de Reposicao (< 3 unidades) ---\n");
+    /* menos de 3 unidades = alerta de reposicao */
+    printf("\n--- Alertas de Reposicao (< 3 unidades) ---\n");
     int qtd_alertas = 0;
     for (int i = 0; i < totalProdutos; i++) {
         if (produtos[i].qtd_estoque < 3) {
-            printf("  [URGENTE] %s: apenas %d unidade(s) — contatar fornecedor!\n",
+            printf("  [URGENTE] %s: apenas %d unidade(s)\n",
                    produtos[i].nome, produtos[i].qtd_estoque);
             qtd_alertas++;
         }
     }
     if (qtd_alertas == 0)
-        printf("Nenhum produto em situacao critica. Estoque saudavel!\n");
+        printf("Nenhum produto em situacao critica.\n");
 
     printf("================================\n");
 }
 
-/*
- * listarPorCategoria: filtra produtos pela categoria informada (case-insensitive).
- *
- * Usamos strcmp (nao strstr) aqui porque a categoria e um campo exato,
- * diferente do nome — nao queremos que "Peri" retorne "Perifericos".
- * O usuario precisa digitar a categoria completa pra manter consistencia
- * com as 4 categorias do banco Oracle.
- */
+/* filtra produtos pela categoria exata (case-insensitive) */
 void listarPorCategoria() {
     char categoria_busca[TAM_CATEGORIA];
     char cat_minuscula[TAM_CATEGORIA];

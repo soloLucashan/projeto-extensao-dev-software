@@ -1,15 +1,9 @@
--- ============================================================
--- PIXELSHOP - Insercao de Dados de Exemplo
--- Responsavel: Eduardo Vieira Silva (dados iniciais do catalogo)
--- Revisao: Riquelly (conferencia de IDs e integridade referencial)
--- ============================================================
+-- PIXELSHOP - insercao de dados de exemplo
+-- Eduardo Vieira Silva | Revisao: Riquelly
+-- Projeto de Extensao - Noturno 2026
+--
 -- Execute DEPOIS do create_tables.sql.
--- Os IDs de id_categoria sao gerados por IDENTITY — a ordem de
--- insercao abaixo define qual ID cada categoria recebe:
---   1 = Smartphones | 2 = Notebooks | 3 = Perifericos | 4 = Pecas e Componentes
--- Isso precisa bater com as categorias exibidas no site e com
--- as dicas de categoria do sistema em C (main.c, funcao cadastrarProduto).
--- ============================================================
+-- ordem: 1=Smartphones, 2=Notebooks, 3=Perifericos, 4=Pecas
 -- ---- CATEGORIAS ----
 INSERT INTO CATEGORIA (nome_categoria)
 VALUES ('Smartphones');
@@ -54,9 +48,7 @@ VALUES (
         4,
         2
     );
--- Perifericos (id_categoria = 3)
--- Estes sao os produtos em destaque no site (index.html e produtos.html).
--- Qualquer alteracao de nome ou preco aqui deve refletir nas paginas HTML.
+-- perifericos (destaques no site)
 INSERT INTO PRODUTO (nome, descricao, preco, estoque, id_categoria)
 VALUES (
         'Mouse Logitech MX Master',
@@ -119,8 +111,7 @@ VALUES (
         'Rua Consolacao, 77 - Sao Paulo/SP'
     );
 -- ---- PEDIDOS - Lote inicial ----
--- Os totais precisam bater com a soma dos itens em ITEM_PEDIDO.
--- Revisados manualmente pelo Eduardo antes do commit.
+-- totais conferidos item a item antes do commit
 INSERT INTO PEDIDO (id_cliente, data_pedido, status, total)
 VALUES (1, DATE '2026-03-10', 'CONCLUIDO', 1899.90);
 INSERT INTO PEDIDO (id_cliente, data_pedido, status, total)
@@ -154,10 +145,8 @@ VALUES (4, 5, 1, 349.90);
 INSERT INTO ITEM_PEDIDO (id_pedido, id_produto, quantidade, preco_unit)
 VALUES (4, 6, 1, 279.90);
 -- Rafael: Teclado Redragon
--- ---- PRODUTOS - Lote de expansao do catalogo ----
--- Adicionados quando a loja cresceu e o pessoal reclamou
--- que o catalogo estava muito pequeno pra parecer real.
--- Smartphones
+-- ---- PRODUTOS  ----
+-- Mais produtos para testar o BD
 INSERT INTO PRODUTO (nome, descricao, preco, estoque, id_categoria)
 VALUES (
         'Motorola Moto G52',
@@ -241,7 +230,6 @@ VALUES (
         18,
         4
     );
-
 -- GPUs adicionadas pra sincronizar com o catalogo HTML (produtos.html).
 -- Estavam sendo exibidas no site mas nao existiam no banco — corrigido aqui.
 -- id_produto gerado automaticamente sera 18 (RTX) e 19 (RX) nessa ordem.
@@ -333,26 +321,32 @@ VALUES (
         'Jardim Florido, 77 - Osasco/SP'
     );
 -- ---- PEDIDOS - Lote de expansao ----
--- Totais conferidos item a item contra ITEM_PEDIDO abaixo (Riquelly, 16/04/2026).
--- BUG CORRIGIDO: os totais estavam deslocados uma posicao — cada pedido tinha
--- o total do proximo. Correcao aplicada manualmente com os calculos abaixo.
+-- totais conferidos um por um depois que percebemos que estavam errados
 INSERT INTO PEDIDO (id_cliente, data_pedido, status, total)
-VALUES (6,  DATE '2026-04-02', 'CONCLUIDO', 1099.00);  -- Moto G52 (1099)
+VALUES (6, DATE '2026-04-02', 'CONCLUIDO', 1099.00);
+-- Moto G52 (1099)
 INSERT INTO PEDIDO (id_cliente, data_pedido, status, total)
-VALUES (7,  DATE '2026-04-03', 'PENDENTE',  2898.90);  -- Galaxy S22 (2499) + Webcam (399.90)
+VALUES (7, DATE '2026-04-03', 'PENDENTE', 2898.90);
+-- Galaxy S22 (2499) + Webcam (399.90)
 INSERT INTO PEDIDO (id_cliente, data_pedido, status, total)
-VALUES (8,  DATE '2026-04-04', 'CONCLUIDO', 3198.00);  -- Acer Aspire 5 (2599) + Monitor LG (599)
+VALUES (8, DATE '2026-04-04', 'CONCLUIDO', 3198.00);
+-- Acer Aspire 5 (2599) + Monitor LG (599)
 INSERT INTO PEDIDO (id_cliente, data_pedido, status, total)
-VALUES (9,  DATE '2026-04-05', 'CANCELADO', 3718.80);  -- Asus VivoBook (3199) + 2x HyperX (519.80)
+VALUES (9, DATE '2026-04-05', 'CANCELADO', 3718.80);
+-- Asus VivoBook (3199) + 2x HyperX (519.80)
 INSERT INTO PEDIDO (id_cliente, data_pedido, status, total)
-VALUES (10, DATE '2026-04-06', 'CONCLUIDO', 2729.70);  -- 2x Redmi Note 12 (2399.80) + HD Seagate (329.90)
+VALUES (10, DATE '2026-04-06', 'CONCLUIDO', 2729.70);
+-- 2x Redmi Note 12 (2399.80) + HD Seagate (329.90)
 INSERT INTO PEDIDO (id_cliente, data_pedido, status, total)
-VALUES (11, DATE '2026-04-07', 'PENDENTE',  1198.00);  -- 2x Monitor LG (2 x 599)
+VALUES (11, DATE '2026-04-07', 'PENDENTE', 1198.00);
+-- 2x Monitor LG (2 x 599)
 INSERT INTO PEDIDO (id_cliente, data_pedido, status, total)
-VALUES (12, DATE '2026-04-08', 'CONCLUIDO',  589.80);  -- HyperX (259.90) + HD Seagate (329.90)
+VALUES (12, DATE '2026-04-08', 'CONCLUIDO', 589.80);
+-- HyperX (259.90) + HD Seagate (329.90)
 -- id_cliente=15 = Amanda Ribeiro (5 do lote 1 + 10 do lote 2 = 15 total)
 INSERT INTO PEDIDO (id_cliente, data_pedido, status, total)
-VALUES (15, DATE '2026-04-09', 'CONCLUIDO', 5297.90);  -- HP ProBook (4299) + Webcam (399.90) + Monitor LG (599)
+VALUES (15, DATE '2026-04-09', 'CONCLUIDO', 5297.90);
+-- HP ProBook (4299) + Webcam (399.90) + Monitor LG (599)
 -- ---- ITENS DOS PEDIDOS - Lote de expansao ----
 INSERT INTO ITEM_PEDIDO (id_pedido, id_produto, quantidade, preco_unit)
 VALUES (5, 8, 1, 1099.00);

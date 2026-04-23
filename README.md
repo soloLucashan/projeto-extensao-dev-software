@@ -27,16 +27,7 @@
 | 6 | Henrique Capetto | 3126103000 | Banco de Dados | Scripts SQL Oracle e definicao das tabelas |
 | 7 | Matheus Nilcen Alves | 3026104544 | Documentacao | Documento final escrito e prints |
 
----
 
-## Auditoria e Refatoração Recente
-
-O projeto passou por uma auditoria completa de código onde diversas melhorias focadas em estabilidade, humanização e coerência entre as camadas foram aplicadas:
-- **Programa C:** Bug gravíssimo resolvido (`int` substituindo `char` para prevenir loops infinitos no buffer na leitura de tipos); comentários explicativos de regras de negócios ao invés de "o quê"; TODO orgânico para evolução de vetor para lista encadeada. Centralizado com único dev.
-- **Banco de Dados:** Sincronia contábil e de produto revisada (`insert_data.sql`); adição de `FIXME` realista e comentários descritivos por tabela para esclarecimento arquitetural.
-- **Frontend (Web):** Placeholder preenchidos (`[Nome da Empresa]`); Google Fonts importado; classes unificadas para Português misto (`nav-principal`, `grid-produtos`, `.card-produto`); valores mockados apagados e substituídos com os hardwares listados diretamente no SQL Oracle para evitar incoerência.
-
----
 
 ## Cronograma
 

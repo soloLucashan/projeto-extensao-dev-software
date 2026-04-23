@@ -1,18 +1,7 @@
-/* ============================================
-   ESTILOS GLOBAIS - Responsavel: Eduardo Vieira Silva
-   HTML/CSS revisado: Gabriel Cole Ambrosio
-   Projeto de Extensao - Turma Noturno 2026
-   Tema: Dark Tech — psicologia das cores e acessibilidade
-
-   Paleta escolhida com base em principios de UI:
-     - Deep Blue (#0f172a)  = profissionalismo, confiança, segurança
-     - Slate (#1e293b)      = superficies e cards, contraste suave
-     - Cyan Neon (#06b6d4) = energia, modernidade, CTAs
-     - Texto (#e2e8f0)      = contraste WCAG AA garantido sobre dark
-   ============================================ */
-
-/* TODO (Eduardo): avaliar versao light mode no proximo sprint.
-   Por enquanto o dark e suficiente pra entrega academica. */
+/* style.css — Eduardo Vieira Silva
+   Projeto de Extensao - Noturno 2026
+   Tema dark, fonte Inter do Google Fonts
+*/
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
@@ -65,8 +54,7 @@ body {
   line-height: 1.7;
 }
 
-/* ---- HEADER / NAVEGACAO ---- */
-/* sticky pra acompanhar o scroll sem sumir da tela */
+/* header fixo no topo */
 header {
   background-color: var(--cor-superficie);
   padding: 18px 32px;
@@ -77,7 +65,7 @@ header {
   z-index: 1000;
 }
 
-/* Logo simples em texto — nao precisamos de img por enquanto */
+/* logo em texto */
 .cabecalho-interno {
   display: flex;
   align-items: center;
@@ -100,7 +88,6 @@ header {
   color: var(--cor-cyan);
 }
 
-/* .nav-principal: flex horizontal com wrap pra telas medias */
 .nav-principal ul {
   list-style: none;
   display: flex;
@@ -121,7 +108,7 @@ header {
   display: block;
 }
 
-/* .ativo e :hover usam mesma aparencia — usuario sabe onde esta */
+/* ativo e hover com mesma aparencia */
 .nav-principal ul li a:hover,
 .nav-principal ul li a.ativo {
   background-color: var(--cor-cyan-fraco);
@@ -129,7 +116,6 @@ header {
   border-color: rgba(6, 182, 212, 0.25);
 }
 
-/* ---- MAIN / CONTEUDO ---- */
 main {
   max-width: 1200px;
   margin: 40px auto;
@@ -147,14 +133,12 @@ section {
   border: 1px solid rgba(255, 255, 255, 0.04);
 }
 
-/* ---- TIPOGRAFIA GLOBAL ---- */
 h1 {
   font-size: 2.4rem;
   font-weight: 700;
   color: var(--cor-cyan);
   margin-bottom: 16px;
   line-height: 1.2;
-  /* glow neon sutil — forcamos a leitura sem agredir */
   text-shadow: 0 0 24px rgba(6, 182, 212, 0.25);
 }
 
@@ -252,8 +236,7 @@ strong {
   border: 2px solid transparent;
 }
 
-/* Hover do CTA: mantém o estilo invertido (fundo transparente + borda cyan)
-   e adiciona o pulso de brilho para chamar mais atenção. */
+/* hover do btn-cta */
 .btn-cta:hover {
   background-color: transparent;
   color: var(--cor-cyan);
@@ -261,7 +244,7 @@ strong {
   animation: pulseGlow 1.2s infinite alternate;
 }
 
-/* ---- SECAO DE INTRO / TEXTO RICO (index.html) ---- */
+/* ---- SECAO DE INTRO  (index.html) ---- */
 .secao-como-funciona {
   border-left: 4px solid var(--cor-cyan);
 }
@@ -271,7 +254,7 @@ strong {
   margin-top: 0;
 }
 
-/* Grade de pills/badges de tecnologia */
+/* badges de tecnologia / servico */
 .badges-tech {
   display: flex;
   flex-wrap: wrap;
@@ -293,7 +276,7 @@ strong {
 }
 
 /* ---- GRIDS DE PRODUTOS (destaques na index e lista em produtos) ---- */
-/* auto-fit ajusta colunas sozinho entre mobile e desktop — sem media query */
+
 .grid-destaques {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -315,9 +298,7 @@ strong {
     box-shadow var(--vel-transicao);
 }
 
-/* Hover do card de destaque — elevação e brilho combinados.
-   O translateY(-8px) + scale(1.01) dá um efeito mais "vivo" que o
-   translateY simples de antes, mas sem exagerar no movimento. */
+/* hover do card de destaque */
 .card-destaque:hover {
   transform: translateY(-8px) scale(1.01);
   border-color: var(--cor-cyan);
@@ -326,8 +307,6 @@ strong {
     0 0 20px rgba(6, 182, 212, 0.1);
 }
 
-/* Transition composta: mantém o efeito de borda existente E adiciona
-   o zoom suave da imagem quando o card é hovereado. */
 .card-destaque .card-img {
   width: 100%;
   height: 190px;
@@ -362,7 +341,36 @@ strong {
 }
 
 /* ---- CARDS EXPANSIVEIS COM <details> (produtos.html) ---- */
-/* Tecnica pura de CSS/HTML5 — sem nenhum JavaScript */
+
+/* Wrapper que agrupa imagem + details num único card visual */
+.card-detalhe-wrapper {
+  background-color: var(--cor-fundo);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: var(--borda-radius-card);
+  overflow: hidden;
+  transition:
+    border-color var(--vel-transicao),
+    box-shadow var(--vel-transicao);
+}
+
+.card-detalhe-wrapper:has(details[open]) {
+  border-color: var(--cor-cyan);
+  box-shadow: 0 0 25px rgba(6, 182, 212, 0.12);
+}
+
+/* Imagem do produto — fica acima do details, fora dele */
+.card-img-catalogo {
+  width: 100%;
+  height: 185px;
+  object-fit: cover;
+  display: block;
+  border-bottom: 2px solid rgba(29, 78, 216, 0.35);
+  transition: border-color var(--vel-transicao);
+}
+
+.card-detalhe-wrapper:has(details[open]) .card-img-catalogo {
+  border-bottom-color: var(--cor-cyan);
+}
 
 /* Container da categoria de produtos */
 .categoria-produtos {
@@ -391,20 +399,17 @@ strong {
   flex-shrink: 0;
 }
 
-/* Grid que contém os <details> dos produtos */
+/* Grid que contém os wrappers dos produtos */
 .grid-catalogo {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
   gap: 20px;
 }
 
-/* Cada <details> e um card de produto */
-/* O border e box-shadow mudam quando aberto ([open]) */
+/* O <details> em si não tem borda própria — ela fica no wrapper */
 .card-detalhe {
-  background-color: var(--cor-fundo);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  border-radius: var(--borda-radius-card);
-  overflow: hidden;
+  background-color: transparent;
+  border: none;
   transition:
     border-color var(--vel-transicao),
     box-shadow var(--vel-transicao);
@@ -412,21 +417,6 @@ strong {
 
 .card-detalhe[open] {
   border-color: var(--cor-cyan);
-  box-shadow: 0 0 25px rgba(6, 182, 212, 0.12);
-}
-
-/* Imagem do produto fica acima do <summary> */
-.card-detalhe .card-img {
-  width: 100%;
-  height: 185px;
-  object-fit: cover;
-  display: block;
-  border-bottom: 2px solid rgba(29, 78, 216, 0.35);
-  transition: border-color var(--vel-transicao);
-}
-
-.card-detalhe[open] .card-img {
-  border-bottom-color: var(--cor-cyan);
 }
 
 /* <summary> funciona como header clicavel do card */
@@ -593,7 +583,7 @@ strong {
   margin-top: 4px;
 }
 
-/* hover inverte para cyan — efeito neon da marca */
+/* hover inverte para cyan */
 .btn-comprar:hover {
   background-color: transparent;
   color: var(--cor-cyan);
@@ -785,15 +775,7 @@ footer p {
   margin-bottom: 0;
 }
 
-/* ============================================
-   INTERACOES COM CURSOR
-   Adicionado por: Eduardo Vieira Silva
-   Bloco unificado de micro-animacoes e feedback visual ao usuario.
-   Cada regra foi verificada contra o HTML existente antes de entrar aqui.
-   ============================================ */
-
-/* Elevacao suave em qualquer link ou botao da pagina — comportamento base.
-   As transicoes especificas de cada componente sobrescrevem isso quando necessario. */
+/* micro-animacoes gerais */
 a, button {
   transition: transform var(--vel-transicao), box-shadow var(--vel-transicao);
 }
@@ -802,12 +784,12 @@ a:hover, button:hover {
   transform: translateY(-2px);
 }
 
-/* Leve brilho nos links do menu ao passar o mouse — util em telas escuras */
+/* glow nos links do menu */
 .nav-principal ul li a:hover {
   box-shadow: 0 0 10px rgba(6, 182, 212, 0.25);
 }
 
-/* A logo vira um elemento interativo de verdade: escala e glow ao hover */
+/* logo interativa */
 .logo-site {
   transition: all var(--vel-transicao);
   cursor: pointer;
@@ -819,21 +801,19 @@ a:hover, button:hover {
   transform: scale(1.05);
 }
 
-/* Zoom da imagem dos cards ao hoverar — o .card-destaque:hover e
-   .card-projeto:hover ja foram atualizados acima pra usar o transform
-   composto (translateY + scale), entao aqui so gerenciamos a imagem */
+/* zoom da imagem nos cards */
 .card-destaque:hover .card-img,
 .card-projeto:hover .card-img {
   transform: scale(1.06);
 }
 
-/* Efeito de "clicado" em botoes de compra — feedback tatil visual */
+/* efeito de clique */
 .btn-comprar:active,
 button:active {
   transform: scale(0.96);
 }
 
-/* Destaque de borda nos inputs ao passar o mouse, antes mesmo do foco */
+/* borda nos inputs ao hover */
 input:hover,
 textarea:hover {
   border-color: var(--cor-cyan);
@@ -849,8 +829,7 @@ textarea:hover {
   }
 }
 
-/* Cursor padrao no body, ponteiro nos elementos clicaveis — redundante
-   mas garante consistencia mesmo se algum reset global mudar isso */
+/* Cursor padrao no body, ponteiro nos elementos clicaveis  */
 body {
   cursor: default;
 }
@@ -860,8 +839,7 @@ a {
   cursor: pointer;
 }
 
-/* Scrollbar personalizada — so funciona em Chromium/Edge/Opera.
-   Firefox usa scrollbar-color e scrollbar-width (nao implementado aqui por ora) */
+/* scrollbar customizada (webkit) */
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -876,8 +854,8 @@ a {
 }
 
 /* ---- RESPONSIVIDADE MOBILE ---- */
-/* breakpoint em 768px — abaixo disso reorganizamos o layout.
-   O grid auto-fit ja cuida de colunas entre 768 e 1200px. */
+/* quebra em 768px — abaixo disso mexemos no layout.
+   O grid auto-fit  cuida de colunas na faixa de 768 e 1200px. */
 @media (max-width: 768px) {
   .cabecalho-interno {
     flex-direction: column;
