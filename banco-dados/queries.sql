@@ -100,3 +100,7 @@ SELECT cl.nome,
 FROM CLIENTE cl
     LEFT JOIN PEDIDO pd ON cl.id_cliente = pd.id_cliente
 WHERE pd.id_pedido IS NULL;
+-- 10. Ticket medio dos pedidos concluidos
+SELECT AVG(total) AS ticket_medio
+FROM PEDIDO
+WHERE status = 'CONCLUIDO';
