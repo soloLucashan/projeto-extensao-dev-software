@@ -1,76 +1,115 @@
-<!-- Pagina Portfolio - Responsavel: Luiz Augusto Tiburcio -->
-<!-- Cards de projeto montados pelo Luiz. Os estilos inline que estavam aqui
-     foram movidos pro style.css pra manter centralizacao do CSS no projeto. -->
+<!-- portfolio.html — Luiz Augusto Tiburcio -->
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Portfolio da PixelShop: projetos de infraestrutura de hardware e integracao com sistemas C e Oracle entregues para empresas reais.">
-  <title>Portfolio - PixelShop</title>
+  <meta name="description" content="Portfólio da PixelShop: projetos de montagem e upgrade de setups para clientes reais em São Paulo.">
+  <title>Portfólio - PixelShop</title>
   <link rel="stylesheet" href="css/style.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
   <header>
-    <nav class="nav-principal">
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="sobre.html">Sobre</a></li>
-        <li><a href="produtos.html">Produtos/Servicos</a></li>
-        <li><a href="portfolio.html" class="ativo">Portfolio</a></li>
-        <li><a href="contato.html">Contato</a></li>
-      </ul>
-    </nav>
+    <div class="cabecalho-interno">
+      <a href="index.html" class="logo-site">Pixel<span>Shop</span></a>
+      <nav class="nav-principal">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="sobre.html">Sobre</a></li>
+          <li><a href="produtos.html">Catálogo</a></li>
+          <li><a href="portfolio.html" class="ativo">Portfólio</a></li>
+          <li><a href="contato.html">Contato</a></li>
+        </ul>
+      </nav>
+    </div>
   </header>
 
   <main>
     <section>
-      <h1>Nosso Portfólio de Infra e Hardware</h1>
-      <p>Na PixelShop, nosso portfólio não inclui apenas hardwares topo de linha — inclui as implantações que construímos e as empresas que aceleramos usando nossos equipamentos e o stack nativo C + Oracle para operações vitais de gestão e inteligência corporativa.</p>
+      <h1>O que já fizemos</h1>
+      <p>
+        Ainda somos pequenos — e tudo bem. Cada projeto aqui foi real: cliente de verdade,
+        necessidade de verdade, solução dentro do orçamento. Sem glamour, mas com resultado.
+      </p>
 
-      <!-- .grid-portfolio: renomeado de .portfolio-grid pra manter coerencia
-           com a nomenclatura mista PT-BR adotada no style.css -->
       <div class="grid-portfolio">
 
+        <!-- Projeto 1 -->
         <div class="card-projeto">
           <img
-            src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=500"
-            alt="Hardware Setup — servidores e workstations de alto desempenho"
+            src="https://images.unsplash.com/photo-1593642632559-0c6d3fc62b89?w=600&q=80"
+            alt="Estações de trabalho montadas para coworking"
             class="card-img">
           <div class="card-conteudo">
-            <h2>DataCenter e Setups C-Level</h2>
-            <p>Em 2025, modernizamos maquinarios executivos e a estrutura de gestao de 5 empresas de tecnologia com nossos hardwares high-end e configuracao de rede otimizada.</p>
+            <h2>Estações para Coworking — Barra Funda</h2>
+            <p>
+              Montamos 8 estações de trabalho para um espaço coworking pequeno no bairro.
+              Cada setup levou monitor LG 21.5", teclado Redragon e mouse sem fio dentro
+              do orçamento que o cliente tinha. O dono achou a gente pelo Instagram e
+              fechou na mesma semana.
+            </p>
           </div>
         </div>
 
+        <!-- Projeto 2 -->
         <div class="card-projeto">
           <img
-            src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=500"
-            alt="Seguranca de dados — integracao hardware e software bancario"
+            src="https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=600&q=80"
+            alt="Setup gamer completo montado para cliente"
             class="card-img">
           <div class="card-conteudo">
-            <h2>Sistema CoreBank em C/Oracle</h2>
-            <p>Integracao de hardware de seguranca PixelShop com software bancario rodando primariamente em C. Triggers PL/SQL no Oracle garantem consistencia dos dados com 0% de perda de pacotes.</p>
+            <h2>Primeiro Setup Gamer — Cliente Particular</h2>
+            <p>
+              Um cliente queria montar o primeiro setup gamer sem ultrapassar R$ 3.500.
+              Montamos com RTX 3060, 16GB RAM e periféricos completos — e ainda sobrou
+              dinheiro pra ele comprar a cadeira que queria. Ele mesmo postou foto
+              no grupo e trouxe mais dois amigos depois.
+            </p>
+          </div>
+        </div>
+
+        <!-- Projeto 3 -->
+        <div class="card-projeto">
+          <img
+            src="https://images.unsplash.com/photo-1531297484001-80022131f5a1?w=600&q=80"
+            alt="Upgrade de notebook com troca de HD por SSD"
+            class="card-img">
+          <div class="card-conteudo">
+            <h2>Upgrade de Notebooks — Turma de Design</h2>
+            <p>
+              Fizemos upgrade de RAM e troca de HD por SSD em 3 notebooks de alunos
+              de uma turma de design que vinham reclamando de lentidão. A melhora foi
+              visível na primeira reinicialização. Feito numa tarde, no intervalo
+              das aulas mesmo, na própria faculdade.
+            </p>
           </div>
         </div>
 
       </div>
 
-      <!-- Depoimento em bloco separado — estilos inline removidos e
-           substituidos por variaveis CSS do style.css (--cor-cyan, etc.)
-           pra nao misturar CSS inbutido com o arquivo de estilos centralizado -->
-      <h2>Depoimentos</h2>
+      <!-- Depoimento -->
+      <h2>O que falam da gente</h2>
       <blockquote class="depoimento-cliente">
-        "O equipamento da PixelShop revolucionou minha workstation. O mouse ergonomico tem resposta incrivel, e saber que meu fornecedor usa linguagem C e Oracle pra gerir a logistica me da total confianca. Velozes e eficientes no backend, precisos e esteticamente impecaveis no hardware!"
+        "Comprei o mouse pelo Instagram e me surpreendi com o atendimento.
+        Responderam minhas dúvidas antes mesmo de eu confirmar o pagamento.
+        Produto chegou bem embalado e no prazo. Vou voltar pra comprar o teclado."
         <br><br>
-        <strong>— Sênior Systems Engineer, empresa multinacional de tecnologia.</strong>
+        <strong>— Diego R., cliente de São Paulo</strong>
+      </blockquote>
+
+      <blockquote class="depoimento-cliente">
+        "Indicaram o notebook certo pro que eu precisava sem tentar me vender
+        o mais caro. Isso pra mim vale muito — parece que a galera realmente
+        entende de tecnologia e não só quer empurrar produto."
+        <br><br>
+        <strong>— Camila F., estudante de design</strong>
       </blockquote>
     </section>
   </main>
 
   <footer>
-    <p>&copy; 2026 PixelShop. Todos os direitos reservados. Feito com C e Oracle na veia.</p>
+    <p>&copy; 2026 PixelShop. Todos os direitos reservados.</p>
   </footer>
 </body>
 </html>

@@ -1,39 +1,34 @@
-<!-- Pagina Contato - Responsavel: Gabriel Cole Ambrosio -->
-<!-- Formulario montado pelo Gabriel. O id="form-contato" facilita
-     identificacao em testes e nos seletores de acessibilidade. -->
+<!-- contato.html — Gabriel Cole Ambrosio -->
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Entre em contato com a PixelShop. Tire duvidas sobre produtos, precos e disponibilidade de estoque.">
-  <!-- Google Fonts adicionado aqui por faltava nas versoes anteriores desta pagina,
-       deixando a tipografia inconsistente com as outras paginas do site -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <title>Contato - PixelShop</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
   <header>
-    <nav class="nav-principal">
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="sobre.html">Sobre</a></li>
-        <li><a href="produtos.html">Produtos/Servicos</a></li>
-        <li><a href="portfolio.html">Portfolio</a></li>
-        <!-- .ativo adicionado: estava faltando nesta pagina, entao o menu
-             nao destacava visualmente que o usuario estava em "Contato" -->
-        <li><a href="contato.html" class="ativo">Contato</a></li>
-      </ul>
-    </nav>
+    <div class="cabecalho-interno">
+      <a href="index.html" class="logo-site">Pixel<span>Shop</span></a>
+      <nav class="nav-principal">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="sobre.html">Sobre</a></li>
+          <li><a href="produtos.html">Catálogo</a></li>
+          <li><a href="portfolio.html">Portfólio</a></li>
+          <li><a href="contato.html" class="ativo">Contato</a></li>
+        </ul>
+      </nav>
+    </div>
   </header>
 
   <main>
     <section>
       <h1>Entre em Contato</h1>
 
-      <!-- id="form-contato" facilita selecionar o formulario em testes
-           automatizados e scripts de acessibilidade -->
       <form id="form-contato" action="#" method="POST">
         <label for="nome-cliente">Nome:</label>
         <input type="text" id="nome-cliente" name="nome" placeholder="Seu nome completo" required>
@@ -47,8 +42,6 @@
         <button type="submit">Enviar Mensagem</button>
       </form>
 
-      <!-- .caixa-contato: classe renomeada de .info-contato pra manter
-           coerencia com a nomenclatura PT-BR do restante do CSS -->
       <div class="caixa-contato">
         <p><strong>Endereço:</strong> Av. Marquês de São Vicente, 1430, Barra Funda — São Paulo/SP</p>
         <p><strong>Telefone:</strong> (11) 3456-7890</p>
@@ -59,7 +52,7 @@
   </main>
 
   <footer>
-    <p>&copy; 2026 PixelShop. Todos os direitos reservados. Feito com C e Oracle na veia.</p>
+    <p>&copy; 2026 PixelShop. Todos os direitos reservados.</p>
   </footer>
 </body>
 </html>

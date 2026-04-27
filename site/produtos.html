@@ -1,12 +1,10 @@
-<!-- Pagina Produtos/Servicos - Responsavel: Luiz Augusto Tiburcio -->
-<!-- Cards expandiveis feitos com <details> e <summary> — sem JS, conforme edital.
-     Os 8 produtos abaixo espelham os IDs e precos do insert_data.sql do Oracle. -->
+<!-- produtos.html — Luiz Augusto Tiburcio -->
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Catalogo completo da PixelShop: Perifericos, Notebooks, Placas de Video e Smartphones. Estoque gerenciado em C com banco Oracle.">
+  <meta name="description" content="Catálogo completo da PixelShop: Periféricos, Notebooks, Placas de Vídeo e Smartphones.">
   <title>Catálogo - PixelShop</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
@@ -30,340 +28,326 @@
     <section>
       <h1>Catálogo de Produtos</h1>
       <p>
-        Hardware de alta performance para gamers, desenvolvedores e profissionais.
-        Estoque gerenciado pelo nosso sistema exclusivo em <strong>Linguagem C</strong>
-        com persistência no <strong>Oracle Database</strong> — os dados que você vê aqui
-        são os mesmos do banco em tempo real.
-      </p>
-      <p>
-        ↓ Clique em qualquer produto para expandir as especificações técnicas completas.
+        Periféricos, notebooks, smartphones e componentes selecionados pelo time.
+        Clique em qualquer produto para ver as especificações completas.
       </p>
 
-      <!-- ============================================
-           CATEGORIA: PERIFERICOS
-           IDs no banco Oracle: 5, 6, 16
-           ============================================ -->
+      <!-- PERIFERICOS -->
       <div class="categoria-produtos">
         <h2 class="titulo-categoria">Periféricos</h2>
-
         <div class="grid-catalogo">
 
-          <!-- Produto ID 5: Mouse Logitech MX Master -->
-          <details class="card-detalhe" id="produto-5">
+          <!-- Mouse Logitech MX Master -->
+          <div class="card-detalhe-wrapper" id="produto-5">
             <img
-              src="img/mouse-gamer.jpg"
-              alt="Mouse sem fio Logitech MX Master 3S"
-              class="card-img"
-              onerror="this.src='https://images.unsplash.com/photo-1527814050087-1793082bb764?w=500&q=80'">
-            <summary>
-              <div class="resumo-produto">
-                <h3>Mouse Logitech MX Master</h3>
-                <p class="preco">R$ 349,90</p>
+              src="https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=500&q=80"
+              alt="Mouse sem fio Logitech MX Master"
+              class="card-img card-img-catalogo">
+            <details class="card-detalhe">
+              <summary>
+                <div class="resumo-produto">
+                  <h3>Mouse Logitech MX Master</h3>
+                  <p class="preco">R$ 349,90</p>
+                </div>
+                <span class="icone-expandir" aria-hidden="true">+</span>
+              </summary>
+              <div class="corpo-detalhe">
+                <div class="corpo-inner">
+                  <span class="badge-estoque disponivel">✓ Em Estoque</span>
+                  <table class="specs-tecnicas">
+                    <tr><td>Conectividade</td><td>Bluetooth / 2.4 GHz sem fio</td></tr>
+                    <tr><td>DPI</td><td>200 – 8.000 DPI (ajustável)</td></tr>
+                    <tr><td>Bateria</td><td>70 dias com 1 carga completa</td></tr>
+                    <tr><td>Compatibilidade</td><td>Windows, macOS, Linux</td></tr>
+                    <tr><td>Garantia</td><td>1 ano Logitech</td></tr>
+                  </table>
+                  <button class="btn-comprar">Adicionar ao Carrinho</button>
+                </div>
               </div>
-              <!-- + vira x quando aberto, via CSS no [open] -->
-              <span class="icone-expandir" aria-hidden="true">+</span>
-            </summary>
-            <div class="corpo-detalhe">
-              <div class="corpo-inner">
-                <span class="badge-estoque disponivel">✓ Em Estoque</span>
-                <table class="specs-tecnicas">
-                  <tr><td>Conectividade</td><td>Bluetooth / 2.4 GHz sem fio</td></tr>
-                  <tr><td>DPI</td><td>200 – 8.000 DPI (ajustavel)</td></tr>
-                  <tr><td>Bateria</td><td>70 dias com 1 carga completa</td></tr>
-                  <tr><td>Compatibilidade</td><td>Windows, macOS, Linux</td></tr>
-                  <tr><td>Garantia</td><td>1 ano Logitech</td></tr>
-                </table>
-                <button class="btn-comprar">Adicionar ao Carrinho</button>
-              </div>
-            </div>
-          </details>
+            </details>
+          </div>
 
-          <!-- Produto ID 6: Teclado Mecanico Redragon -->
-          <details class="card-detalhe" id="produto-6">
+          <!-- Teclado Mecanico Redragon -->
+          <div class="card-detalhe-wrapper" id="produto-6">
             <img
-              src="img/teclado-mecanico.jpg"
-              alt="Teclado Mecanico Redragon K552 Switch Red RGB ABNT2"
-              class="card-img"
-              onerror="this.src='https://images.unsplash.com/photo-1595225476474-87563907a212?w=500&q=80'">
-            <summary>
-              <div class="resumo-produto">
-                <h3>Teclado Mecanico Redragon</h3>
-                <p class="preco">R$ 279,90</p>
+              src="https://images.unsplash.com/photo-1618384887929-16ec33fab9ef?w=500&q=80"
+              alt="Teclado Mecânico Redragon Switch Red RGB ABNT2"
+              class="card-img card-img-catalogo">
+            <details class="card-detalhe">
+              <summary>
+                <div class="resumo-produto">
+                  <h3>Teclado Mecânico Redragon</h3>
+                  <p class="preco">R$ 279,90</p>
+                </div>
+                <span class="icone-expandir" aria-hidden="true">+</span>
+              </summary>
+              <div class="corpo-detalhe">
+                <div class="corpo-inner">
+                  <span class="badge-estoque disponivel">✓ Em Estoque</span>
+                  <table class="specs-tecnicas">
+                    <tr><td>Switch</td><td>Red Linear (silencioso)</td></tr>
+                    <tr><td>Retroiluminação</td><td>RGB full — 16,8 milhões de cores</td></tr>
+                    <tr><td>Layout</td><td>ABNT2 (Português BR)</td></tr>
+                    <tr><td>Durabilidade</td><td>50 milhões de cliques por tecla</td></tr>
+                    <tr><td>Conexão</td><td>USB cabo removível</td></tr>
+                  </table>
+                  <button class="btn-comprar">Adicionar ao Carrinho</button>
+                </div>
               </div>
-              <span class="icone-expandir" aria-hidden="true">+</span>
-            </summary>
-            <div class="corpo-detalhe">
-              <div class="corpo-inner">
-                <span class="badge-estoque disponivel">✓ Em Estoque</span>
-                <table class="specs-tecnicas">
-                  <tr><td>Switch</td><td>Red Linear (silencioso)</td></tr>
-                  <tr><td>Retroiluminacao</td><td>RGB full — 16,8 milhoes de cores</td></tr>
-                  <tr><td>Layout</td><td>ABNT2 (Portugues BR)</td></tr>
-                  <tr><td>Durabilidade</td><td>50 milhoes de cliques por tecla</td></tr>
-                  <tr><td>Conexao</td><td>USB cabo removivel</td></tr>
-                </table>
-                <button class="btn-comprar">Adicionar ao Carrinho</button>
-              </div>
-            </div>
-          </details>
+            </details>
+          </div>
 
-          <!-- Produto ID 16: Monitor LG LED -->
-          <details class="card-detalhe" id="produto-16">
+          <!-- Monitor LG -->
+          <div class="card-detalhe-wrapper" id="produto-16">
             <img
-              src="img/monitor-144hz.jpg"
+              src="https://images.unsplash.com/photo-1547082299-de196ea013d6?w=500&q=80"
               alt="Monitor LED LG 21.5 polegadas Full HD IPS"
-              class="card-img"
-              onerror="this.src='https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=500&q=80'">
-            <summary>
-              <div class="resumo-produto">
-                <h3>Monitor LED 21.5 pol LG</h3>
-                <p class="preco">R$ 599,00</p>
+              class="card-img card-img-catalogo">
+            <details class="card-detalhe">
+              <summary>
+                <div class="resumo-produto">
+                  <h3>Monitor LED 21.5 pol LG</h3>
+                  <p class="preco">R$ 599,00</p>
+                </div>
+                <span class="icone-expandir" aria-hidden="true">+</span>
+              </summary>
+              <div class="corpo-detalhe">
+                <div class="corpo-inner">
+                  <span class="badge-estoque baixo-estoque">⚠ Últimas unidades</span>
+                  <table class="specs-tecnicas">
+                    <tr><td>Resolução</td><td>1920 x 1080 (Full HD)</td></tr>
+                    <tr><td>Painel</td><td>IPS — ângulo de visão 178°</td></tr>
+                    <tr><td>Taxa de refresh</td><td>75 Hz</td></tr>
+                    <tr><td>Entradas</td><td>HDMI 1.4, D-Sub</td></tr>
+                    <tr><td>Extras</td><td>AMD FreeSync, Eye Comfort</td></tr>
+                  </table>
+                  <button class="btn-comprar">Adicionar ao Carrinho</button>
+                </div>
               </div>
-              <span class="icone-expandir" aria-hidden="true">+</span>
-            </summary>
-            <div class="corpo-detalhe">
-              <div class="corpo-inner">
-                <span class="badge-estoque baixo-estoque">⚠ Ultimas unidades</span>
-                <table class="specs-tecnicas">
-                  <tr><td>Resolucao</td><td>1920 x 1080 (Full HD)</td></tr>
-                  <tr><td>Painel</td><td>IPS — angulo de visao 178°</td></tr>
-                  <tr><td>Taxa de refresh</td><td>75 Hz</td></tr>
-                  <tr><td>Entradas</td><td>HDMI 1.4, D-Sub</td></tr>
-                  <tr><td>Extras</td><td>AMD FreeSync, Eye Comfort</td></tr>
-                </table>
-                <button class="btn-comprar">Adicionar ao Carrinho</button>
-              </div>
-            </div>
-          </details>
+            </details>
+          </div>
 
-        </div><!-- /grid-catalogo Perifericos -->
-      </div><!-- /categoria-produtos -->
+        </div>
+      </div>
 
 
-      <!-- ============================================
-           CATEGORIA: PLACAS DE VIDEO
-           IDs no banco Oracle: 10, 11
-           GPU adicionado nesta iteracao do site — Gabriel
-           ============================================ -->
+      <!-- PLACAS DE VIDEO -->
       <div class="categoria-produtos">
         <h2 class="titulo-categoria">Placas de Vídeo</h2>
-
         <div class="grid-catalogo">
 
-          <!-- Produto ID 10: RTX 3060 -->
-          <details class="card-detalhe" id="produto-10">
+          <!-- RTX 3060 -->
+          <div class="card-detalhe-wrapper" id="produto-10">
             <img
-              src="img/placa-video.jpg"
-              alt="Placa de Video NVIDIA GeForce RTX 3060 12GB GDDR6"
-              class="card-img"
-              onerror="this.src='https://images.unsplash.com/photo-1591488320449-011701bb6704?w=500&q=80'">
-            <summary>
-              <div class="resumo-produto">
-                <h3>NVIDIA RTX 3060 12GB GDDR6</h3>
-                <p class="preco">R$ 2.399,00</p>
+              src="https://images.unsplash.com/photo-1591488320449-011701bb6704?w=500&q=80"
+              alt="Placa de Vídeo NVIDIA GeForce RTX 3060 12GB GDDR6"
+              class="card-img card-img-catalogo">
+            <details class="card-detalhe">
+              <summary>
+                <div class="resumo-produto">
+                  <h3>NVIDIA RTX 3060 12GB GDDR6</h3>
+                  <p class="preco">R$ 2.399,00</p>
+                </div>
+                <span class="icone-expandir" aria-hidden="true">+</span>
+              </summary>
+              <div class="corpo-detalhe">
+                <div class="corpo-inner">
+                  <span class="badge-estoque disponivel">✓ Em Estoque</span>
+                  <table class="specs-tecnicas">
+                    <tr><td>VRAM</td><td>12 GB GDDR6</td></tr>
+                    <tr><td>CUDA Cores</td><td>3.584</td></tr>
+                    <tr><td>TDP</td><td>170W</td></tr>
+                    <tr><td>Saídas</td><td>3x DisplayPort 1.4, 1x HDMI 2.1</td></tr>
+                    <tr><td>Ray Tracing</td><td>Sim — 2ª geração NVIDIA</td></tr>
+                    <tr><td>DLSS</td><td>Versão 2.0 suportada</td></tr>
+                  </table>
+                  <button class="btn-comprar">Adicionar ao Carrinho</button>
+                </div>
               </div>
-              <span class="icone-expandir" aria-hidden="true">+</span>
-            </summary>
-            <div class="corpo-detalhe">
-              <div class="corpo-inner">
-                <span class="badge-estoque disponivel">✓ Em Estoque</span>
-                <table class="specs-tecnicas">
-                  <tr><td>VRAM</td><td>12 GB GDDR6</td></tr>
-                  <tr><td>CUDA Cores</td><td>3.584</td></tr>
-                  <tr><td>TDP</td><td>170W</td></tr>
-                  <tr><td>Saidas</td><td>3x DisplayPort 1.4, 1x HDMI 2.1</td></tr>
-                  <tr><td>Ray Tracing</td><td>Sim — 2ª geracao NVIDIA</td></tr>
-                  <tr><td>DLSS</td><td>Versao 2.0 suportada</td></tr>
-                </table>
-                <button class="btn-comprar">Adicionar ao Carrinho</button>
-              </div>
-            </div>
-          </details>
+            </details>
+          </div>
 
-          <!-- Produto ID 11: RX 6600 XT -->
-          <details class="card-detalhe" id="produto-11">
+          <!-- RX 6600 XT -->
+          <div class="card-detalhe-wrapper" id="produto-11">
             <img
-              src="img/placa-video.jpg"
-              alt="Placa de Video AMD Radeon RX 6600 XT 8GB GDDR6"
-              class="card-img"
-              onerror="this.src='https://images.unsplash.com/photo-1591488320449-011701bb6704?w=500&q=80'">
-            <summary>
-              <div class="resumo-produto">
-                <h3>AMD Radeon RX 6600 XT 8GB</h3>
-                <p class="preco">R$ 1.899,00</p>
+              src="https://img.terabyteshop.com.br/produto/g/placa-de-video-asrock-radeon-rx-6600-challenger-d-8gb-gddr6-fsr-ray-tracing-90-ga2rzz-00uanf_133352.jpg"
+              alt="Placa de Vídeo AMD Radeon RX 6600 XT 8GB GDDR6"
+              class="card-img card-img-catalogo">
+            <details class="card-detalhe">
+              <summary>
+                <div class="resumo-produto">
+                  <h3>AMD Radeon RX 6600 XT 8GB</h3>
+                  <p class="preco">R$ 1.899,00</p>
+                </div>
+                <span class="icone-expandir" aria-hidden="true">+</span>
+              </summary>
+              <div class="corpo-detalhe">
+                <div class="corpo-inner">
+                  <span class="badge-estoque disponivel">✓ Em Estoque</span>
+                  <table class="specs-tecnicas">
+                    <tr><td>VRAM</td><td>8 GB GDDR6</td></tr>
+                    <tr><td>Stream Processors</td><td>2.048</td></tr>
+                    <tr><td>TDP</td><td>160W</td></tr>
+                    <tr><td>Saídas</td><td>2x DisplayPort 1.4, 1x HDMI 2.1, 1x DVI</td></tr>
+                    <tr><td>AMD FSR</td><td>Sim — versão 2.0</td></tr>
+                    <tr><td>Ideal para</td><td>1080p Ultra / 1440p High</td></tr>
+                  </table>
+                  <button class="btn-comprar">Adicionar ao Carrinho</button>
+                </div>
               </div>
-              <span class="icone-expandir" aria-hidden="true">+</span>
-            </summary>
-            <div class="corpo-detalhe">
-              <div class="corpo-inner">
-                <span class="badge-estoque disponivel">✓ Em Estoque</span>
-                <table class="specs-tecnicas">
-                  <tr><td>VRAM</td><td>8 GB GDDR6</td></tr>
-                  <tr><td>Stream Processors</td><td>2.048</td></tr>
-                  <tr><td>TDP</td><td>160W</td></tr>
-                  <tr><td>Saidas</td><td>2x DisplayPort 1.4, 1x HDMI 2.1, 1x DVI</td></tr>
-                  <tr><td>AMD FSR</td><td>Sim — versao 2.0</td></tr>
-                  <tr><td>Ideal para</td><td>1080p Ultra / 1440p High</td></tr>
-                </table>
-                <button class="btn-comprar">Adicionar ao Carrinho</button>
-              </div>
-            </div>
-          </details>
+            </details>
+          </div>
 
-        </div><!-- /grid-catalogo Placas de Video -->
-      </div><!-- /categoria-produtos -->
+        </div>
+      </div>
 
 
-      <!-- ============================================
-           CATEGORIA: NOTEBOOKS
-           IDs no banco Oracle: 3, 4
-           ============================================ -->
+      <!-- NOTEBOOKS -->
       <div class="categoria-produtos">
         <h2 class="titulo-categoria">Notebooks</h2>
-
         <div class="grid-catalogo">
 
-          <!-- Produto ID 3: Dell Inspiron -->
-          <details class="card-detalhe" id="produto-3">
+          <!-- Dell Inspiron -->
+          <div class="card-detalhe-wrapper" id="produto-3">
             <img
-              src="img/notebook.jpg"
+              src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=500&q=80"
               alt="Notebook Dell Inspiron 15 Core i5 SSD 256GB"
-              class="card-img"
-              onerror="this.src='https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=500&q=80'">
-            <summary>
-              <div class="resumo-produto">
-                <h3>Notebook Dell Inspiron 15</h3>
-                <p class="preco">R$ 2.199,00</p>
+              class="card-img card-img-catalogo">
+            <details class="card-detalhe">
+              <summary>
+                <div class="resumo-produto">
+                  <h3>Notebook Dell Inspiron 15</h3>
+                  <p class="preco">R$ 2.199,00</p>
+                </div>
+                <span class="icone-expandir" aria-hidden="true">+</span>
+              </summary>
+              <div class="corpo-detalhe">
+                <div class="corpo-inner">
+                  <span class="badge-estoque disponivel">✓ Em Estoque</span>
+                  <table class="specs-tecnicas">
+                    <tr><td>Processador</td><td>Intel Core i5-1235U (12ª Ger.)</td></tr>
+                    <tr><td>RAM</td><td>8 GB DDR4 3200 MHz</td></tr>
+                    <tr><td>Armazenamento</td><td>256 GB SSD NVMe</td></tr>
+                    <tr><td>Tela</td><td>15.6" FHD IPS antirreflexo</td></tr>
+                    <tr><td>Bateria</td><td>54 Wh — até 10h de uso</td></tr>
+                    <tr><td>S.O.</td><td>Windows 11 Home</td></tr>
+                  </table>
+                  <button class="btn-comprar">Adicionar ao Carrinho</button>
+                </div>
               </div>
-              <span class="icone-expandir" aria-hidden="true">+</span>
-            </summary>
-            <div class="corpo-detalhe">
-              <div class="corpo-inner">
-                <span class="badge-estoque disponivel">✓ Em Estoque</span>
-                <table class="specs-tecnicas">
-                  <tr><td>Processador</td><td>Intel Core i5-1235U (12ª Ger.)</td></tr>
-                  <tr><td>RAM</td><td>8 GB DDR4 3200 MHz</td></tr>
-                  <tr><td>Armazenamento</td><td>256 GB SSD NVMe</td></tr>
-                  <tr><td>Tela</td><td>15.6" FHD IPS antirreflexo</td></tr>
-                  <tr><td>Bateria</td><td>54 Wh — ate 10h de uso</td></tr>
-                  <tr><td>S.O.</td><td>Windows 11 Home</td></tr>
-                </table>
-                <button class="btn-comprar">Adicionar ao Carrinho</button>
-              </div>
-            </div>
-          </details>
+            </details>
+          </div>
 
-          <!-- Produto ID 4: Lenovo IdeaPad -->
-          <details class="card-detalhe" id="produto-4">
+          <!-- Lenovo IdeaPad -->
+          <div class="card-detalhe-wrapper" id="produto-4">
             <img
-              src="img/notebook.jpg"
+              src="https://images.unsplash.com/photo-1588702547919-26089e690ecc?w=500&q=80"
               alt="Notebook Lenovo IdeaPad 5 Ryzen 5 16GB SSD 512GB"
-              class="card-img"
-              onerror="this.src='https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=500&q=80'">
-            <summary>
-              <div class="resumo-produto">
-                <h3>Notebook Lenovo IdeaPad 5</h3>
-                <p class="preco">R$ 2.799,00</p>
+              class="card-img card-img-catalogo">
+            <details class="card-detalhe">
+              <summary>
+                <div class="resumo-produto">
+                  <h3>Notebook Lenovo IdeaPad 5</h3>
+                  <p class="preco">R$ 2.799,00</p>
+                </div>
+                <span class="icone-expandir" aria-hidden="true">+</span>
+              </summary>
+              <div class="corpo-detalhe">
+                <div class="corpo-inner">
+                  <span class="badge-estoque disponivel">✓ Em Estoque</span>
+                  <table class="specs-tecnicas">
+                    <tr><td>Processador</td><td>AMD Ryzen 5 7530U</td></tr>
+                    <tr><td>RAM</td><td>16 GB DDR4 — Dual Channel</td></tr>
+                    <tr><td>Armazenamento</td><td>512 GB SSD NVMe PCIe 3.0</td></tr>
+                    <tr><td>Tela</td><td>15.6" FHD IPS 300 nits</td></tr>
+                    <tr><td>GPU</td><td>AMD Radeon 660M integrada</td></tr>
+                    <tr><td>S.O.</td><td>Windows 11 Home</td></tr>
+                  </table>
+                  <button class="btn-comprar">Adicionar ao Carrinho</button>
+                </div>
               </div>
-              <span class="icone-expandir" aria-hidden="true">+</span>
-            </summary>
-            <div class="corpo-detalhe">
-              <div class="corpo-inner">
-                <span class="badge-estoque disponivel">✓ Em Estoque</span>
-                <table class="specs-tecnicas">
-                  <tr><td>Processador</td><td>AMD Ryzen 5 7530U</td></tr>
-                  <tr><td>RAM</td><td>16 GB DDR4 — Dual Channel</td></tr>
-                  <tr><td>Armazenamento</td><td>512 GB SSD NVMe PCIe 3.0</td></tr>
-                  <tr><td>Tela</td><td>15.6" FHD IPS 300 nits</td></tr>
-                  <tr><td>GPU</td><td>AMD Radeon 660M integrada</td></tr>
-                  <tr><td>S.O.</td><td>Windows 11 Home</td></tr>
-                </table>
-                <button class="btn-comprar">Adicionar ao Carrinho</button>
-              </div>
-            </div>
-          </details>
+            </details>
+          </div>
 
-        </div><!-- /grid-catalogo Notebooks -->
-      </div><!-- /categoria-produtos -->
+        </div>
+      </div>
 
 
-      <!-- ============================================
-           CATEGORIA: SMARTPHONES
-           IDs no banco Oracle: 2, 8
-           ============================================ -->
+      <!-- SMARTPHONES -->
       <div class="categoria-produtos">
         <h2 class="titulo-categoria">Smartphones</h2>
-
         <div class="grid-catalogo">
 
-          <!-- Produto ID 2: Samsung Galaxy A54 -->
-          <details class="card-detalhe" id="produto-2">
+          <!-- Samsung Galaxy A54 -->
+          <div class="card-detalhe-wrapper" id="produto-2">
             <img
-              src="img/smartphone.jpg"
+              src="https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?w=500&q=80"
               alt="Smartphone Samsung Galaxy A54 128GB 6GB RAM"
-              class="card-img"
-              onerror="this.src='https://images.unsplash.com/photo-1610945415295-d9bbf067e59c?w=500&q=80'">
-            <summary>
-              <div class="resumo-produto">
-                <h3>Samsung Galaxy A54 128GB</h3>
-                <p class="preco">R$ 1.299,00</p>
+              class="card-img card-img-catalogo">
+            <details class="card-detalhe">
+              <summary>
+                <div class="resumo-produto">
+                  <h3>Samsung Galaxy A54 128GB</h3>
+                  <p class="preco">R$ 1.299,00</p>
+                </div>
+                <span class="icone-expandir" aria-hidden="true">+</span>
+              </summary>
+              <div class="corpo-detalhe">
+                <div class="corpo-inner">
+                  <span class="badge-estoque disponivel">✓ Em Estoque</span>
+                  <table class="specs-tecnicas">
+                    <tr><td>Armazenamento</td><td>128 GB + slot microSD</td></tr>
+                    <tr><td>RAM</td><td>6 GB LPDDR4X</td></tr>
+                    <tr><td>Câmera</td><td>50 MP + 12 MP + 5 MP</td></tr>
+                    <tr><td>Bateria</td><td>5.000 mAh, carregamento 25W</td></tr>
+                    <tr><td>Tela</td><td>6.4" Super AMOLED 120Hz</td></tr>
+                    <tr><td>Garantia</td><td>1 ano Samsung</td></tr>
+                  </table>
+                  <button class="btn-comprar">Adicionar ao Carrinho</button>
+                </div>
               </div>
-              <span class="icone-expandir" aria-hidden="true">+</span>
-            </summary>
-            <div class="corpo-detalhe">
-              <div class="corpo-inner">
-                <span class="badge-estoque disponivel">✓ Em Estoque</span>
-                <table class="specs-tecnicas">
-                  <tr><td>Armazenamento</td><td>128 GB + slot microSD</td></tr>
-                  <tr><td>RAM</td><td>6 GB LPDDR4X</td></tr>
-                  <tr><td>Camera</td><td>50 MP + 12 MP + 5 MP</td></tr>
-                  <tr><td>Bateria</td><td>5.000 mAh, carregamento 25W</td></tr>
-                  <tr><td>Tela</td><td>6.4" Super AMOLED 120Hz</td></tr>
-                  <tr><td>Garantia</td><td>1 ano Samsung + seguro opcional</td></tr>
-                </table>
-                <button class="btn-comprar">Adicionar ao Carrinho</button>
-              </div>
-            </div>
-          </details>
+            </details>
+          </div>
 
-          <!-- Produto ID 8: Motorola Moto G52 -->
-          <details class="card-detalhe" id="produto-8">
+          <!-- Motorola Moto G52 -->
+          <div class="card-detalhe-wrapper" id="produto-8">
             <img
-              src="img/smartphone.jpg"
+              src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=500&q=80"
               alt="Smartphone Motorola Moto G52 128GB com NFC"
-              class="card-img"
-              onerror="this.src='https://images.unsplash.com/photo-1610945415295-d9bbf067e59c?w=500&q=80'">
-            <summary>
-              <div class="resumo-produto">
-                <h3>Motorola Moto G52 128GB</h3>
-                <p class="preco">R$ 1.099,00</p>
+              class="card-img card-img-catalogo">
+            <details class="card-detalhe">
+              <summary>
+                <div class="resumo-produto">
+                  <h3>Motorola Moto G52 128GB</h3>
+                  <p class="preco">R$ 1.099,00</p>
+                </div>
+                <span class="icone-expandir" aria-hidden="true">+</span>
+              </summary>
+              <div class="corpo-detalhe">
+                <div class="corpo-inner">
+                  <span class="badge-estoque disponivel">✓ Em Estoque</span>
+                  <table class="specs-tecnicas">
+                    <tr><td>Armazenamento</td><td>128 GB + slot microSD até 1TB</td></tr>
+                    <tr><td>RAM</td><td>4 GB LPDDR4X</td></tr>
+                    <tr><td>Câmera</td><td>50 MP principal OIS</td></tr>
+                    <tr><td>Bateria</td><td>5.000 mAh, Turbo Power 33W</td></tr>
+                    <tr><td>NFC</td><td>Sim — pagamento por aproximação</td></tr>
+                    <tr><td>Tela</td><td>6.6" pOLED 90Hz</td></tr>
+                  </table>
+                  <button class="btn-comprar">Adicionar ao Carrinho</button>
+                </div>
               </div>
-              <span class="icone-expandir" aria-hidden="true">+</span>
-            </summary>
-            <div class="corpo-detalhe">
-              <div class="corpo-inner">
-                <span class="badge-estoque disponivel">✓ Em Estoque</span>
-                <table class="specs-tecnicas">
-                  <tr><td>Armazenamento</td><td>128 GB + slot microSD ate 1TB</td></tr>
-                  <tr><td>RAM</td><td>4 GB LPDDR4X</td></tr>
-                  <tr><td>Camera</td><td>50 MP principal OIS</td></tr>
-                  <tr><td>Bateria</td><td>5.000 mAh, Turbo Power 33W</td></tr>
-                  <tr><td>NFC</td><td>Sim — pagamento por aproximacao</td></tr>
-                  <tr><td>Tela</td><td>6.6" pOLED 90Hz</td></tr>
-                </table>
-                <button class="btn-comprar">Adicionar ao Carrinho</button>
-              </div>
-            </div>
-          </details>
+            </details>
+          </div>
 
-        </div><!-- /grid-catalogo Smartphones -->
-      </div><!-- /categoria-produtos -->
+        </div>
+      </div>
 
     </section>
   </main>
 
   <footer>
-    <p>&copy; 2026 PixelShop. Todos os direitos reservados. Feito com C e Oracle na veia.</p>
+    <p>&copy; 2026 PixelShop. Todos os direitos reservados.</p>
   </footer>
 </body>
 </html>
