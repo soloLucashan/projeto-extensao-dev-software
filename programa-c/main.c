@@ -7,7 +7,7 @@
  * Squad C: Lucas Byoung Ki Han
  *
  * OBS: vetor estatico de 100 produtos, suficiente pra entrega.
- * TODO: lista encadeada no semestre que vem talvez
+ * tentar depois: lista encadeada no semestre que vem talvez
  */
 
 #include <stdio.h>
