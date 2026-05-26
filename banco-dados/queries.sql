@@ -3,15 +3,9 @@
 -- Responsavel: Luiz Augusto Tiburcio
 -- Projeto de Extensao - Turma Noturno 2026
 -- ============================================================
--- Essas queries cobrem os principais relatorios que a professora
--- pediu: vendas por cliente, estoque critico, produtos mais vendidos
--- e receita por categoria. Cada uma tem um numero pra facilitar
--- referencia na documentacao do projeto.
+
 -- ============================================================
--- FIXME (Luiz): adicionar indice na coluna nome de PRODUTO e CLIENTE
---   se o banco crescer alem de 500 registros. Por enquanto o full scan
---   nao e problema, mas numa loja real com milhares de SKUs ia travar.
--- 1. Listagem completa de clientes (usada na tela de gestao de clientes)
+
 SELECT id_cliente,
     nome,
     email,

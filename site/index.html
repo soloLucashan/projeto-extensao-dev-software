@@ -1,122 +1,153 @@
 <!-- index.html — Gabriel Cole Ambrosio -->
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-br">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="PixelShop: hardware de qualidade para gamers, desenvolvedores e profissionais. Periféricos, notebooks e componentes com atendimento direto.">
-  <title>Home - PixelShop</title>
-  <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-  <header>
-    <div class="cabecalho-interno">
-      <a href="index.html" class="logo-site">Pixel<span>Shop</span></a>
-      <nav class="nav-principal">
-        <ul>
-          <li><a href="index.html" class="ativo">Home</a></li>
-          <li><a href="sobre.html">Sobre</a></li>
-          <li><a href="produtos.html">Catálogo</a></li>
-          <li><a href="portfolio.html">Portfólio</a></li>
-          <li><a href="contato.html">Contato</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
-
-  <main>
-
-    <!-- BANNER HERO -->
-    <section class="secao-banner">
-      <h1>Hardware para quem precisa.<br>Tecnologia para todos.</h1>
-      <p>
-        Periféricos, GPUs, notebooks e smartphones selecionados pelo time.
-        Sem robô de vendas — atendimento de quem entende o que está vendendo.
-      </p>
-      <a href="produtos.html" class="btn-cta">Ver Catálogo Completo</a>
-    </section>
-
-    <!-- DESTAQUES DO CATALOGO -->
-    <section>
-      <h2>Destaques do Catálogo</h2>
-      <p>Alguns dos produtos mais pedidos essa semana.</p>
-
-      <div class="grid-destaques">
-
-        <article class="card-destaque">
-          <img
-            src="img/mouse-gamer.jpg"
-            alt="Mouse sem fio Logitech MX Master"
-            class="card-img"
-            onerror="this.src='https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=500&q=80'">
-          <div class="card-conteudo">
-            <h3>Mouse Logitech MX Master</h3>
-            <p>Sem fio, 8.000 DPI, ergonômico. Bom pra quem fica horas no computador.</p>
-            <p class="preco">R$ 349,90</p>
-            <a href="produtos.html#produto-5" class="btn-secundario">Ver Especificações</a>
-          </div>
-        </article>
-
-        <article class="card-destaque">
-          <img
-            src="img/teclado-mecanico.jpg"
-            alt="Teclado Mecânico Redragon Switch Red RGB ABNT2"
-            class="card-img"
-            onerror="this.src='https://images.unsplash.com/photo-1618384887929-16ec33fab9ef?w=500&q=80'">
-          <div class="card-conteudo">
-            <h3>Teclado Mecânico Redragon</h3>
-            <p>Switch Red, RGB full, layout ABNT2. Um dos mais vendidos da loja.</p>
-            <p class="preco">R$ 279,90</p>
-            <a href="produtos.html#produto-6" class="btn-secundario">Ver Especificações</a>
-          </div>
-        </article>
-
-        <article class="card-destaque">
-          <img
-            src="img/placa-video.jpg"
-            alt="Placa de Vídeo NVIDIA RTX 3060 12GB"
-            class="card-img"
-            onerror="this.src='https://images.unsplash.com/photo-1591488320449-011701bb6704?w=500&q=80'">
-          <div class="card-conteudo">
-            <h3>NVIDIA RTX 3060 12GB GDDR6</h3>
-            <p>GPU com 12 GB de VRAM. Boa pra gaming em 1080p/1440p e render leve.</p>
-            <p class="preco">R$ 2.399,00</p>
-            <a href="produtos.html#produto-10" class="btn-secundario">Ver Especificações</a>
-          </div>
-        </article>
-
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="PixelShop: hardware de qualidade para gamers, desenvolvedores e profissionais. Periféricos, notebooks e componentes com atendimento direto."
+    />
+    <title>Home - PixelShop</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <header>
+      <div class="cabecalho-interno">
+        <a href="index.html" class="logo-site">Pixel<span>Shop</span></a>
+        <nav class="nav-principal">
+          <ul>
+            <li><a href="index.html" class="ativo">Home</a></li>
+            <li><a href="sobre.html">Sobre</a></li>
+            <li><a href="produtos.html">Catálogo</a></li>
+            <li><a href="portfolio.html">Portfólio</a></li>
+            <li><a href="contato.html">Contato</a></li>
+          </ul>
+        </nav>
       </div>
-    </section>
+    </header>
 
-    <!-- POR QUE COMPRAR AQUI -->
-    <section class="secao-como-funciona">
-      <h2>Por que comprar aqui?</h2>
+    <main>
+      <!-- BANNER HERO -->
+      <section class="secao-banner">
+        <h1>Hardware para quem precisa.<br />Tecnologia para todos.</h1>
+        <p>
+          Periféricos, GPUs, notebooks e smartphones, tudo o que precisa,
+          selecionados pelo time. Sem robô de vendas — atendimento de quem
+          entende o que está vendendo.
+        </p>
+        <a href="produtos.html" class="btn-cta">Ver Catálogo Completo</a>
+      </section>
 
-      <p>
-        A PixelShop nasceu da necessidade de encontrar hardware de qualidade
-        sem pagar absurdo. A gente sabe o que procura porque usa os mesmos
-        produtos que vende — não tem nada no catálogo que nenhum de nós
-        testou antes.
-      </p>
+      <!-- DESTAQUES DO CATALOGO -->
+      <section>
+        <h2>Mais vendidos da semana</h2>
+        <p>Alguns dos produtos mais pedidos essa semana.</p>
 
-      <p>
-        Nosso estoque é pequeno e controlado de propósito. Preferimos ter
-        menos produtos e garantir que cada um vale o preço. Quando algo
-        entra em falta, avisamos antes de deixar o cliente esperando.
-      </p>
+        <div class="grid-destaques">
+          <article class="card-destaque">
+            <img
+              src="img/mouse-gamer.jpg"
+              alt="Mouse sem fio Logitech MX Master"
+              class="card-img"
+              onerror="
+                this.src =
+                  'https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=500&q=80'
+              "
+            />
+            <div class="card-conteudo">
+              <h3>Mouse Logitech MX Master</h3>
+              <p>
+                Sem fio, 8.000 DPI, ergonômico. Bom pra quem fica horas no
+                computador.
+              </p>
+              <p class="preco">R$ 69,90</p>
+              <a href="produtos.html#produto-5" class="btn-secundario"
+                >Ver Especificações</a
+              >
+            </div>
+          </article>
 
-      <div class="badges-tech">
-        <span class="badge">📦 Entrega para SP e região</span>
-        <span class="badge">🔧 Suporte pós-venda via WhatsApp</span>
-        <span class="badge">✅ Produtos testados antes de vender</span>
-        <span class="badge">💬 Atendimento humano, sem robô</span>
-      </div>
-    </section>
+          <article class="card-destaque">
+            <img
+              src="img/teclado-mecanico.jpg"
+              alt="Teclado Mecânico Redragon Switch Red RGB ABNT2"
+              class="card-img"
+              onerror="
+                this.src =
+                  'https://images.unsplash.com/photo-1618384887929-16ec33fab9ef?w=500&q=80'
+              "
+            />
+            <div class="card-conteudo">
+              <h3>Teclado Mecânico Redragon</h3>
+              <p>
+                Switch Red, RGB full, layout ABNT2. Um dos mais vendidos da
+                loja.
+              </p>
+              <p class="preco">R$ 139,90</p>
+              <a href="produtos.html#produto-6" class="btn-secundario"
+                >Ver Especificações</a
+              >
+            </div>
+          </article>
 
-  </main>
+          <article class="card-destaque">
+            <img
+              src="img/placa-video.jpg"
+              alt="Placa de Vídeo NVIDIA RTX 3060 12GB"
+              class="card-img"
+              onerror="
+                this.src =
+                  'https://images.unsplash.com/photo-1591488320449-011701bb6704?w=500&q=80'
+              "
+            />
+            <div class="card-conteudo">
+              <h3>NVIDIA RTX 3060 12GB GDDR6</h3>
+              <p>
+                GPU com 12 GB de VRAM. Boa pra gaming em 1080p/1440p e render
+                leve.
+              </p>
+              <p class="preco">R$ 1.599,00</p>
+              <a href="produtos.html#produto-10" class="btn-secundario"
+                >Ver Especificações</a
+              >
+            </div>
+          </article>
+        </div>
+      </section>
 
-  <footer>
-    <p>&copy; 2026 PixelShop. Todos os direitos reservados.</p>
-  </footer>
-</body>
+      <!-- POR QUE COMPRAR AQUI -->
+      <section class="secao-como-funciona">
+        <h2>Por que comprar aqui?</h2>
+
+        <p>
+          Nosso maior e principal objetivo é incluir àquelas pessoas que ficam
+          de fora ao acesso á tecnologia por causa do preço, a dor de não
+          conseguir fazer um trabalho pela falta de um notebook, ou a frustração
+          de não ter feito o projeto da melhor forma por conta do desempenho do
+          computador. A gente quer ser a loja de hardware que entende o que o
+          cliente precisa, sem tentar empurrar o mais caro ou o que tem mais
+          comissão. A gente quer ser a loja de hardware que tem preço justo e
+          atendimento direto - pela democracia da tecnologia.
+        </p>
+
+        <p>
+          Nosso estoque é pequeno e controlado de propósito. Preferimos ter
+          menos produtos e garantir que cada um vale o preço. Quando algo entra
+          em falta, avisamos antes de deixar o cliente esperando.
+        </p>
+
+        <div class="badges-tech">
+          <span class="badge">📦 Entrega para SP e região</span>
+          <span class="badge">🔧 Suporte pós-venda via WhatsApp</span>
+          <span class="badge">✅ Produtos testados antes de vender</span>
+          <span class="badge">💬 Atendimento humano, sem IA</span>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2026 PixelShop. Todos os direitos reservados.</p>
+    </footer>
+  </body>
 </html>

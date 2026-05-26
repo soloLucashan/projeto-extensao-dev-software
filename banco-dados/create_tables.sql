@@ -11,7 +11,6 @@ CREATE TABLE CATEGORIA (
     nome_categoria VARCHAR2(100) NOT NULL
 );
 -- produtos do catalogo
--- TODO: adicionar CHECK estoque >= 0 pra nao depender so da validacao do C
 CREATE TABLE PRODUTO (
     id_produto NUMBER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     nome VARCHAR2(100) NOT NULL,
