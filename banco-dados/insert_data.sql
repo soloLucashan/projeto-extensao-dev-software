@@ -119,7 +119,7 @@ VALUES (2, DATE '2026-03-15', 'CONCLUIDO', 1928.80);
 INSERT INTO PEDIDO (id_cliente, data_pedido, status, total)
 VALUES (3, DATE '2026-04-01', 'PENDENTE', 2199.00);
 INSERT INTO PEDIDO (id_cliente, data_pedido, status, total)
-VALUES (4, DATE '2026-04-05', 'CONCLUIDO', 429.80);
+VALUES (4, DATE '2026-04-05', 'CONCLUIDO', 629.80);
 -- ---- ITENS DOS PEDIDOS - Lote inicial ----
 -- preco_unit registra o valor cobrado na data da venda;
 -- importante pra historico financeiro mesmo que o preco do produto mude depois.
@@ -135,7 +135,6 @@ VALUES (2, 5, 1, 349.90);
 INSERT INTO ITEM_PEDIDO (id_pedido, id_produto, quantidade, preco_unit)
 VALUES (2, 6, 1, 279.90);
 -- Carlos: Teclado Redragon
--- Nota (Eduardo): total do pedido 2 = 1299.00 + 349.90 + 279.90 = 1928.80. Confere!
 INSERT INTO ITEM_PEDIDO (id_pedido, id_produto, quantidade, preco_unit)
 VALUES (3, 3, 1, 2199.00);
 -- Fernanda: Notebook Dell
@@ -145,7 +144,7 @@ VALUES (4, 5, 1, 349.90);
 INSERT INTO ITEM_PEDIDO (id_pedido, id_produto, quantidade, preco_unit)
 VALUES (4, 6, 1, 279.90);
 -- Rafael: Teclado Redragon
--- ---- PRODUTOS  ----
+--  PRODUTOS
 -- Mais produtos para testar o BD
 INSERT INTO PRODUTO (nome, descricao, preco, estoque, id_categoria)
 VALUES (
@@ -231,7 +230,7 @@ VALUES (
         4
     );
 -- GPUs adicionadas pra sincronizar com o catalogo HTML (produtos.html).
--- Estavam sendo exibidas no site mas nao existiam no banco — corrigido aqui.
+-- Produtos adicionados para manter o catálogo do site alinhado ao banco.
 -- id_produto gerado automaticamente sera 18 (RTX) e 19 (RX) nessa ordem.
 INSERT INTO PRODUTO (nome, descricao, preco, estoque, id_categoria)
 VALUES (
@@ -343,7 +342,6 @@ VALUES (11, DATE '2026-04-07', 'PENDENTE', 1198.00);
 INSERT INTO PEDIDO (id_cliente, data_pedido, status, total)
 VALUES (12, DATE '2026-04-08', 'CONCLUIDO', 589.80);
 -- HyperX (259.90) + HD Seagate (329.90)
--- id_cliente=15 = Amanda Ribeiro (5 do lote 1 + 10 do lote 2 = 15 total)
 INSERT INTO PEDIDO (id_cliente, data_pedido, status, total)
 VALUES (15, DATE '2026-04-09', 'CONCLUIDO', 5297.90);
 -- HP ProBook (4299) + Webcam (399.90) + Monitor LG (599)

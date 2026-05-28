@@ -7,7 +7,7 @@
  * Squad C: Lucas Byoung Ki Han
  *
  * OBS: vetor estatico de 100 produtos, suficiente pra entrega.
- * tentar depois: lista encadeada no semestre que vem talvez
+ * a implementar:: lista encadeada
  */
 
 #include <stdio.h>
@@ -30,7 +30,7 @@ static const char *CATEGORIAS_VALIDAS[NUM_CATEGORIAS] = {
     "Perifericos",
     "Pecas e Componentes"};
 
-/* le inteiro com validacao — evita loop infinito quando usuario digita letra no scanf */
+/* le inteiro e limpa o buffer qnd a entrada não é numérica — evita loop infinito quando usuario digita letra no scanf */
 int lerInteiro(const char *mensagem)
 {
     int valor;
@@ -52,7 +52,7 @@ int lerInteiro(const char *mensagem)
     return valor;
 }
 
-/* le float com validacao — rejeita texto e preco negativo */
+/* le float e valida , rejeita texto e preco negativo */
 float lerFloat(const char *mensagem)
 {
     float valor;
@@ -91,7 +91,7 @@ typedef struct
 Produto produtos[MAX_PRODUTOS];
 int totalProdutos = 0;
 
-/* prototipos */
+
 int lerInteiro(const char *mensagem);
 float lerFloat(const char *mensagem);
 void exibirMenu();
@@ -184,7 +184,7 @@ void exibirMenu()
     printf("\n==========================================\n");
 }
 
-/* cadastra novo produto validando categoria contra o banco Oracle */
+/* cadastra novo produto validando categoria com o banco Oracle */
 void cadastrarProduto()
 {
     if (totalProdutos >= MAX_PRODUTOS)
@@ -194,7 +194,8 @@ void cadastrarProduto()
     }
 
     Produto p;
-    p.id = totalProdutos + 1;
+    int proximoId = 1;
+    p.id = proximoId++;
 
     printf("Nome do produto: ");
     fgets(p.nome, TAM_NOME, stdin);
@@ -224,7 +225,7 @@ void cadastrarProduto()
 
     p.preco = lerFloat("Preco (R$): ");
 
-    /*Evita estoque negativo!!*/
+    /*Estoque não pode ser negativo*/
     do
     {
         p.qtd_estoque = lerInteiro("Quantidade em estoque: ");
@@ -238,7 +239,7 @@ void cadastrarProduto()
     printf("Produto '%s' cadastrado com sucesso! ID: %d\n", p.nome, p.id);
 }
 
-/* lista todos os produtos em tabela alinhada */
+
 void listarProdutos()
 {
     if (totalProdutos == 0)
@@ -274,6 +275,11 @@ void buscarProduto()
     printf("Digite o nome ou trecho para buscar: ");
     fgets(termo, TAM_NOME, stdin);
     termo[strcspn(termo, "\n")] = '\0';
+
+    if(strlen(termo) == 0) {
+        printf("Digite pelo menos um caractere para buscar.\n");
+        return;
+    }
 
     strcpy(termo_minusculo, termo);
     paraMinusculas(termo_minusculo);
@@ -356,7 +362,7 @@ void relatorioEstoque()
     int qtd_alertas = 0;
     for (int i = 0; i < totalProdutos; i++)
     {
-        if (produtos[i].qtd_estoque < 3)
+        if (produtos[i].qtd_estoque < 5)
         {
             printf("  [URGENTE] %s: apenas %d unidade(s)\n",
                    produtos[i].nome, produtos[i].qtd_estoque);

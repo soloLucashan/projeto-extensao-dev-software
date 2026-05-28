@@ -1,11 +1,11 @@
--- ============================================================
+
 -- PIXELSHOP - Consultas SQL para Relatorios e Gestao
 -- Responsavel: Luiz Augusto Tiburcio
 -- Projeto de Extensao - Turma Noturno 2026
--- ============================================================
 
--- ============================================================
 
+
+--1. Lista de clientes ordenada por nome
 SELECT id_cliente,
     nome,
     email,
@@ -25,7 +25,7 @@ FROM PRODUTO p
 ORDER BY c.nome_categoria,
     p.nome;
 -- 3. Historico de pedidos com nome do cliente
---    DESC em data_pedido pra mostrar os mais recentes primeiro —
+--    DESC em data_pedido pra mostrar os mais recentes primeiro
 SELECT pd.id_pedido,
     cl.nome AS cliente,
     pd.data_pedido,
@@ -66,7 +66,7 @@ SELECT cl.nome AS cliente,
 FROM CLIENTE cl
     JOIN PEDIDO pd ON cl.id_cliente = pd.id_cliente
 WHERE pd.status = 'CONCLUIDO'
-GROUP BY cl.nome
+GROUP BY cl.id_cliente, cl.nome, cl.email
 ORDER BY valor_total DESC;
 -- 7. Produtos mais vendidos (ranking por unidades comercializadas)
 SELECT pr.nome AS produto,
@@ -84,6 +84,7 @@ FROM CATEGORIA ca
     JOIN PRODUTO pr ON ca.id_categoria = pr.id_categoria
     JOIN ITEM_PEDIDO ip ON pr.id_produto = ip.id_produto
     JOIN PEDIDO pd ON ip.id_pedido = pd.id_pedido
+    WHERE pd.status = 'CONCLUIDO' -- considera apenas vendas efetivadas de fato
 GROUP BY ca.nome_categoria
 ORDER BY total_arrecadado DESC;
 -- 9. Clientes que nunca fizeram pedido
