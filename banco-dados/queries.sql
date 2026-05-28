@@ -1,6 +1,6 @@
 
 -- PIXELSHOP - Consultas SQL para Relatorios e Gestao
--- Responsavel: Luiz Augusto Tiburcio
+-- Responsavel: Henrique Capetto
 -- Projeto de Extensao - Turma Noturno 2026
 
 

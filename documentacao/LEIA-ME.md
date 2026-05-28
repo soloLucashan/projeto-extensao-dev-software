@@ -6,6 +6,8 @@
 
 Esta pasta e destinada a toda a documentacao escrita do projeto.
 
+Equipe atual do projeto: Lucas Byoung Ki Han, Gabriel Cole Ambrosio, Eduardo Vieira Silva, Riquelly Barboza Bagatin, Henrique Capetto e Matheus Nilcen Alves.
+
 ### Arquivos a serem adicionados aqui:
 - documento-final.pdf (Word convertido para PDF)
 - organograma.png (draw.io ou Lucidchart)
@@ -16,7 +18,7 @@ Esta pasta e destinada a toda a documentacao escrita do projeto.
 2. Sumario
 3. Resumo (150-200 palavras)
 4. Secao 1: Objetivos do Projeto
-5. Secao 2: Definicao da Equipe (tabela de 10 integrantes + cronograma)
+5. Secao 2: Definicao da Equipe (tabela de 6 integrantes + cronograma)
 6. Secao 3: Estrutura Organizacional (empresa, missao, visao, valores)
 7. Secao 4: Descricao do Site (prints + link GitHub)
 8. Secao 5: Descricao do Sistema C (prints + link GitHub)

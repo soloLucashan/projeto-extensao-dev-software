@@ -2,12 +2,17 @@
  * Projeto de Extensao - Desenvolvimento de Software
  * PixelShop - Sistema de Estoque (terminal)
  * UNINOVE - Noturno 2026
- * Prof.a Priscila Viana Cunha
+ * Prof.a Priscilla Cunha
  *
- * Squad C: Lucas Byoung Ki Han
+ * Grupo atual:
+ * - Lucas Byoung Ki Han (RA 3025103388) - Programa C e coordenacao
+ * - Gabriel Cole Ambrosio (RA 3126100300) - HTML
+ * - Eduardo Vieira Silva - CSS e Tema Dark Tech
+ * - Riquelly Barboza Bagatin (RA 3025103463) - DER e integridade referencial
+ * - Henrique Capetto (RA 3126103000) - Scripts SQL Oracle
+ * - Matheus Nilcen Alves (RA 3026104544) - Documento final
  *
  * OBS: vetor estatico de 100 produtos, suficiente pra entrega.
- * a implementar:: lista encadeada
  */
 
 #include <stdio.h>

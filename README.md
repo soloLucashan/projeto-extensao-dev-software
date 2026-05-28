@@ -15,17 +15,16 @@
 
 ---
 
-## Equipe - 7 Integrantes
+## Equipe - 6 Integrantes
 
 | # | Nome | RA | Squad | Responsabilidade Principal |
 |---|------|----|-------|----------------------------|
 | 1 | Lucas Byoung Ki Han | 3025103388 | Lider / Prog C | Coordenacao geral, Estrutura C, Logica de negocio, cadastros, busca e validacoes |
-| 2 | Gabriel Cole Ambrosio | 3126100300 | Site | HTML: index, sobre, contato |
-| 3 | Luiz Augusto Tiburcio | 3026102233 | Site | HTML: produtos, portfolio |
-| 4 | Eduardo Vieira Silva | 3126100300 | Site | CSS completo (style.css) e Tema Dark Tech |
-| 5 | Riquelly Barboza Bagatin | 3025103463 | Banco de Dados | Modelagem DER e integridade referencial |
-| 6 | Henrique Capetto | 3126103000 | Banco de Dados | Scripts SQL Oracle e definicao das tabelas |
-| 7 | Matheus Nilcen Alves | 3026104544 | Documentacao | Documento final escrito e prints |
+| 2 | Gabriel Cole Ambrosio | 3126100300 | Site | HTML: index, sobre, contato, produtos e portfolio |
+| 3 | Eduardo Vieira Silva | Nao informado | Site | CSS completo (style.css) e Tema Dark Tech |
+| 4 | Riquelly Barboza Bagatin | 3025103463 | Banco de Dados | Modelagem DER e integridade referencial |
+| 5 | Henrique Capetto | 3126103000 | Banco de Dados | Scripts SQL Oracle e definicao das tabelas |
+| 6 | Matheus Nilcen Alves | 3026104544 | Documentacao | Documento final escrito e prints |
 
 
 
@@ -46,7 +45,7 @@
 ```
 projeto-extensao-dev-software/
 |
-+-- site/                        Squad Site (Gabriel, Luiz, Eduardo)
++-- site/                        Squad Site (Gabriel, Eduardo)
 |   +-- index.html               Pagina Home
 |   +-- sobre.html               Pagina Sobre
 |   +-- produtos.html            Pagina Produtos/Servicos
@@ -54,6 +53,7 @@ projeto-extensao-dev-software/
 |   +-- contato.html             Pagina Contato
 |   +-- css/
 |       +-- style.css            Estilos CSS completos
+|   +-- img/                     Imagens do site
 |
 +-- programa-c/                  Squad C (Lucas)
 |   +-- main.c                   Programa principal em C
@@ -62,8 +62,9 @@ projeto-extensao-dev-software/
 |   +-- create_tables.sql        Criacao das 5 tabelas
 |   +-- insert_data.sql          Insercao de dados de exemplo
 |   +-- queries.sql              10 consultas SELECT
+|   +-- DER.png                  Diagrama Entidade-Relacionamento
 |
-+-- documentacao/                Squad Doc (Matheus + Lider)
++-- documentacao/                Squad Doc (Matheus)
     +-- LEIA-ME.md               Instrucoes para o Matheus
     +-- documento-final.pdf      (adicionar quando pronto)
     +-- organograma.png          (adicionar quando pronto)
