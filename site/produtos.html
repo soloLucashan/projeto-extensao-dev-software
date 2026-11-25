@@ -1,4 +1,4 @@
-<!-- produtos.html — Gabriel Cole Ambrosio -->
+<!-- produtos.html — Versão estática de referência histórica (Gabriel Cole Ambrosio) -->
 <!doctype html>
 <html lang="pt-br">
   <head>
@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Catálogo completo da PixelShop: Periféricos, Notebooks, Placas de Vídeo e Smartphones."
+      content="Referência estática do catálogo da PixelShop (versão oficial dinâmica servida pelo Flask em /produtos.html)."
     />
-    <title>Catálogo - PixelShop</title>
+    <title>Catálogo (Referência Estática) - PixelShop</title>
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
@@ -20,6 +20,7 @@
             <li><a href="index.html">Home</a></li>
             <li><a href="sobre.html">Sobre</a></li>
             <li><a href="produtos.html" class="ativo">Catálogo</a></li>
+            <li><a href="relatorio.html">Relatório</a></li>
             <li><a href="portfolio.html">Portfólio</a></li>
             <li><a href="contato.html">Contato</a></li>
           </ul>
@@ -29,10 +30,9 @@
 
     <main>
       <section>
-        <h1>Catálogo de Produtos</h1>
-        <p>
-          Periféricos, notebooks, smartphones e componentes selecionados pelo
-          time. Clique em qualquer produto para ver as especificações completas.
+        <h1>Catálogo de Produtos (Referência Estática)</h1>
+        <p class="aviso-info">
+          <strong>Versão estática de demonstração:</strong> este arquivo em <code>site/produtos.html</code> é mantido apenas como referência estática do projeto anterior, com valores alinhados à carga inicial. O catálogo oficial com dados em tempo real do banco Oracle é servido na rota <code>/produtos.html</code> pelo Flask.
         </p>
 
         <!-- PERIFERICOS -->
@@ -50,13 +50,13 @@
                 <summary>
                   <div class="resumo-produto">
                     <h3>Mouse Logitech MX Master</h3>
-                    <p class="preco">R$ 69,90</p>
+                    <p class="preco">R$ 349,90</p>
                   </div>
                   <span class="icone-expandir" aria-hidden="true">+</span>
                 </summary>
                 <div class="corpo-detalhe">
                   <div class="corpo-inner">
-                    <span class="badge-estoque disponivel">✓ Em Estoque</span>
+                    <span class="badge-estoque disponivel">✓ Em estoque (12 un.)</span>
                     <table class="specs-tecnicas">
                       <tr>
                         <td>Conectividade</td>
@@ -79,7 +79,7 @@
                         <td>1 ano Logitech</td>
                       </tr>
                     </table>
-                    <button class="btn-comprar">Adicionar ao Carrinho</button>
+                    <a href="contato.html" class="btn-secundario">Informações de contato</a>
                   </div>
                 </div>
               </details>
@@ -96,13 +96,13 @@
                 <summary>
                   <div class="resumo-produto">
                     <h3>Teclado Mecânico Redragon</h3>
-                    <p class="preco">R$ 139,90</p>
+                    <p class="preco">R$ 279,90</p>
                   </div>
                   <span class="icone-expandir" aria-hidden="true">+</span>
                 </summary>
                 <div class="corpo-detalhe">
                   <div class="corpo-inner">
-                    <span class="badge-estoque disponivel">✓ Em Estoque</span>
+                    <span class="badge-estoque disponivel">✓ Em estoque (10 un.)</span>
                     <table class="specs-tecnicas">
                       <tr>
                         <td>Switch</td>
@@ -125,7 +125,7 @@
                         <td>USB cabo removível</td>
                       </tr>
                     </table>
-                    <button class="btn-comprar">Adicionar ao Carrinho</button>
+                    <a href="contato.html" class="btn-secundario">Informações de contato</a>
                   </div>
                 </div>
               </details>
@@ -148,9 +148,7 @@
                 </summary>
                 <div class="corpo-detalhe">
                   <div class="corpo-inner">
-                    <span class="badge-estoque baixo-estoque"
-                      >⚠ Últimas unidades</span
-                    >
+                    <span class="badge-estoque disponivel">✓ Em estoque (8 un.)</span>
                     <table class="specs-tecnicas">
                       <tr>
                         <td>Resolução</td>
@@ -173,7 +171,7 @@
                         <td>AMD FreeSync, Eye Comfort</td>
                       </tr>
                     </table>
-                    <button class="btn-comprar">Adicionar ao Carrinho</button>
+                    <a href="contato.html" class="btn-secundario">Informações de contato</a>
                   </div>
                 </div>
               </details>
@@ -181,7 +179,7 @@
           </div>
         </div>
 
-        <!-- PLACAS DE VIDEO -->
+        <!-- PECAS E COMPONENTES -->
         <div class="categoria-produtos">
           <h2 class="titulo-categoria">Peças e Componentes</h2>
           <div class="grid-catalogo">
@@ -196,13 +194,13 @@
                 <summary>
                   <div class="resumo-produto">
                     <h3>NVIDIA RTX 3060 12GB GDDR6</h3>
-                    <p class="preco">R$ 1.599,00</p>
+                    <p class="preco">R$ 2.399,00</p>
                   </div>
                   <span class="icone-expandir" aria-hidden="true">+</span>
                 </summary>
                 <div class="corpo-detalhe">
                   <div class="corpo-inner">
-                    <span class="badge-estoque disponivel">✓ Em Estoque</span>
+                    <span class="badge-estoque disponivel">✓ Em estoque (4 un.)</span>
                     <table class="specs-tecnicas">
                       <tr>
                         <td>VRAM</td>
@@ -229,16 +227,14 @@
                         <td>Versão 2.0 suportada</td>
                       </tr>
                     </table>
-                    <button type="button" class="btn-comprar">
-                      Adicionar ao Carrinho
-                    </button>
+                    <a href="contato.html" class="btn-secundario">Informações de contato</a>
                   </div>
                 </div>
               </details>
             </div>
 
             <!-- RX 6600 XT -->
-            <div class="card-detalhe-wrapper" id="produto-11">
+            <div class="card-detalhe-wrapper" id="produto-19">
               <img
                 src="https://img.terabyteshop.com.br/produto/g/placa-de-video-asrock-radeon-rx-6600-challenger-d-8gb-gddr6-fsr-ray-tracing-90-ga2rzz-00uanf_133352.jpg"
                 alt="Placa de Vídeo AMD Radeon RX 6600 XT 8GB GDDR6"
@@ -248,13 +244,13 @@
                 <summary>
                   <div class="resumo-produto">
                     <h3>AMD Radeon RX 6600 XT 8GB</h3>
-                    <p class="preco">R$ 1.399,00</p>
+                    <p class="preco">R$ 1.899,00</p>
                   </div>
                   <span class="icone-expandir" aria-hidden="true">+</span>
                 </summary>
                 <div class="corpo-detalhe">
                   <div class="corpo-inner">
-                    <span class="badge-estoque disponivel">✓ Em Estoque</span>
+                    <span class="badge-estoque esgotado">✕ Esgotado</span>
                     <table class="specs-tecnicas">
                       <tr>
                         <td>VRAM</td>
@@ -281,9 +277,7 @@
                         <td>1080p Ultra / 1440p High</td>
                       </tr>
                     </table>
-                    <button type="button" class="btn-comprar">
-                      Adicionar ao Carrinho
-                    </button>
+                    <a href="contato.html" class="btn-secundario">Informações de contato</a>
                   </div>
                 </div>
               </details>
@@ -305,14 +299,14 @@
               <details class="card-detalhe">
                 <summary>
                   <div class="resumo-produto">
-                    <h3>Notebook Dell Inspiron 15</h3>
+                    <h3>Notebook Dell Inspiron</h3>
                     <p class="preco">R$ 2.199,00</p>
                   </div>
                   <span class="icone-expandir" aria-hidden="true">+</span>
                 </summary>
                 <div class="corpo-detalhe">
                   <div class="corpo-inner">
-                    <span class="badge-estoque disponivel">✓ Em Estoque</span>
+                    <span class="badge-estoque baixo-estoque">⚠ Últimas unidades (2)</span>
                     <table class="specs-tecnicas">
                       <tr>
                         <td>Processador</td>
@@ -339,9 +333,7 @@
                         <td>Windows 11 Home</td>
                       </tr>
                     </table>
-                    <button type="button" class="btn-comprar">
-                      Adicionar ao Carrinho
-                    </button>
+                    <a href="contato.html" class="btn-secundario">Informações de contato</a>
                   </div>
                 </div>
               </details>
@@ -357,14 +349,14 @@
               <details class="card-detalhe">
                 <summary>
                   <div class="resumo-produto">
-                    <h3>Notebook Lenovo IdeaPad 5</h3>
+                    <h3>Notebook Lenovo IdeaPad</h3>
                     <p class="preco">R$ 2.799,00</p>
                   </div>
                   <span class="icone-expandir" aria-hidden="true">+</span>
                 </summary>
                 <div class="corpo-detalhe">
                   <div class="corpo-inner">
-                    <span class="badge-estoque disponivel">✓ Em Estoque</span>
+                    <span class="badge-estoque disponivel">✓ Em estoque (4 un.)</span>
                     <table class="specs-tecnicas">
                       <tr>
                         <td>Processador</td>
@@ -391,9 +383,7 @@
                         <td>Windows 11 Home</td>
                       </tr>
                     </table>
-                    <button type="button" class="btn-comprar">
-                      Adicionar ao Carrinho
-                    </button>
+                    <a href="contato.html" class="btn-secundario">Informações de contato</a>
                   </div>
                 </div>
               </details>
@@ -415,14 +405,14 @@
               <details class="card-detalhe">
                 <summary>
                   <div class="resumo-produto">
-                    <h3>Samsung Galaxy A54 128GB</h3>
+                    <h3>Samsung Galaxy A54</h3>
                     <p class="preco">R$ 1.299,00</p>
                   </div>
                   <span class="icone-expandir" aria-hidden="true">+</span>
                 </summary>
                 <div class="corpo-detalhe">
                   <div class="corpo-inner">
-                    <span class="badge-estoque disponivel">✓ Em Estoque</span>
+                    <span class="badge-estoque disponivel">✓ Em estoque (8 un.)</span>
                     <table class="specs-tecnicas">
                       <tr>
                         <td>Armazenamento</td>
@@ -449,9 +439,7 @@
                         <td>1 ano Samsung</td>
                       </tr>
                     </table>
-                    <button type="button" class="btn-comprar">
-                      Adicionar ao Carrinho
-                    </button>
+                    <a href="contato.html" class="btn-secundario">Informações de contato</a>
                   </div>
                 </div>
               </details>
@@ -467,14 +455,14 @@
               <details class="card-detalhe">
                 <summary>
                   <div class="resumo-produto">
-                    <h3>Motorola Moto G52 128GB</h3>
+                    <h3>Motorola Moto G52</h3>
                     <p class="preco">R$ 1.099,00</p>
                   </div>
                   <span class="icone-expandir" aria-hidden="true">+</span>
                 </summary>
                 <div class="corpo-detalhe">
                   <div class="corpo-inner">
-                    <span class="badge-estoque disponivel">✓ Em Estoque</span>
+                    <span class="badge-estoque disponivel">✓ Em estoque (15 un.)</span>
                     <table class="specs-tecnicas">
                       <tr>
                         <td>Armazenamento</td>
@@ -501,9 +489,7 @@
                         <td>6.6" pOLED 90Hz</td>
                       </tr>
                     </table>
-                    <button type="button" class="btn-comprar">
-                      Adicionar ao Carrinho
-                    </button>
+                    <a href="contato.html" class="btn-secundario">Informações de contato</a>
                   </div>
                 </div>
               </details>

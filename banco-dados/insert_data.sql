@@ -1,8 +1,16 @@
 -- PIXELSHOP - insercao de dados de exemplo
--- Eduardo Vieira Silva | Revisao: Riquelly
--- Projeto de Extensao - Noturno 2026
+-- Autor original: Eduardo Vieira Silva | Revisao: Riquelly Bagatin
+-- UNINOVE - Noturno 2026
 --
--- Execute DEPOIS do create_tables.sql.
+-- PRE-CONDICAO: Execute UMA UNICA VEZ apos create_tables.sql em esquema
+-- PIXELSHOP vazio (XEPDB1). NAO execute novamente sobre dados existentes,
+-- pois os vinculos de FK abaixo dependem dos IDs gerados em sequencia (1..N).
+--
+-- Alteracoes ficticias de estoque para demonstracao dos 3 estados (< 3 e = 0):
+--   - Notebook Dell Inspiron (ID esperado 3): estoque 3 -> 2 (critico)
+--   - AMD Radeon RX 6600 XT 8GB (ID esperado 19): estoque 6 -> 0 (esgotado)
+-- Precos historicos (preco_unit) e totais de PEDIDO preservados integralmente.
+--
 -- ordem: 1=Smartphones, 2=Notebooks, 3=Perifericos, 4=Pecas
 -- ---- CATEGORIAS ----
 INSERT INTO CATEGORIA (nome_categoria)
@@ -37,7 +45,7 @@ VALUES (
         'Notebook Dell Inspiron',
         'Core i5, 8GB RAM, 256GB SSD, usado — bom custo-beneficio pra quem estuda',
         2199.00,
-        3,
+        2,
         2
     );
 INSERT INTO PRODUTO (nome, descricao, preco, estoque, id_categoria)
@@ -48,7 +56,7 @@ VALUES (
         4,
         2
     );
--- perifericos (destaques no site)
+-- Perifericos
 INSERT INTO PRODUTO (nome, descricao, preco, estoque, id_categoria)
 VALUES (
         'Mouse Logitech MX Master',
@@ -111,7 +119,7 @@ VALUES (
         'Rua Consolacao, 77 - Sao Paulo/SP'
     );
 -- ---- PEDIDOS - Lote inicial ----
--- totais conferidos item a item antes do commit
+-- Totais conferidos com a soma dos itens correspondentes
 INSERT INTO PEDIDO (id_cliente, data_pedido, status, total)
 VALUES (1, DATE '2026-03-10', 'CONCLUIDO', 1899.90);
 INSERT INTO PEDIDO (id_cliente, data_pedido, status, total)
@@ -121,8 +129,8 @@ VALUES (3, DATE '2026-04-01', 'PENDENTE', 2199.00);
 INSERT INTO PEDIDO (id_cliente, data_pedido, status, total)
 VALUES (4, DATE '2026-04-05', 'CONCLUIDO', 629.80);
 -- ---- ITENS DOS PEDIDOS - Lote inicial ----
--- preco_unit registra o valor cobrado na data da venda;
--- importante pra historico financeiro mesmo que o preco do produto mude depois.
+-- preco_unit registra o valor cobrado na data da venda,
+-- preservando o historico financeiro caso o preco atual do produto mude.
 INSERT INTO ITEM_PEDIDO (id_pedido, id_produto, quantidade, preco_unit)
 VALUES (1, 1, 1, 1899.90);
 -- Ana: iPhone 13
@@ -229,9 +237,7 @@ VALUES (
         18,
         4
     );
--- GPUs adicionadas pra sincronizar com o catalogo HTML (produtos.html).
--- Produtos adicionados para manter o catálogo do site alinhado ao banco.
--- id_produto gerado automaticamente sera 18 (RTX) e 19 (RX) nessa ordem.
+-- Produtos adicionados para manter o catalogo alinhado ao site (IDs esperados: 18 e 19).
 INSERT INTO PRODUTO (nome, descricao, preco, estoque, id_categoria)
 VALUES (
         'NVIDIA RTX 3060 12GB GDDR6',
@@ -245,7 +251,7 @@ VALUES (
         'AMD Radeon RX 6600 XT 8GB',
         '8GB GDDR6, 2048 Stream Processors, AMD FSR 2.0, ideal pra 1080p Ultra',
         1899.00,
-        6,
+        0,
         4
     );
 -- ---- CLIENTES - Lote de expansao ----
@@ -320,7 +326,7 @@ VALUES (
         'Jardim Florido, 77 - Osasco/SP'
     );
 -- ---- PEDIDOS - Lote de expansao ----
--- totais conferidos um por um depois que percebemos que estavam errados
+-- Totais conferidos com a soma dos itens de cada pedido
 INSERT INTO PEDIDO (id_cliente, data_pedido, status, total)
 VALUES (6, DATE '2026-04-02', 'CONCLUIDO', 1099.00);
 -- Moto G52 (1099)
