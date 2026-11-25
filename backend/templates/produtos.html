@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Catálogo completo da PixelShop: Periféricos, Notebooks, Placas de Vídeo e Smartphones.">
+  <title>Catálogo - PixelShop</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <div class="cabecalho-interno">
+      <a href="index.html" class="logo-site">Pixel<span>Shop</span></a>
+      <nav class="nav-principal">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="sobre.html">Sobre</a></li>
+          <li><a href="produtos.html" class="ativo">Catálogo</a></li>
+          <li><a href="relatorio.html">Relatório</a></li>
+          <li><a href="portfolio.html">Portfólio</a></li>
+          <li><a href="contato.html">Contato</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section>
+      <h1>Catálogo de Produtos</h1>
+      <p>
+        Catálogo oficial carregado em tempo real do banco Oracle, organizado por categoria.
+        Clique em qualquer produto para ver descrição e disponibilidade. Para o resumo consolidado processado pelo módulo C, acesse o <a href="relatorio.html">Relatório de Estoque</a>.
+      </p>
+      <div class="acoes-topo">
+        <a href="relatorio.html" class="btn-secundario">Ver Relatório de Estoque (Módulo C)</a>
+      </div>
+
+      {% if erro %}
+        <p class="aviso-erro">Não foi possível carregar os produtos agora. Tente novamente em instantes.</p>
+      {% elif not categorias %}
+        <p class="aviso-erro">Nenhum produto cadastrado ainda.</p>
+      {% endif %}
+
+      {% for nome_categoria, produtos in categorias.items() %}
+      <div class="categoria-produtos">
+        <h2 class="titulo-categoria">{{ nome_categoria }}</h2>
+        <div class="grid-catalogo">
+
+          {% for p in produtos %}
+          <div class="card-detalhe-wrapper" id="produto-{{ p.id_produto }}">
+            <details class="card-detalhe">
+              <summary>
+                <div class="resumo-produto">
+                  <h3>{{ p.nome }}</h3>
+                  <p class="preco">{{ p.preco | brl }}</p>
+                </div>
+                <span class="icone-expandir" aria-hidden="true">+</span>
+              </summary>
+              <div class="corpo-detalhe">
+                <div class="corpo-inner">
+                  <span class="badge-estoque {{ p.classe_estoque }}">{{ p.texto_estoque }}</span>
+                  {% if p.descricao %}<p class="descricao-produto">{{ p.descricao }}</p>{% endif %}
+                  <a href="contato.html" class="btn-secundario">Informações de contato</a>
+                </div>
+              </div>
+            </details>
+          </div>
+          {% endfor %}
+
+        </div>
+      </div>
+      {% endfor %}
+
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 PixelShop. Todos os direitos reservados.</p>
+  </footer>
+</body>
+</html>

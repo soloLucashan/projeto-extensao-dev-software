@@ -1,0 +1,55 @@
+%% DER Físico Atual — PixelShop (Oracle 21c XE / XEPDB1 / esquema PIXELSHOP)
+%% Conferido contra os metadados reais (USER_TAB_COLUMNS, USER_CONSTRAINTS, USER_TAB_IDENTITY_COLS)
+%% e banco-dados/create_tables.sql.
+%%
+%% Diferenca entre cardinalidade fisica (DDL) e regra de negocio pretendida:
+%% - No DDL Oracle, todas as chaves estrangeiras sao NOT NULL na tabela filha,
+%%   permitindo cardinalidade fisica 1 (pai) para 0..N (filho).
+%% - A FK FK_ITEM_PEDIDO NAO obriga um PEDIDO a possuir ao menos 1 item (0..N fisico);
+%%   a regra de negocio pretendida (1..N itens por pedido) foi verificada na carga atual,
+%%   nao sendo imposta por constraint isolada de tabela.
+%% - ITEM_PEDIDO possui PK artificial id_item (nao ha UNIQUE(id_pedido, id_produto)).
+
+erDiagram
+    CATEGORIA {
+        NUMBER id_categoria PK "IDENTITY ALWAYS, NOT NULL"
+        VARCHAR2_100 nome_categoria UK "NOT NULL, UNIQUE"
+    }
+
+    PRODUTO {
+        NUMBER id_produto PK "IDENTITY ALWAYS, NOT NULL"
+        VARCHAR2_100 nome "NOT NULL"
+        VARCHAR2_300 descricao "NULL"
+        NUMBER_10_2 preco "NOT NULL, CHECK (preco >= 0)"
+        NUMBER_5 estoque "DEFAULT 0, NOT NULL, CHECK (estoque >= 0)"
+        NUMBER id_categoria FK "NOT NULL -> CATEGORIA(id_categoria)"
+    }
+
+    CLIENTE {
+        NUMBER id_cliente PK "IDENTITY ALWAYS, NOT NULL"
+        VARCHAR2_150 nome "NOT NULL"
+        VARCHAR2_150 email UK "NOT NULL, UNIQUE"
+        VARCHAR2_20 telefone "NULL"
+        VARCHAR2_250 endereco "NULL"
+    }
+
+    PEDIDO {
+        NUMBER id_pedido PK "IDENTITY ALWAYS, NOT NULL"
+        NUMBER id_cliente FK "NOT NULL -> CLIENTE(id_cliente)"
+        DATE data_pedido "DEFAULT SYSDATE, NOT NULL"
+        VARCHAR2_20 status "DEFAULT 'PENDENTE', NOT NULL, CHECK (PENDENTE|CONCLUIDO|CANCELADO)"
+        NUMBER_10_2 total "DEFAULT 0, NOT NULL, CHECK (total >= 0)"
+    }
+
+    ITEM_PEDIDO {
+        NUMBER id_item PK "IDENTITY ALWAYS, NOT NULL"
+        NUMBER id_pedido FK "NOT NULL -> PEDIDO(id_pedido)"
+        NUMBER id_produto FK "NOT NULL -> PRODUTO(id_produto)"
+        NUMBER_5 quantidade "NOT NULL, CHECK (quantidade > 0)"
+        NUMBER_10_2 preco_unit "NOT NULL, CHECK (preco_unit >= 0)"
+    }
+
+    CATEGORIA ||--o{ PRODUTO : "FK_CATEGORIA (1 : 0..N fisico)"
+    CLIENTE ||--o{ PEDIDO : "FK_PEDIDO_CLIENTE (1 : 0..N fisico)"
+    PEDIDO ||--o{ ITEM_PEDIDO : "FK_ITEM_PEDIDO (1 : 0..N fisico; negocio: 1..N)"
+    PRODUTO ||--o{ ITEM_PEDIDO : "FK_ITEM_PRODUTO (1 : 0..N fisico)"

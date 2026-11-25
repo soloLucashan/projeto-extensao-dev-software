@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Conheça a PixelShop: empresa especializada em hardware de alto desempenho com infraestrutura propria em C e Oracle."
+      content="Conheça a PixelShop: projeto acadêmico de loja de eletrônicos com aplicação web Flask, banco Oracle e programa em C."
     />
     <title>Sobre Nós - PixelShop</title>
     <link rel="stylesheet" href="css/style.css" />
@@ -24,6 +24,7 @@
             <li><a href="index.html">Home</a></li>
             <li><a href="sobre.html" class="ativo">Sobre</a></li>
             <li><a href="produtos.html">Catálogo</a></li>
+            <li><a href="relatorio.html">Relatório</a></li>
             <li><a href="portfolio.html">Portfólio</a></li>
             <li><a href="contato.html">Contato</a></li>
           </ul>
@@ -35,60 +36,55 @@
       <section>
         <h1>Sobre a PixelShop</h1>
         <p>
-          A <strong>PixelShop</strong> é uma loja focada em soluções de hardware
-          para quem tem o orçamento limitado, mas sem abrir mão da qualidade. A
-          ideia surgiu de um grupo de estudantes que não encontrava os produtos
-          certos por um preço justo e resolveu montar o próprio negócio. Ainda
-          pequena, mas crescendo com cuidado — cada produto no catálogo foi
-          escolhido pelo time.
+          A <strong>PixelShop</strong> é uma empresa fictícia criada para o projeto
+          acadêmico de Ciência da Computação na UNINOVE, com foco na comercialização
+          de eletrônicos, periféricos, notebooks e componentes de informática.
         </p>
 
-        <h2>Como surgimos</h2>
+        <h2>Arquitetura do Projeto</h2>
         <p>
-          Tudo começou com a frustração de tentar montar setups decentes sem
-          gastar o que não tinhamos. A gente ficava horas comparando preço em
-          site, ainda mais que somos estudantes de ciência da computação e
-          sabemos que tem muita pegadinha de marketing por aí. Aí a gente
-          pensou: "E se a gente montasse uma loja que fosse transparente, com
-          preço justo e sem enrolação?" E foi assim que a PixelShop nasceu.
+          O sistema integra três camadas desenvolvidas pela equipe: o banco de dados
+          relacional em <strong>Oracle</strong> (com categorias, produtos, clientes e
+          pedidos de exemplo), a aplicação web em <strong>Python/Flask</strong> que
+          serve as páginas institucionais e o <a href="produtos.html">Catálogo dinâmico</a>,
+          e o programa em <strong>linguagem C</strong>.
         </p>
         <p>
-          A PixelShop ainda está no começo. Por enquanto operamos de forma
-          enxuta — sem loja física, com estoque gerenciado pelo nosso próprio
-          sistema e entrega para São Paulo e região. A ideia é crescer devagar e
-          com qualidade.
+          O programa C possui duas formas de uso: quando executado diretamente no
+          terminal, mantém um menu interativo em memória (sem persistência em arquivo
+          ou acesso direto ao banco); quando acionado pelo Flask no modo
+          <code>--relatorio</code>, processa os dados numéricos recebidos do Oracle e
+          devolve os totais e alertas exibidos no <a href="relatorio.html">Relatório de Estoque</a>.
         </p>
 
         <h2>Missão</h2>
         <p>
-          Oferecer hardware de qualidade com preço justo e atendimento
-          verdadeiro. Sem burocracia.
+          Oferecer produtos de eletrônicos e informática com qualidade, clareza nas
+          informações técnicas e acessibilidade.
         </p>
 
         <h2>Visão</h2>
         <p>
-          Ser a referência de loja de hardware para estudantes e profissionais
-          de tecnologia em São Paulo.
+          Ser referência em tecnologia acessível para estudantes e profissionais.
         </p>
 
         <h2>Valores</h2>
         <ul>
           <li>
-            <strong>Honestidade:</strong> Preço justo, sem jogo de marketing. O
-            que está no site é o menor preço mas a sua realização é o maior
-            valor.
+            <strong>Inovação:</strong> Integrar interfaces web, banco de dados e
+            processamento nativo em C de forma organizada.
           </li>
           <li>
-            <strong>Curadoria:</strong> Não vendemos tudo. Só o que a gente
-            conhece e indica de verdade.
+            <strong>Acessibilidade:</strong> Apresentar especificações, preços e
+            disponibilidade de modo transparente no catálogo.
           </li>
           <li>
-            <strong>Agilidade:</strong> Atendimento rápido — resposta no mesmo
-            dia útil.
+            <strong>Atendimento:</strong> Priorizar clareza e comunicação direta nas
+            páginas informativas.
           </li>
           <li>
-            <strong>Comunidade:</strong> A galera que compra aqui é a mesma que
-            nos dá feedback. A gente ouve.
+            <strong>Qualidade:</strong> Controlar itens críticos e esgotados com
+            regras consistentes entre banco, C e aplicação web.
           </li>
         </ul>
       </section>

@@ -1,0 +1,39 @@
+# Regra auxiliar caso este projeto venha a usar Git no futuro.
+# ATENCAO: .gitignore nao e barreira de seguranca — nunca compartilhe segredos.
+
+# Segredos e variaveis locais (preservando os arquivos .env.example)
+.env
+**/.env
+.env.*
+**/.env.*
+*.env
+!.env.example
+!backend/.env.example
+
+# Wallets, certificados e configuracoes locais de cliente Oracle
+*.sso
+*.p12
+*.jks
+wallet*/
+tnsnames.ora
+sqlnet.ora
+
+# Ambientes virtuais e caches Python
+.venv/
+**/.venv/
+__pycache__/
+**/__pycache__/
+*.py[cod]
+
+# Binarios e artefatos de compilacao C
+programa-c/build/
+*.exe
+*.o
+*.obj
+
+# Configuracoes locais de IDE
+banco-dados/.idea/
+
+# Material pessoal de estudo, backups e registros do processo (excluido da entrega)
+# ATENCAO: listar no .gitignore nao protege segredos nem substitui a revisao manual do pacote.
+_material_pessoal/

@@ -1,7 +1,7 @@
 
 -- PIXELSHOP - Consultas SQL para Relatorios e Gestao
--- Responsavel: Henrique Capetto
--- Projeto de Extensao - Turma Noturno 2026
+-- Autor original: Henrique Capetto Fernandez
+-- UNINOVE - Noturno 2026
 
 
 
@@ -13,8 +13,7 @@ SELECT id_cliente,
 FROM CLIENTE
 ORDER BY nome;
 -- 2. Catalogo completo com categoria e estoque
---    O JOIN com CATEGORIA e necessario pra mostrar o nome legivel
---    em vez do id_categoria, que nao faz sentido pro usuario final.
+--    O JOIN com CATEGORIA exibe o nome legivel da categoria em vez de apenas id_categoria.
 SELECT p.id_produto,
     p.nome,
     c.nome_categoria AS categoria,
@@ -24,8 +23,7 @@ FROM PRODUTO p
     JOIN CATEGORIA c ON p.id_categoria = c.id_categoria
 ORDER BY c.nome_categoria,
     p.nome;
--- 3. Historico de pedidos com nome do cliente
---    DESC em data_pedido pra mostrar os mais recentes primeiro
+-- 3. Historico de pedidos com nome do cliente (mais recentes primeiro)
 SELECT pd.id_pedido,
     cl.nome AS cliente,
     pd.data_pedido,
@@ -35,8 +33,8 @@ FROM PEDIDO pd
     JOIN CLIENTE cl ON pd.id_cliente = cl.id_cliente
 ORDER BY pd.data_pedido DESC;
 -- 4. Detalhamento de itens por pedido com subtotal calculado
---    subtotal = quantidade * preco_unit (preco da epoca da compra,
---    nao o preco atual do produto — importante pra auditoria financeira).
+--    subtotal = quantidade * preco_unit (valor praticado na data da compra,
+--    preservando o historico financeiro mesmo que o preco do produto mude depois).
 SELECT pd.id_pedido,
     cl.nome AS cliente,
     pr.nome AS produto,
@@ -49,8 +47,7 @@ FROM ITEM_PEDIDO ip
     JOIN PRODUTO pr ON ip.id_produto = pr.id_produto
 ORDER BY pd.id_pedido;
 -- 5. Produtos em alerta critico de estoque (menos de 3 unidades)
---    Esse limite de 3 unidades e o mesmo usado no sistema C (main.c,
---    funcao relatorioEstoque) — manter sincronizado com a regra de negocio.
+--    Mantem a mesma regra (< 3) adotada no modulo C (programa-c/main.c).
 SELECT nome,
     estoque,
     preco
@@ -58,8 +55,7 @@ FROM PRODUTO
 WHERE estoque < 3
 ORDER BY estoque;
 -- 6. Total gasto por cliente (apenas pedidos CONCLUIDOS)
---    Filtramos CANCELADO e PENDENTE porque esses valores ainda
---    nao saíram do caixa de fato.
+--    Exclui pedidos CANCELADO e PENDENTE para refletir apenas vendas efetivadas.
 SELECT cl.nome AS cliente,
     COUNT(pd.id_pedido) AS qtd_pedidos,
     SUM(pd.total) AS valor_total
@@ -68,16 +64,19 @@ FROM CLIENTE cl
 WHERE pd.status = 'CONCLUIDO'
 GROUP BY cl.id_cliente, cl.nome, cl.email
 ORDER BY valor_total DESC;
--- 7. Produtos mais vendidos (ranking por unidades comercializadas)
-SELECT pr.nome AS produto,
+-- 7. Produtos mais vendidos (ranking por unidades comercializadas em pedidos CONCLUIDOS)
+SELECT pr.id_produto,
+    pr.nome AS produto,
     SUM(ip.quantidade) AS total_unidades_vendidas
 FROM PRODUTO pr
     JOIN ITEM_PEDIDO ip ON pr.id_produto = ip.id_produto
-GROUP BY pr.nome
-ORDER BY total_unidades_vendidas DESC;
--- 8. Receita total gerada por categoria de produto
---    Util pra decisao de qual linha de produto merece mais investimento
---    no proximo ciclo de compras com os fornecedores.
+    JOIN PEDIDO pd ON ip.id_pedido = pd.id_pedido
+WHERE pd.status = 'CONCLUIDO'
+GROUP BY pr.id_produto,
+    pr.nome
+ORDER BY total_unidades_vendidas DESC,
+    pr.nome;
+-- 8. Receita total gerada por categoria de produto (apenas vendas CONCLUIDAS)
 SELECT ca.nome_categoria AS categoria,
     SUM(ip.quantidade * ip.preco_unit) AS total_arrecadado
 FROM CATEGORIA ca
@@ -87,9 +86,7 @@ FROM CATEGORIA ca
     WHERE pd.status = 'CONCLUIDO' -- considera apenas vendas efetivadas de fato
 GROUP BY ca.nome_categoria
 ORDER BY total_arrecadado DESC;
--- 9. Clientes que nunca fizeram pedido
---    Serve pra identificar cadastros inativos — possivelmente
---    clientes que vieram so pra ver o preco e nao voltaram.
+-- 9. Clientes cadastrados sem pedidos registrados
 SELECT cl.nome,
     cl.email
 FROM CLIENTE cl

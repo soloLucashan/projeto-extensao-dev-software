@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="PixelShop: hardware de qualidade para gamers, desenvolvedores e profissionais. Periféricos, notebooks e componentes com atendimento direto."
+      content="PixelShop: projeto acadêmico de tecnologia com catálogo web integrado ao Oracle e relatório de estoque em C."
     />
     <title>Home - PixelShop</title>
     <link rel="stylesheet" href="css/style.css" />
@@ -20,6 +20,7 @@
             <li><a href="index.html" class="ativo">Home</a></li>
             <li><a href="sobre.html">Sobre</a></li>
             <li><a href="produtos.html">Catálogo</a></li>
+            <li><a href="relatorio.html">Relatório</a></li>
             <li><a href="portfolio.html">Portfólio</a></li>
             <li><a href="contato.html">Contato</a></li>
           </ul>
@@ -28,21 +29,23 @@
     </header>
 
     <main>
-      <!-- BANNER HERO -->
+      <!-- BANNER PRINCIPAL -->
       <section class="secao-banner">
         <h1>Hardware para quem precisa.<br />Tecnologia para todos.</h1>
         <p>
-          Periféricos, GPUs, notebooks e smartphones, tudo o que precisa,
-          selecionados pelo time. Sem robô de vendas — atendimento de quem
-          entende o que está vendendo.
+          Periféricos, GPUs, notebooks e smartphones organizados em um catálogo
+          integrado ao banco Oracle, com consolidação de estoque via módulo em C.
         </p>
         <a href="produtos.html" class="btn-cta">Ver Catálogo Completo</a>
       </section>
 
       <!-- DESTAQUES DO CATALOGO -->
       <section>
-        <h2>Mais vendidos da semana</h2>
-        <p>Alguns dos produtos mais pedidos essa semana.</p>
+        <h2>Destaques do catálogo</h2>
+        <p>
+          Esta página inicial é institucional e estática. Para valores e quantidades
+          atualizadas, acesse o catálogo completo ou o relatório de estoque.
+        </p>
 
         <div class="grid-destaques">
           <article class="card-destaque">
@@ -54,12 +57,11 @@
             <div class="card-conteudo">
               <h3>Mouse Logitech MX Master</h3>
               <p>
-                Sem fio, 8.000 DPI, ergonômico. Bom pra quem fica horas no
-                computador.
+                Sem fio, sensor de alta precisão, design ergonômico para uso prolongado.
               </p>
-              <p class="preco">R$ 69,90</p>
+              <p class="aviso-catalogo">Consulte preço e disponibilidade no catálogo</p>
               <a href="produtos.html#produto-5" class="btn-secundario"
-                >Ver Especificações</a
+                >Ver no Catálogo</a
               >
             </div>
           </article>
@@ -73,12 +75,11 @@
             <div class="card-conteudo">
               <h3>Teclado Mecânico Redragon</h3>
               <p>
-                Switch Red, RGB full, layout ABNT2. Um dos mais vendidos da
-                loja.
+                Switch Red, iluminação RGB completa e layout ABNT2.
               </p>
-              <p class="preco">R$ 139,90</p>
+              <p class="aviso-catalogo">Consulte preço e disponibilidade no catálogo</p>
               <a href="produtos.html#produto-6" class="btn-secundario"
-                >Ver Especificações</a
+                >Ver no Catálogo</a
               >
             </div>
           </article>
@@ -92,44 +93,39 @@
             <div class="card-conteudo">
               <h3>NVIDIA RTX 3060 12GB GDDR6</h3>
               <p>
-                GPU com 12 GB de VRAM. Boa pra gaming em 1080p/1440p e render
-                leve.
+                Placa de vídeo com 12 GB GDDR6, Ray Tracing de 2ª geração e DLSS 2.0.
               </p>
-              <p class="preco">R$ 1.599,00</p>
-              <a href="produtos.html#produto-10" class="btn-secundario"
-                >Ver Especificações</a
+              <p class="aviso-catalogo">Consulte preço e disponibilidade no catálogo</p>
+              <a href="produtos.html#produto-18" class="btn-secundario"
+                >Ver no Catálogo</a
               >
             </div>
           </article>
         </div>
       </section>
 
-      <!-- POR QUE COMPRAR AQUI -->
+      <!-- SOBRE A INTEGRACAO -->
       <section class="secao-como-funciona">
-        <h2>Por que comprar aqui?</h2>
+        <h2>Como o sistema funciona</h2>
 
         <p>
-          Nosso maior e principal objetivo é incluir àquelas pessoas que ficam
-          de fora ao acesso á tecnologia por causa do preço, a dor de não
-          conseguir fazer um trabalho pela falta de um notebook, ou a frustração
-          de não ter feito o projeto da melhor forma por conta do desempenho do
-          computador. A gente quer ser a loja de hardware que entende o que o
-          cliente precisa, sem tentar empurrar o mais caro ou o que tem mais
-          comissão. A gente quer ser a loja de hardware que tem preço justo e
-          atendimento direto - pela democracia da tecnologia.
+          A aplicação web é servida em Python/Flask e consulta os produtos
+          cadastrados no banco Oracle (<code>PRODUTO</code> e <code>CATEGORIA</code>)
+          para montar o <a href="produtos.html">Catálogo</a> com preços e situação
+          de estoque em tempo real.
         </p>
 
         <p>
-          Nosso estoque é pequeno e controlado de propósito. Preferimos ter
-          menos produtos e garantir que cada um vale o preço. Quando algo entra
-          em falta, avisamos antes de deixar o cliente esperando.
+          Para o consolidado gerencial, o backend envia os dados numéricos do banco
+          ao programa em linguagem C no modo <code>--relatorio</code>, exibindo o
+          resultado na página de <a href="relatorio.html">Relatório de Estoque</a>.
         </p>
 
         <div class="badges-tech">
-          <span class="badge">📦 Entrega para SP e região</span>
-          <span class="badge">🔧 Suporte pós-venda via WhatsApp</span>
-          <span class="badge">✅ Produtos testados antes de vender</span>
-          <span class="badge">💬 Atendimento humano, sem IA</span>
+          <span class="badge">🗄️ Catálogo consultando Oracle</span>
+          <span class="badge">⚙️ Relatório processado pelo módulo C</span>
+          <span class="badge">📊 Alerta crítico &lt; 3 unidades</span>
+          <span class="badge">🌐 Aplicação web Flask</span>
         </div>
       </section>
     </main>

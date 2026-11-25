@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Relatório de estoque da PixelShop processado pelo módulo C com dados reais do Oracle.">
+  <title>Relatório de Estoque - PixelShop</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <div class="cabecalho-interno">
+      <a href="index.html" class="logo-site">Pixel<span>Shop</span></a>
+      <nav class="nav-principal">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="sobre.html">Sobre</a></li>
+          <li><a href="produtos.html">Catálogo</a></li>
+          <li><a href="relatorio.html" class="ativo">Relatório</a></li>
+          <li><a href="portfolio.html">Portfólio</a></li>
+          <li><a href="contato.html">Contato</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section>
+      <h1>Relatório de Estoque</h1>
+      <p class="nota-modulo">
+        Resumo consolidado a partir do banco Oracle e processado pelo módulo nativo em C (<code>--relatorio</code>).
+        Para consultar preços e itens individuais por categoria, acesse o <a href="produtos.html">Catálogo de Produtos</a>.
+      </p>
+
+      <div class="acoes-topo">
+        <a href="produtos.html" class="btn-secundario">Voltar ao Catálogo</a>
+      </div>
+
+      {% if erro_mensagem %}
+        <p class="aviso-erro">{{ erro_mensagem }}</p>
+      {% elif resumo %}
+        <div class="grid-metricas">
+          <article class="card-metrica">
+            <h2>Produtos distintos</h2>
+            <p class="valor-metrica">{{ resumo.total_produtos }}</p>
+          </article>
+          <article class="card-metrica">
+            <h2>Total de unidades</h2>
+            <p class="valor-metrica">{{ resumo.total_unidades }}</p>
+          </article>
+          <article class="card-metrica">
+            <h2>Valor total em estoque</h2>
+            <p class="valor-metrica">{{ valor_estoque_reais | brl }}</p>
+          </article>
+        </div>
+
+        <div class="bloco-alertas">
+          <h2>Estoque crítico (&lt; 3 unidades)</h2>
+          <p class="nota-modulo">
+            Regra de negócio: produtos com estoque menor que 3 unidades aparecem aqui — produtos esgotados (0 unidades) também pertencem aos críticos.
+          </p>
+          {% if criticos %}
+            <ul class="lista-relatorio">
+              {% for item in criticos %}
+              <li class="item-relatorio">
+                <div>
+                  <strong>#{{ item.id_produto }} — {{ item.nome }}</strong>
+                  <span class="badge-estoque {% if item.estoque <= 0 %}esgotado{% else %}baixo-estoque{% endif %}">
+                    {% if item.estoque <= 0 %}
+                      ✕ Esgotado (0 un.)
+                    {% else %}
+                      ⚠ Crítico ({{ item.estoque }} un.)
+                    {% endif %}
+                  </span>
+                </div>
+                <a href="produtos.html#produto-{{ item.id_produto }}" class="btn-secundario">Ver no catálogo</a>
+              </li>
+              {% endfor %}
+            </ul>
+          {% else %}
+            <p>Nenhum produto em situação crítica.</p>
+          {% endif %}
+        </div>
+
+        <div class="bloco-alertas">
+          <h2>Produtos esgotados (0 unidades)</h2>
+          {% if esgotados %}
+            <ul class="lista-relatorio">
+              {% for item in esgotados %}
+              <li class="item-relatorio">
+                <div>
+                  <strong>#{{ item.id_produto }} — {{ item.nome }}</strong>
+                  <span class="badge-estoque esgotado">✕ Esgotado ({{ item.estoque }} un.)</span>
+                </div>
+                <a href="produtos.html#produto-{{ item.id_produto }}" class="btn-secundario">Ver no catálogo</a>
+              </li>
+              {% endfor %}
+            </ul>
+          {% else %}
+            <p>Nenhum produto esgotado no momento.</p>
+          {% endif %}
+        </div>
+      {% endif %}
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 PixelShop. Todos os direitos reservados.</p>
+  </footer>
+</body>
+</html>

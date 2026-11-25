@@ -1,0 +1,222 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1540 950" width="1540" height="950" role="img" aria-label="Diagrama Entidade-Relacionamento Físico da PixelShop no Oracle XEPDB1">
+  <defs>
+    <style>
+      .bg { fill: #f8fafc; }
+      .title { font-family: 'Segoe UI', Arial, sans-serif; font-size: 24px; font-weight: 700; fill: #0f172a; }
+      .subtitle { font-family: 'Segoe UI', Arial, sans-serif; font-size: 13px; fill: #475569; }
+      .box { fill: #ffffff; stroke: #cbd5e1; stroke-width: 1.5; rx: 8; }
+      .hdr-text { font-family: 'Segoe UI', Arial, sans-serif; font-size: 15px; font-weight: 700; fill: #ffffff; }
+      .col-name { font-family: 'Consolas', 'Courier New', monospace; font-size: 12.5px; font-weight: 700; fill: #0f172a; }
+      .col-meta { font-family: 'Consolas', 'Courier New', monospace; font-size: 11.5px; fill: #334155; }
+      .badge-pk { fill: #fef3c7; stroke: #d97706; stroke-width: 1; }
+      .badge-fk { fill: #dbeafe; stroke: #2563eb; stroke-width: 1; }
+      .badge-uk { fill: #ede9fe; stroke: #7c3aed; stroke-width: 1; }
+      .badge-txt-pk { font-family: 'Segoe UI', Arial, sans-serif; font-size: 10px; font-weight: 700; fill: #92400e; }
+      .badge-txt-fk { font-family: 'Segoe UI', Arial, sans-serif; font-size: 10px; font-weight: 700; fill: #1e40af; }
+      .badge-txt-uk { font-family: 'Segoe UI', Arial, sans-serif; font-size: 10px; font-weight: 700; fill: #5b21b6; }
+      .rel-line { stroke: #334155; stroke-width: 2; fill: none; }
+      .rel-label { font-family: 'Segoe UI', Arial, sans-serif; font-size: 12px; font-weight: 600; fill: #1e293b; }
+      .card-label { font-family: 'Consolas', monospace; font-size: 12px; font-weight: 700; fill: #0f172a; }
+      .legend-box { fill: #ffffff; stroke: #94a3b8; stroke-width: 1.5; }
+      .legend-title { font-family: 'Segoe UI', Arial, sans-serif; font-size: 14px; font-weight: 700; fill: #0f172a; }
+      .legend-text { font-family: 'Segoe UI', Arial, sans-serif; font-size: 12.5px; fill: #334155; }
+      .sep { stroke: #e2e8f0; stroke-width: 1; }
+    </style>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#334155" />
+    </marker>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="1540" height="950" />
+
+  <!-- Cabecalho -->
+  <text class="title" x="50" y="42">DER Físico Atual — PixelShop (Oracle 21c XE / XEPDB1 / Esquema PIXELSHOP)</text>
+  <text class="subtitle" x="50" y="65">Fiel a banco-dados/create_tables.sql e aos metadados reais consultados em USER_TAB_COLUMNS, USER_CONSTRAINTS e USER_TAB_IDENTITY_COLS.</text>
+
+  <!-- ==================== ENTIDADE: CATEGORIA ==================== -->
+  <g id="ent-categoria">
+    <rect class="box" x="50" y="95" width="360" height="145" rx="8" />
+    <path d="M 50 103 a 8 8 0 0 1 8 -8 h 344 a 8 8 0 0 1 8 8 v 28 h -360 z" fill="#4f46e5" />
+    <text class="hdr-text" x="66" y="123">CATEGORIA</text>
+    <line class="sep" x1="50" y1="164" x2="410" y2="164" />
+    <rect class="badge-pk" x="64" y="140" width="26" height="17" rx="3" />
+    <text class="badge-txt-pk" x="70" y="152">PK</text>
+    <text class="col-name" x="98" y="153">id_categoria</text>
+    <text class="col-meta" x="210" y="153">NUMBER NN IDENTITY ALWAYS</text>
+
+    <rect class="badge-uk" x="64" y="176" width="26" height="17" rx="3" />
+    <text class="badge-txt-uk" x="70" y="188">UK</text>
+    <text class="col-name" x="98" y="189">nome_categoria</text>
+    <text class="col-meta" x="210" y="189">VARCHAR2(100) NN UNIQUE</text>
+    <text class="legend-text" x="64" y="222">4 registros na carga atual</text>
+  </g>
+
+  <!-- ==================== ENTIDADE: PRODUTO ==================== -->
+  <g id="ent-produto">
+    <rect class="box" x="1040" y="95" width="450" height="275" rx="8" />
+    <path d="M 1040 103 a 8 8 0 0 1 8 -8 h 434 a 8 8 0 0 1 8 8 v 28 h -450 z" fill="#059669" />
+    <text class="hdr-text" x="1056" y="123">PRODUTO</text>
+
+    <rect class="badge-pk" x="1054" y="140" width="26" height="17" rx="3" />
+    <text class="badge-txt-pk" x="1060" y="152">PK</text>
+    <text class="col-name" x="1088" y="153">id_produto</text>
+    <text class="col-meta" x="1198" y="153">NUMBER NN IDENTITY ALWAYS</text>
+
+    <text class="col-name" x="1088" y="185">nome</text>
+    <text class="col-meta" x="1198" y="185">VARCHAR2(100) NOT NULL</text>
+
+    <text class="col-name" x="1088" y="217">descricao</text>
+    <text class="col-meta" x="1198" y="217">VARCHAR2(300) NULL</text>
+
+    <text class="col-name" x="1088" y="249">preco</text>
+    <text class="col-meta" x="1198" y="249">NUMBER(10,2) NN CHECK(&gt;=0)</text>
+
+    <text class="col-name" x="1088" y="281">estoque</text>
+    <text class="col-meta" x="1198" y="281">NUMBER(5) DEF 0 NN CHECK(&gt;=0)</text>
+
+    <rect class="badge-fk" x="1054" y="301" width="26" height="17" rx="3" />
+    <text class="badge-txt-fk" x="1060" y="313">FK</text>
+    <text class="col-name" x="1088" y="314">id_categoria</text>
+    <text class="col-meta" x="1198" y="314">NUMBER NN -&gt; CATEGORIA</text>
+
+    <line class="sep" x1="1040" y1="334" x2="1490" y2="334" />
+    <text class="legend-text" x="1054" y="355">19 registros na carga atual (regra de alerta: estoque &lt; 3)</text>
+  </g>
+
+  <!-- ==================== ENTIDADE: CLIENTE ==================== -->
+  <g id="ent-cliente">
+    <rect class="box" x="50" y="425" width="360" height="235" rx="8" />
+    <path d="M 50 433 a 8 8 0 0 1 8 -8 h 344 a 8 8 0 0 1 8 8 v 28 h -360 z" fill="#2563eb" />
+    <text class="hdr-text" x="66" y="453">CLIENTE</text>
+
+    <rect class="badge-pk" x="64" y="470" width="26" height="17" rx="3" />
+    <text class="badge-txt-pk" x="70" y="482">PK</text>
+    <text class="col-name" x="98" y="483">id_cliente</text>
+    <text class="col-meta" x="195" y="483">NUMBER NN IDENTITY ALWAYS</text>
+
+    <text class="col-name" x="98" y="515">nome</text>
+    <text class="col-meta" x="195" y="515">VARCHAR2(150) NOT NULL</text>
+
+    <rect class="badge-uk" x="64" y="534" width="26" height="17" rx="3" />
+    <text class="badge-txt-uk" x="70" y="546">UK</text>
+    <text class="col-name" x="98" y="547">email</text>
+    <text class="col-meta" x="195" y="547">VARCHAR2(150) NN UNIQUE</text>
+
+    <text class="col-name" x="98" y="579">telefone</text>
+    <text class="col-meta" x="195" y="579">VARCHAR2(20) NULL</text>
+
+    <text class="col-name" x="98" y="611">endereco</text>
+    <text class="col-meta" x="195" y="611">VARCHAR2(250) NULL</text>
+
+    <line class="sep" x1="50" y1="626" x2="410" y2="626" />
+    <text class="legend-text" x="64" y="647">15 registros na carga atual (sem coluna cpf no físico)</text>
+  </g>
+
+  <!-- ==================== ENTIDADE: PEDIDO ==================== -->
+  <g id="ent-pedido">
+    <rect class="box" x="555" y="425" width="405" height="260" rx="8" />
+    <path d="M 555 433 a 8 8 0 0 1 8 -8 h 389 a 8 8 0 0 1 8 8 v 28 h -405 z" fill="#dc2626" />
+    <text class="hdr-text" x="571" y="453">PEDIDO</text>
+
+    <rect class="badge-pk" x="569" y="470" width="26" height="17" rx="3" />
+    <text class="badge-txt-pk" x="575" y="482">PK</text>
+    <text class="col-name" x="603" y="483">id_pedido</text>
+    <text class="col-meta" x="700" y="483">NUMBER NN IDENTITY ALWAYS</text>
+
+    <rect class="badge-fk" x="569" y="502" width="26" height="17" rx="3" />
+    <text class="badge-txt-fk" x="575" y="514">FK</text>
+    <text class="col-name" x="603" y="515">id_cliente</text>
+    <text class="col-meta" x="700" y="515">NUMBER NN -&gt; CLIENTE</text>
+
+    <text class="col-name" x="603" y="547">data_pedido</text>
+    <text class="col-meta" x="700" y="547">DATE DEF SYSDATE NOT NULL</text>
+
+    <text class="col-name" x="603" y="579">status</text>
+    <text class="col-meta" x="700" y="579">VARCHAR2(20) DEF 'PENDENTE' NN</text>
+    <text class="col-meta" x="700" y="596">CHECK (PENDENTE|CONCLUIDO|CANCELADO)</text>
+
+    <text class="col-name" x="603" y="625">total</text>
+    <text class="col-meta" x="700" y="625">NUMBER(10,2) DEF 0 NN CHECK(&gt;=0)</text>
+
+    <line class="sep" x1="555" y1="646" x2="960" y2="646" />
+    <text class="legend-text" x="569" y="668">12 registros na carga atual (todos com itens na carga)</text>
+  </g>
+
+  <!-- ==================== ENTIDADE: ITEM_PEDIDO ==================== -->
+  <g id="ent-item-pedido">
+    <rect class="box" x="1090" y="445" width="400" height="240" rx="8" />
+    <path d="M 1090 453 a 8 8 0 0 1 8 -8 h 384 a 8 8 0 0 1 8 8 v 28 h -400 z" fill="#d97706" />
+    <text class="hdr-text" x="1106" y="473">ITEM_PEDIDO</text>
+
+    <rect class="badge-pk" x="1104" y="490" width="26" height="17" rx="3" />
+    <text class="badge-txt-pk" x="1110" y="502">PK</text>
+    <text class="col-name" x="1138" y="503">id_item</text>
+    <text class="col-meta" x="1232" y="503">NUMBER NN IDENTITY ALWAYS</text>
+
+    <rect class="badge-fk" x="1104" y="522" width="26" height="17" rx="3" />
+    <text class="badge-txt-fk" x="1110" y="534">FK</text>
+    <text class="col-name" x="1138" y="535">id_pedido</text>
+    <text class="col-meta" x="1232" y="535">NUMBER NN -&gt; PEDIDO</text>
+
+    <rect class="badge-fk" x="1104" y="554" width="26" height="17" rx="3" />
+    <text class="badge-txt-fk" x="1110" y="566">FK</text>
+    <text class="col-name" x="1138" y="567">id_produto</text>
+    <text class="col-meta" x="1232" y="567">NUMBER NN -&gt; PRODUTO</text>
+
+    <text class="col-name" x="1138" y="599">quantidade</text>
+    <text class="col-meta" x="1232" y="599">NUMBER(5) NN CHECK(&gt;0)</text>
+
+    <text class="col-name" x="1138" y="631">preco_unit</text>
+    <text class="col-meta" x="1232" y="631">NUMBER(10,2) NN CHECK(&gt;=0)</text>
+
+    <line class="sep" x1="1090" y1="648" x2="1490" y2="648" />
+    <text class="legend-text" x="1104" y="670">22 registros na carga atual (PK artificial id_item)</text>
+  </g>
+
+  <!-- ==================== RELACIONAMENTOS ==================== -->
+  <!-- CATEGORIA (1) -> PRODUTO (0..N) -->
+  <line class="rel-line" x1="410" y1="168" x2="1032" y2="168" marker-end="url(#arrow)" />
+  <text class="card-label" x="422" y="158">1</text>
+  <text class="card-label" x="996" y="158">0..N</text>
+  <text class="rel-label" x="625" y="154">FK_CATEGORIA (id_categoria, NO ACTION)</text>
+
+  <!-- CLIENTE (1) -> PEDIDO (0..N) -->
+  <line class="rel-line" x1="410" y1="510" x2="547" y2="510" marker-end="url(#arrow)" />
+  <text class="card-label" x="420" y="500">1</text>
+  <text class="card-label" x="514" y="500">0..N</text>
+  <text class="rel-label" x="482" y="534" text-anchor="middle">FK_PEDIDO_CLIENTE</text>
+
+  <!-- PEDIDO (1) -> ITEM_PEDIDO (0..N) -->
+  <line class="rel-line" x1="960" y1="548" x2="1082" y2="548" marker-end="url(#arrow)" />
+  <text class="card-label" x="968" y="538">1</text>
+  <text class="card-label" x="1050" y="538">0..N</text>
+  <text class="rel-label" x="1025" y="572" text-anchor="middle">FK_ITEM_PEDIDO</text>
+
+  <!-- PRODUTO (1) -> ITEM_PEDIDO (0..N) -->
+  <line class="rel-line" x1="1265" y1="370" x2="1265" y2="437" marker-end="url(#arrow)" />
+  <text class="card-label" x="1275" y="390">1</text>
+  <text class="card-label" x="1275" y="428">0..N</text>
+  <text class="rel-label" x="1295" y="410">FK_ITEM_PRODUTO (NO ACTION)</text>
+
+  <!-- ==================== LEGENDA E REGRAS ==================== -->
+  <rect class="legend-box" x="50" y="720" width="1440" height="190" rx="8" />
+  <text class="legend-title" x="72" y="748">Legenda, Restrições Reais e Diferença entre Esquema Físico (DDL) e Regra de Negócio</text>
+  <line class="sep" x1="72" y1="760" x2="1468" y2="760" />
+
+  <rect class="badge-pk" x="72" y="776" width="26" height="17" rx="3" />
+  <text class="badge-txt-pk" x="78" y="788">PK</text>
+  <text class="legend-text" x="106" y="789">Chave Primária (IDENTITY ALWAYS)</text>
+
+  <rect class="badge-fk" x="350" y="776" width="26" height="17" rx="3" />
+  <text class="badge-txt-fk" x="356" y="788">FK</text>
+  <text class="legend-text" x="384" y="789">Chave Estrangeira (NOT NULL, NO ACTION)</text>
+
+  <rect class="badge-uk" x="665" y="776" width="26" height="17" rx="3" />
+  <text class="badge-txt-uk" x="671" y="788">UK</text>
+  <text class="legend-text" x="699" y="789">Restrição UNIQUE | NN = NOT NULL | DEF = DEFAULT</text>
+
+  <text class="legend-text" x="72" y="822">• Cardinalidade física permitida pelo DDL: todas as 4 FKs ligam 1 pai a 0..N registros filhos (a FK em ITEM_PEDIDO garante que todo item pertence a 1 PEDIDO e a 1 PRODUTO,</text>
+  <text class="legend-text" x="84" y="842">  porém NÃO obriga fisicamente um PEDIDO a possuir itens, nem impede produto repetido no mesmo pedido pois não há UNIQUE(id_pedido, id_produto)).</text>
+  <text class="legend-text" x="72" y="868">• Regra de negócio pretendida: um pedido deve conter 1..N itens (verificada na carga inicial: 0 pedidos sem itens) e total deve refletir a soma de quantidade * preco_unit.</text>
+  <text class="legend-text" x="72" y="894">• Histórico preservado: banco-dados/DER.png anterior divergia em CLIENTE (cpf vs endereco), PEDIDO (valor_total sem status vs status + total) e ITEM_PEDIDO (preco_unitario vs preco_unit).</text>
+</svg>
